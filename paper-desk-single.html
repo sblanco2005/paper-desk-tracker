@@ -1577,7 +1577,7 @@ body {
     const mtm = positions.reduce((s, p) => s + paperValue(p), 0);
     const net = positions.reduce((s, p) => s + uPnL(p), 0);
     const roc = capital > 0 ? (net / capital) * 100 : 0;
-    const unused = RISK_CEILING - openCapital;
+    const unused = RISK_CEILING + net - openCapital;
 
     const bucketUsed = { A: 0, B: 0, C: 0 };
     open.forEach((p) => {
@@ -1585,7 +1585,7 @@ body {
       if (bucketUsed[b] !== undefined) bucketUsed[b] += p.cost;
     });
 
-    return { capital, mtm, net, roc, unused, bucketUsed, openCount: open.length };
+    return { capital, mtm, net, roc, unused, openCapital, bucketUsed, openCount: open.length };
   }
 
   // ---------- persistence ----------
@@ -1786,7 +1786,7 @@ body {
           </summary>
           <div class="disclosure-body">
             <p><strong>ROC</strong> = Net P&amp;L ÷ Capital invested (${money(s.capital)}) — <em>not</em> ÷ risk ceiling. Ceiling is unused capacity, not the denominator.</p>
-            <p><strong>Ceiling:</strong> $${RISK_CEILING.toLocaleString()} − open capital ${money(RISK_CEILING - s.unused)} = ${money(s.unused)} unused. Invested basis remains ${money(s.capital)} after exits. Do not divide P&amp;L by $2,000.</p>
+            <p><strong>Bankroll:</strong> $${RISK_CEILING.toLocaleString()} + Net P&amp;L ${money(s.net, { signed: true })} − open capital ${money(s.openCapital)} = ${money(s.unused)} unused. With a flat book and Net +$102, unused is $2,102. ROC still uses capital invested, not bankroll.</p>
           </div>
         </details>
       </div>
