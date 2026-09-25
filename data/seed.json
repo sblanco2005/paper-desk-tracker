@@ -1,0 +1,418 @@
+{
+  "meta": {
+    "app": "Paper Desk Tracker",
+    "owner": "Santiago Blanco",
+    "mode": "paper",
+    "riskCeiling": 2000,
+    "seedDate": "2026-09-23",
+    "seedNote": "Fri Sep 25, 2026 close — both EXIT exp settlement 3.67 / 0.00, Net +$102",
+    "revisedAt": "2026-09-25T16:14:00-04:00"
+  },
+  "buckets": {
+    "A": {
+      "label": "Core defined-risk",
+      "used": 0
+    },
+    "B": {
+      "label": "Tactical",
+      "used": 0
+    },
+    "C": {
+      "label": "Event / lottery",
+      "used": 0
+    }
+  },
+  "universe": [
+    {
+      "symbol": "MSTR",
+      "name": "MicroStrategy",
+      "unit": "BTC factor",
+      "note": "High-beta BTC proxy via corporate treasury"
+    },
+    {
+      "symbol": "ASST",
+      "name": "Asset Entities",
+      "unit": "BTC factor",
+      "note": "Smaller BTC-adjacent name — size down"
+    },
+    {
+      "symbol": "STRC",
+      "name": "STRC (paper)",
+      "unit": "BTC factor",
+      "note": "Watchlist — no open tickets"
+    },
+    {
+      "symbol": "SATA",
+      "name": "SATA (paper)",
+      "unit": "BTC factor",
+      "note": "Watchlist — no open tickets"
+    },
+    {
+      "symbol": "QQQ",
+      "name": "Invesco QQQ Trust",
+      "unit": "Nasdaq",
+      "note": "Separate Nasdaq unit — not a BTC factor with MSTR/ASST"
+    }
+  ],
+  "positions": [
+    {
+      "id": "PAPER-001",
+      "underlying": "MSTR",
+      "structure": "Call debit vertical",
+      "structureSide": "long",
+      "qty": 1,
+      "expiration": "2026-09-25",
+      "legs": [
+        {
+          "side": "long",
+          "right": "C",
+          "strike": 155,
+          "exp": "Sep25"
+        },
+        {
+          "side": "short",
+          "right": "C",
+          "strike": 160,
+          "exp": "Sep25"
+        }
+      ],
+      "entry": 1.9,
+      "cost": 190,
+      "maxLoss": 190,
+      "bucket": "A",
+      "thesis": "Defined-risk long on MSTR/BTC rebound — buy the 155C, sell the 160C so max loss is the $190 debit while upside is capped at the short strike.",
+      "status": "EXIT",
+      "openedAt": "2026-09-23T10:15:00-04:00",
+      "marks": [
+        {
+          "ts": "2026-09-23T10:15:00-04:00",
+          "label": "open",
+          "mid": 1.9
+        },
+        {
+          "ts": "2026-09-23T12:45:00-04:00",
+          "label": "midday",
+          "mid": 2.15
+        },
+        {
+          "ts": "2026-09-23T16:38:00-04:00",
+          "label": "close",
+          "mid": 3.27
+        },
+        {
+          "ts": "2026-09-24T09:37:00-04:00",
+          "label": "open",
+          "mid": 3.57
+        },
+        {
+          "ts": "2026-09-24T12:33:00-04:00",
+          "label": "midday",
+          "mid": 3.57
+        },
+        {
+          "ts": "2026-09-24T16:17:00-04:00",
+          "label": "close",
+          "mid": 3.58
+        },
+        {
+          "ts": "2026-09-25T09:32:00-04:00",
+          "label": "open",
+          "mid": 3.13
+        },
+        {
+          "ts": "2026-09-25T12:37:00-04:00",
+          "label": "midday",
+          "mid": 3.37
+        },
+        {
+          "ts": "2026-09-25T16:14:00-04:00",
+          "label": "close",
+          "mid": 3.67
+        }
+      ]
+    },
+    {
+      "id": "PAPER-002",
+      "underlying": "ASST",
+      "structure": "Call debit vertical",
+      "structureSide": "long",
+      "qty": 1,
+      "expiration": "2026-09-25",
+      "legs": [
+        {
+          "side": "long",
+          "right": "C",
+          "strike": 29.5,
+          "exp": "Sep25"
+        },
+        {
+          "side": "short",
+          "right": "C",
+          "strike": 30.5,
+          "exp": "Sep25"
+        }
+      ],
+      "entry": 0.75,
+      "cost": 75,
+      "maxLoss": 75,
+      "bucket": "A",
+      "thesis": "Small defined-risk ASST upside on the BTC-treasury microcap tape — $1-wide call vertical keeps max loss to $75 if the bounce fails.",
+      "status": "EXIT",
+      "openedAt": "2026-09-23T14:05:00-04:00",
+      "marks": [
+        {
+          "ts": "2026-09-23T14:05:00-04:00",
+          "label": "open",
+          "mid": 0.75
+        },
+        {
+          "ts": "2026-09-23T15:00:00-04:00",
+          "label": "midday",
+          "mid": 0.92
+        },
+        {
+          "ts": "2026-09-23T16:38:00-04:00",
+          "label": "close",
+          "mid": 0.22
+        },
+        {
+          "ts": "2026-09-24T09:37:00-04:00",
+          "label": "open",
+          "mid": 0.31
+        },
+        {
+          "ts": "2026-09-24T12:33:00-04:00",
+          "label": "midday",
+          "mid": 0.6
+        },
+        {
+          "ts": "2026-09-24T16:17:00-04:00",
+          "label": "close",
+          "mid": 0.38
+        },
+        {
+          "ts": "2026-09-25T09:32:00-04:00",
+          "label": "open",
+          "mid": 0.35
+        },
+        {
+          "ts": "2026-09-25T12:37:00-04:00",
+          "label": "midday",
+          "mid": 0.24
+        },
+        {
+          "ts": "2026-09-25T16:14:00-04:00",
+          "label": "close",
+          "mid": 0.0
+        }
+      ]
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TXN-001",
+      "type": "open",
+      "ticketId": "PAPER-001",
+      "ts": "2026-09-23T10:15:00-04:00",
+      "underlying": "MSTR",
+      "legs": "long Sep25 155C / short Sep25 160C",
+      "fill": 1.9,
+      "debitCredit": -190,
+      "dayPnL": 0,
+      "note": "Open fill — morning"
+    },
+    {
+      "id": "TXN-002",
+      "type": "open",
+      "ticketId": "PAPER-002",
+      "ts": "2026-09-23T14:05:00-04:00",
+      "underlying": "ASST",
+      "legs": "long Sep25 29.5C / short Sep25 30.5C",
+      "fill": 0.75,
+      "debitCredit": -75,
+      "dayPnL": 0,
+      "note": "Open fill — afternoon"
+    },
+    {
+      "id": "TXN-003",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-09-23T16:38:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-001 @ 3.27, PAPER-002 @ 0.22",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 84,
+      "note": "Wed close marks (Options Desk sync) — book Net ~+$84"
+    },
+    {
+      "id": "TXN-004",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-09-24T12:33:00-04:00",
+      "underlying": "BOOK",
+      "legs": "midday snapshot — PAPER-001 @ 3.57, PAPER-002 @ 0.60",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 152,
+      "note": "Thu midday marks (Options Desk sync) — book Net ~+$152"
+    },
+    {
+      "id": "TXN-005",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-09-25T12:37:00-04:00",
+      "underlying": "BOOK",
+      "legs": "midday snapshot — PAPER-001 @ 3.37, PAPER-002 @ 0.24",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 96,
+      "note": "Fri midday marks (Options Desk sync) — book Net ~+$96"
+    },
+    {
+      "id": "TXN-006",
+      "type": "exit",
+      "ticketId": "PAPER-001",
+      "ts": "2026-09-25T16:14:00-04:00",
+      "underlying": "MSTR",
+      "legs": "exp settlement EXIT @ 3.67",
+      "fill": 3.67,
+      "debitCredit": 177,
+      "dayPnL": 177,
+      "note": "Fri Sep 25 expiry settlement — realized +$177"
+    },
+    {
+      "id": "TXN-007",
+      "type": "exit",
+      "ticketId": "PAPER-002",
+      "ts": "2026-09-25T16:14:00-04:00",
+      "underlying": "ASST",
+      "legs": "exp settlement EXIT @ 0.00",
+      "fill": 0.0,
+      "debitCredit": -75,
+      "dayPnL": -75,
+      "note": "Fri Sep 25 expiry settlement — realized -$75"
+    }
+  ],
+  "marksHistory": [
+    {
+      "ts": "2026-09-23T10:15:00-04:00",
+      "session": "open",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 1.9
+      },
+      "bookMTM": 190,
+      "bookNet": 0
+    },
+    {
+      "ts": "2026-09-23T12:45:00-04:00",
+      "session": "midday",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 2.15
+      },
+      "bookMTM": 215,
+      "bookNet": 25
+    },
+    {
+      "ts": "2026-09-23T14:05:00-04:00",
+      "session": "open",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 2.15,
+        "PAPER-002": 0.75
+      },
+      "bookMTM": 290,
+      "bookNet": 25
+    },
+    {
+      "ts": "2026-09-23T15:00:00-04:00",
+      "session": "midday",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 2.28,
+        "PAPER-002": 0.92
+      },
+      "bookMTM": 320,
+      "bookNet": 55
+    },
+    {
+      "ts": "2026-09-23T16:38:00-04:00",
+      "session": "close",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 3.27,
+        "PAPER-002": 0.22
+      },
+      "bookMTM": 349,
+      "bookNet": 84
+    },
+    {
+      "ts": "2026-09-24T09:37:00-04:00",
+      "session": "open",
+      "date": "2026-09-24",
+      "tickets": {
+        "PAPER-001": 3.57,
+        "PAPER-002": 0.31
+      },
+      "bookMTM": 388,
+      "bookNet": 123
+    },
+    {
+      "ts": "2026-09-24T12:33:00-04:00",
+      "session": "midday",
+      "date": "2026-09-24",
+      "tickets": {
+        "PAPER-001": 3.57,
+        "PAPER-002": 0.6
+      },
+      "bookMTM": 417,
+      "bookNet": 152
+    },
+    {
+      "ts": "2026-09-24T16:17:00-04:00",
+      "session": "close",
+      "date": "2026-09-24",
+      "tickets": {
+        "PAPER-001": 3.58,
+        "PAPER-002": 0.38
+      },
+      "bookMTM": 396,
+      "bookNet": 131
+    },
+    {
+      "ts": "2026-09-25T09:32:00-04:00",
+      "session": "open",
+      "date": "2026-09-25",
+      "tickets": {
+        "PAPER-001": 3.13,
+        "PAPER-002": 0.35
+      },
+      "bookMTM": 348,
+      "bookNet": 83
+    },
+    {
+      "ts": "2026-09-25T12:37:00-04:00",
+      "session": "midday",
+      "date": "2026-09-25",
+      "tickets": {
+        "PAPER-001": 3.37,
+        "PAPER-002": 0.24
+      },
+      "bookMTM": 361.0,
+      "bookNet": 96
+    },
+    {
+      "ts": "2026-09-25T16:14:00-04:00",
+      "session": "close",
+      "date": "2026-09-25",
+      "tickets": {
+        "PAPER-001": 3.67,
+        "PAPER-002": 0.0
+      },
+      "bookMTM": 367,
+      "bookNet": 102
+    }
+  ]
+}

@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0e11" />
+  <meta name="description" content="Paper Desk Tracker — Santiago Blanco options book ledger (paper only)" />
+  <title>Paper Desk Tracker</title>
+  <style>
+/* Paper Desk Tracker v1.1 — dark desk-terminal, mobile-first ~390px */
+:root {
+  --bg: #0b0e11;
+  --bg-elev: #12161c;
+  --bg-card: #161b22;
+  --bg-card-hover: #1c232c;
+  --border: #2a323d;
+  --border-soft: #1f2630;
+  --text: #e6edf3;
+  --text-dim: #8b949e;
+  --text-mute: #6e7681;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --green-dim: #238636;
+  --red: #f85149;
+  --red-dim: #da3633;
+  --amber: #d29922;
+  --bucket-a: #58a6ff;
+  --bucket-b: #a371f7;
+  --bucket-c: #f0883e;
+  --mono: "SF Mono", "Cascadia Code", "Roboto Mono", ui-monospace, Menlo, Consolas, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --nav-h: 64px;
+  --header-h: 56px;
+  --radius: 10px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  position: relative;
+  border-left: 1px solid var(--border-soft);
+  border-right: 1px solid var(--border-soft);
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  min-height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: rgba(11, 14, 17, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.app-header h1 {
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.paper-sub {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.9;
+}
+
+.app-header .badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber);
+  background: rgba(210, 153, 34, 0.12);
+  border: 1px solid rgba(210, 153, 34, 0.35);
+  padding: 3px 7px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.main {
+  padding: 12px 12px calc(var(--nav-h) + var(--safe-bottom) + 16px);
+  min-height: calc(100dvh - var(--header-h));
+}
+
+.screen { display: none; animation: fadeIn 0.18s ease; }
+.screen.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Bottom nav — 1pt top hairline so content doesn't collide */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  height: calc(var(--nav-h) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+  display: flex;
+  background: rgba(18, 22, 28, 0.96);
+  backdrop-filter: blur(12px);
+  border-top: 1pt solid var(--border);
+  z-index: 50;
+}
+
+.tab-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  color: var(--text-mute);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  padding: 8px 2px;
+  transition: color 0.15s;
+}
+
+.tab-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tab-btn.active { color: var(--accent); }
+.tab-btn:active { opacity: 0.7; }
+
+/* Cards & metrics */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+/* Book hero hierarchy */
+.hero-pnl {
+  text-align: left;
+  padding: 4px 0 12px;
+  border-bottom: 1px solid var(--border-soft);
+  margin-bottom: 12px;
+}
+
+.hero-pnl .label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 4px;
+}
+
+.hero-pnl .value {
+  font-family: var(--mono);
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.secondary-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.secondary-metric {
+  background: var(--bg-elev);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.secondary-metric .label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 4px;
+}
+
+.secondary-metric .value {
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.tertiary-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.tertiary-metric .label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 2px;
+}
+
+.tertiary-metric .value {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-dim);
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.metric {
+  background: var(--bg-elev);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.metric.wide { grid-column: 1 / -1; }
+
+.metric .label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 4px;
+}
+
+.metric .value {
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric .value.sm { font-size: 16px; }
+
+.pos { color: var(--green); }
+.neg { color: var(--red); }
+.neu { color: var(--text); }
+
+/* ROC disclosure — collapsed by default */
+.disclosure {
+  margin-top: 10px;
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  background: var(--bg-elev);
+  overflow: hidden;
+}
+
+.disclosure > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--text-dim);
+  user-select: none;
+}
+
+.disclosure > summary::-webkit-details-marker { display: none; }
+
+.disclosure .chev {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+  opacity: 0.7;
+}
+
+.disclosure[open] .chev { transform: rotate(90deg); }
+
+.disclosure-body {
+  padding: 0 12px 12px;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  line-height: 1.45;
+}
+
+.disclosure-body p + p { margin-top: 8px; }
+.disclosure-body strong { color: var(--accent); font-weight: 650; }
+
+.tip {
+  margin-top: 8px;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  line-height: 1.4;
+  padding: 8px 10px;
+  background: rgba(88, 166, 255, 0.06);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+}
+
+.tip strong { color: var(--accent); font-weight: 650; }
+
+/* Buckets — used only + quiet add */
+.bucket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bucket-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.bucket-line .b-name {
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.bucket-line.a .b-name { color: var(--bucket-a); }
+.bucket-line.b .b-name { color: var(--bucket-b); }
+.bucket-line.c .b-name { color: var(--bucket-c); }
+
+.bucket-line .b-val {
+  font-family: var(--mono);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.bucket-add {
+  align-self: flex-start;
+  margin-top: 2px;
+  background: none;
+  border: none;
+  color: var(--text-mute);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 4px;
+  letter-spacing: 0.02em;
+}
+
+.bucket-add:hover { color: var(--text-dim); }
+.bucket-add:active { opacity: 0.7; }
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin: 14px 2px 8px;
+}
+
+/* Position cards */
+.pos-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0;
+  margin-bottom: 12px;
+  overflow: hidden;
+  position: relative;
+  touch-action: pan-y;
+  transition: transform 0.12s ease, border-color 0.12s;
+}
+
+.pos-card.swiping { transition: none; }
+
+.pos-strip {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(22, 27, 34, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.pos-strip-left {
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+}
+
+.pos-under {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.pos-struct {
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.pos-strip-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.pos-upnl {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.status-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 4px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.status-badge.HOLD {
+  color: var(--green);
+  background: rgba(63, 185, 80, 0.12);
+  border: 1px solid rgba(63, 185, 80, 0.35);
+}
+
+.status-badge.EXIT {
+  color: var(--red);
+  background: rgba(248, 81, 73, 0.12);
+  border: 1px solid rgba(248, 81, 73, 0.35);
+}
+
+.pos-body { padding: 10px 12px 12px; }
+
+.pos-id {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-mute);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.legs {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  background: var(--bg-elev);
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+.legs .leg-long { color: var(--green); }
+.legs .leg-short { color: var(--red); }
+
+.thesis {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  line-height: 1.45;
+  margin: 0 0 10px;
+}
+
+.kv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 12px;
+}
+
+.kv {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.kv .k {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.kv .v {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+}
+
+/* Cost $? expander */
+.help-q {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--text-mute);
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.help-q:active { opacity: 0.75; }
+
+.cost-help {
+  display: none;
+  grid-column: 1 / -1;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  line-height: 1.4;
+  padding: 8px 10px;
+  background: rgba(88, 166, 255, 0.06);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  margin-top: 2px;
+}
+
+.cost-help.open { display: block; }
+.cost-help strong { color: var(--accent); font-weight: 650; }
+
+.pos-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn {
+  flex: 1;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  min-height: 44px;
+  padding: 10px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.btn:active { opacity: 0.85; }
+
+/* Secondary action chrome (gestures are primary) */
+.btn.secondary {
+  background: transparent;
+  border-color: var(--border-soft);
+  color: var(--text-dim);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.btn.primary {
+  background: rgba(88, 166, 255, 0.12);
+  border-color: rgba(88, 166, 255, 0.4);
+  color: var(--accent);
+}
+
+.btn.danger {
+  background: rgba(248, 81, 73, 0.08);
+  border-color: rgba(248, 81, 73, 0.3);
+  color: var(--red);
+}
+
+.btn.success {
+  background: rgba(63, 185, 80, 0.08);
+  border-color: rgba(63, 185, 80, 0.3);
+  color: var(--green);
+}
+
+.btn.secondary.danger {
+  background: transparent;
+  border-color: rgba(248, 81, 73, 0.25);
+  color: var(--red);
+}
+
+.btn.secondary.success {
+  background: transparent;
+  border-color: rgba(63, 185, 80, 0.25);
+  color: var(--green);
+}
+
+.btn.secondary.primary {
+  background: transparent;
+  border-color: rgba(88, 166, 255, 0.3);
+  color: var(--accent);
+}
+
+/* Blotter */
+.txn-row {
+  display: grid;
+  grid-template-columns: 3px 1fr auto;
+  gap: 4px 10px;
+  padding: 12px 12px 12px 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  align-items: start;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.txn-bar {
+  grid-row: 1 / span 3;
+  align-self: stretch;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+  background: var(--text-mute);
+}
+
+.txn-bar.open { background: var(--accent); }
+.txn-bar.mark { background: var(--amber); }
+.txn-bar.exit { background: var(--red); }
+
+.txn-type {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-left: 10px;
+}
+
+.txn-type.open { color: var(--accent); }
+.txn-type.mark { color: var(--amber); }
+.txn-type.exit { color: var(--red); }
+
+.txn-ts {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-mute);
+  text-align: right;
+  padding-right: 2px;
+  line-height: 1.35;
+}
+
+.txn-ts .rel {
+  display: block;
+  color: var(--text-dim);
+  font-weight: 650;
+  font-size: 12px;
+}
+
+.txn-ts .abs {
+  display: block;
+  font-size: 10px;
+  color: var(--text-mute);
+}
+
+.txn-legs {
+  grid-column: 2 / -1;
+  font-size: 12px;
+  color: var(--text-dim);
+  font-family: var(--mono);
+  padding-left: 10px;
+}
+
+.txn-meta {
+  grid-column: 2 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  padding-left: 10px;
+}
+
+.txn-meta span { color: var(--text-dim); }
+.txn-meta strong { color: var(--text); font-weight: 650; }
+
+/* Marks history */
+.mark-snap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.mark-snap-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.session-pill {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 5px;
+  background: var(--bg-elev);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+}
+
+.session-pill.close {
+  color: var(--amber);
+  border-color: rgba(210, 153, 34, 0.4);
+}
+
+.mark-tickets {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.mark-book {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Universe */
+.uni-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.uni-sym {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 700;
+  min-width: 52px;
+  color: var(--accent);
+}
+
+.uni-body { flex: 1; min-width: 0; }
+.uni-name { font-size: 13px; font-weight: 600; }
+.uni-note { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+.unit-tag {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.unit-tag.btc {
+  color: var(--amber);
+  background: rgba(210, 153, 34, 0.1);
+  border: 1px solid rgba(210, 153, 34, 0.3);
+}
+
+.unit-tag.nasdaq {
+  color: var(--bucket-b);
+  background: rgba(163, 113, 247, 0.1);
+  border: 1px solid rgba(163, 113, 247, 0.3);
+}
+
+/* Modal for mark edit */
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 100;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.modal-backdrop.open { display: flex; }
+
+.modal {
+  width: 100%;
+  max-width: 430px;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-radius: 16px 16px 0 0;
+  padding: 18px 16px calc(18px + var(--safe-bottom));
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+.modal h3 {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.modal label {
+  display: block;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 6px;
+}
+
+.modal input {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 18px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--text);
+  margin-bottom: 14px;
+  outline: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.modal input:focus { border-color: var(--accent); }
+
+.modal-actions { display: flex; gap: 8px; }
+
+.empty {
+  text-align: center;
+  color: var(--text-mute);
+  padding: 32px 16px;
+  font-size: 13px;
+}
+
+.footer-note {
+  font-size: 11px;
+  color: var(--text-mute);
+  text-align: center;
+  padding: 8px 4px 4px;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--nav-h) + var(--safe-bottom) + 16px);
+  transform: translateX(-50%) translateY(12px);
+  max-width: min(360px, calc(100% - 24px));
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 650;
+  padding: 10px 14px;
+  border-radius: 8px;
+  z-index: 120;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (min-width: 431px) {
+  body {
+    box-shadow: 0 0 0 1px var(--border-soft), 0 0 60px rgba(0, 0, 0, 0.45);
+    min-height: 100vh;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-titles">
+      <h1>Paper Desk Tracker</h1>
+      <div class="paper-sub">PAPER</div>
+    </div>
+    <span class="badge" title="Hold 1.5s to reset seed">PAPER</span>
+  </header>
+
+  <main class="main">
+    <section id="screen-book" class="screen" aria-label="Book"></section>
+    <section id="screen-positions" class="screen" aria-label="Positions"></section>
+    <section id="screen-blotter" class="screen" aria-label="Blotter"></section>
+    <section id="screen-marks" class="screen" aria-label="Marks history"></section>
+    <section id="screen-universe" class="screen" aria-label="Universe"></section>
+  </main>
+
+  <nav class="tab-bar" aria-label="Primary">
+    <button type="button" class="tab-btn active" data-screen="book" aria-label="Book">
+      <svg viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 012-2h9"/><path d="M4 19h14a2 2 0 002-2V7"/><path d="M8 7h6M8 11h8M8 15h5"/></svg>
+      Book
+    </button>
+    <button type="button" class="tab-btn" data-screen="positions" aria-label="Positions">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/></svg>
+      Positions
+    </button>
+    <button type="button" class="tab-btn" data-screen="blotter" aria-label="Blotter">
+      <svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg>
+      Blotter
+    </button>
+    <button type="button" class="tab-btn" data-screen="marks" aria-label="Marks">
+      <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+      Marks
+    </button>
+    <button type="button" class="tab-btn" data-screen="universe" aria-label="Universe">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
+      Universe
+    </button>
+  </nav>
+
+  <div id="mark-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="mark-modal-title">
+    <div class="modal">
+      <h3 id="mark-modal-title">Update mark</h3>
+      <label for="mark-input">Mid (debit)</label>
+      <input id="mark-input" type="number" step="0.01" min="0" inputmode="decimal" />
+      <div class="modal-actions">
+        <button type="button" class="btn" id="mark-cancel">Cancel</button>
+        <button type="button" class="btn primary" id="mark-save">Save mark</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <script>window.__SEED__ = {
+  "meta": {
+    "app": "Paper Desk Tracker",
+    "owner": "Santiago Blanco",
+    "mode": "paper",
+    "riskCeiling": 2000,
+    "seedDate": "2026-09-23",
+    "seedNote": "Fri Sep 25, 2026 close — both EXIT exp settlement 3.67 / 0.00, Net +$102",
+    "revisedAt": "2026-09-25T16:14:00-04:00"
+  },
+  "buckets": {
+    "A": {
+      "label": "Core defined-risk",
+      "used": 0
+    },
+    "B": {
+      "label": "Tactical",
+      "used": 0
+    },
+    "C": {
+      "label": "Event / lottery",
+      "used": 0
+    }
+  },
+  "universe": [
+    {
+      "symbol": "MSTR",
+      "name": "MicroStrategy",
+      "unit": "BTC factor",
+      "note": "High-beta BTC proxy via corporate treasury"
+    },
+    {
+      "symbol": "ASST",
+      "name": "Asset Entities",
+      "unit": "BTC factor",
+      "note": "Smaller BTC-adjacent name — size down"
+    },
+    {
+      "symbol": "STRC",
+      "name": "STRC (paper)",
+      "unit": "BTC factor",
+      "note": "Watchlist — no open tickets"
+    },
+    {
+      "symbol": "SATA",
+      "name": "SATA (paper)",
+      "unit": "BTC factor",
+      "note": "Watchlist — no open tickets"
+    },
+    {
+      "symbol": "QQQ",
+      "name": "Invesco QQQ Trust",
+      "unit": "Nasdaq",
+      "note": "Separate Nasdaq unit — not a BTC factor with MSTR/ASST"
+    }
+  ],
+  "positions": [
+    {
+      "id": "PAPER-001",
+      "underlying": "MSTR",
+      "structure": "Call debit vertical",
+      "structureSide": "long",
+      "qty": 1,
+      "expiration": "2026-09-25",
+      "legs": [
+        {
+          "side": "long",
+          "right": "C",
+          "strike": 155,
+          "exp": "Sep25"
+        },
+        {
+          "side": "short",
+          "right": "C",
+          "strike": 160,
+          "exp": "Sep25"
+        }
+      ],
+      "entry": 1.9,
+      "cost": 190,
+      "maxLoss": 190,
+      "bucket": "A",
+      "thesis": "Defined-risk long on MSTR/BTC rebound — buy the 155C, sell the 160C so max loss is the $190 debit while upside is capped at the short strike.",
+      "status": "EXIT",
+      "openedAt": "2026-09-23T10:15:00-04:00",
+      "marks": [
+        {
+          "ts": "2026-09-23T10:15:00-04:00",
+          "label": "open",
+          "mid": 1.9
+        },
+        {
+          "ts": "2026-09-23T12:45:00-04:00",
+          "label": "midday",
+          "mid": 2.15
+        },
+        {
+          "ts": "2026-09-23T16:38:00-04:00",
+          "label": "close",
+          "mid": 3.27
+        },
+        {
+          "ts": "2026-09-24T09:37:00-04:00",
+          "label": "open",
+          "mid": 3.57
+        },
+        {
+          "ts": "2026-09-24T12:33:00-04:00",
+          "label": "midday",
+          "mid": 3.57
+        },
+        {
+          "ts": "2026-09-24T16:17:00-04:00",
+          "label": "close",
+          "mid": 3.58
+        },
+        {
+          "ts": "2026-09-25T09:32:00-04:00",
+          "label": "open",
+          "mid": 3.13
+        },
+        {
+          "ts": "2026-09-25T12:37:00-04:00",
+          "label": "midday",
+          "mid": 3.37
+        },
+        {
+          "ts": "2026-09-25T16:14:00-04:00",
+          "label": "close",
+          "mid": 3.67
+        }
+      ]
+    },
+    {
+      "id": "PAPER-002",
+      "underlying": "ASST",
+      "structure": "Call debit vertical",
+      "structureSide": "long",
+      "qty": 1,
+      "expiration": "2026-09-25",
+      "legs": [
+        {
+          "side": "long",
+          "right": "C",
+          "strike": 29.5,
+          "exp": "Sep25"
+        },
+        {
+          "side": "short",
+          "right": "C",
+          "strike": 30.5,
+          "exp": "Sep25"
+        }
+      ],
+      "entry": 0.75,
+      "cost": 75,
+      "maxLoss": 75,
+      "bucket": "A",
+      "thesis": "Small defined-risk ASST upside on the BTC-treasury microcap tape — $1-wide call vertical keeps max loss to $75 if the bounce fails.",
+      "status": "EXIT",
+      "openedAt": "2026-09-23T14:05:00-04:00",
+      "marks": [
+        {
+          "ts": "2026-09-23T14:05:00-04:00",
+          "label": "open",
+          "mid": 0.75
+        },
+        {
+          "ts": "2026-09-23T15:00:00-04:00",
+          "label": "midday",
+          "mid": 0.92
+        },
+        {
+          "ts": "2026-09-23T16:38:00-04:00",
+          "label": "close",
+          "mid": 0.22
+        },
+        {
+          "ts": "2026-09-24T09:37:00-04:00",
+          "label": "open",
+          "mid": 0.31
+        },
+        {
+          "ts": "2026-09-24T12:33:00-04:00",
+          "label": "midday",
+          "mid": 0.6
+        },
+        {
+          "ts": "2026-09-24T16:17:00-04:00",
+          "label": "close",
+          "mid": 0.38
+        },
+        {
+          "ts": "2026-09-25T09:32:00-04:00",
+          "label": "open",
+          "mid": 0.35
+        },
+        {
+          "ts": "2026-09-25T12:37:00-04:00",
+          "label": "midday",
+          "mid": 0.24
+        },
+        {
+          "ts": "2026-09-25T16:14:00-04:00",
+          "label": "close",
+          "mid": 0.0
+        }
+      ]
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TXN-001",
+      "type": "open",
+      "ticketId": "PAPER-001",
+      "ts": "2026-09-23T10:15:00-04:00",
+      "underlying": "MSTR",
+      "legs": "long Sep25 155C / short Sep25 160C",
+      "fill": 1.9,
+      "debitCredit": -190,
+      "dayPnL": 0,
+      "note": "Open fill — morning"
+    },
+    {
+      "id": "TXN-002",
+      "type": "open",
+      "ticketId": "PAPER-002",
+      "ts": "2026-09-23T14:05:00-04:00",
+      "underlying": "ASST",
+      "legs": "long Sep25 29.5C / short Sep25 30.5C",
+      "fill": 0.75,
+      "debitCredit": -75,
+      "dayPnL": 0,
+      "note": "Open fill — afternoon"
+    },
+    {
+      "id": "TXN-003",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-09-23T16:38:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-001 @ 3.27, PAPER-002 @ 0.22",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 84,
+      "note": "Wed close marks (Options Desk sync) — book Net ~+$84"
+    },
+    {
+      "id": "TXN-004",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-09-24T12:33:00-04:00",
+      "underlying": "BOOK",
+      "legs": "midday snapshot — PAPER-001 @ 3.57, PAPER-002 @ 0.60",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 152,
+      "note": "Thu midday marks (Options Desk sync) — book Net ~+$152"
+    },
+    {
+      "id": "TXN-005",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-09-25T12:37:00-04:00",
+      "underlying": "BOOK",
+      "legs": "midday snapshot — PAPER-001 @ 3.37, PAPER-002 @ 0.24",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 96,
+      "note": "Fri midday marks (Options Desk sync) — book Net ~+$96"
+    },
+    {
+      "id": "TXN-006",
+      "type": "exit",
+      "ticketId": "PAPER-001",
+      "ts": "2026-09-25T16:14:00-04:00",
+      "underlying": "MSTR",
+      "legs": "exp settlement EXIT @ 3.67",
+      "fill": 3.67,
+      "debitCredit": 177,
+      "dayPnL": 177,
+      "note": "Fri Sep 25 expiry settlement — realized +$177"
+    },
+    {
+      "id": "TXN-007",
+      "type": "exit",
+      "ticketId": "PAPER-002",
+      "ts": "2026-09-25T16:14:00-04:00",
+      "underlying": "ASST",
+      "legs": "exp settlement EXIT @ 0.00",
+      "fill": 0.0,
+      "debitCredit": -75,
+      "dayPnL": -75,
+      "note": "Fri Sep 25 expiry settlement — realized -$75"
+    }
+  ],
+  "marksHistory": [
+    {
+      "ts": "2026-09-23T10:15:00-04:00",
+      "session": "open",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 1.9
+      },
+      "bookMTM": 190,
+      "bookNet": 0
+    },
+    {
+      "ts": "2026-09-23T12:45:00-04:00",
+      "session": "midday",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 2.15
+      },
+      "bookMTM": 215,
+      "bookNet": 25
+    },
+    {
+      "ts": "2026-09-23T14:05:00-04:00",
+      "session": "open",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 2.15,
+        "PAPER-002": 0.75
+      },
+      "bookMTM": 290,
+      "bookNet": 25
+    },
+    {
+      "ts": "2026-09-23T15:00:00-04:00",
+      "session": "midday",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 2.28,
+        "PAPER-002": 0.92
+      },
+      "bookMTM": 320,
+      "bookNet": 55
+    },
+    {
+      "ts": "2026-09-23T16:38:00-04:00",
+      "session": "close",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 3.27,
+        "PAPER-002": 0.22
+      },
+      "bookMTM": 349,
+      "bookNet": 84
+    },
+    {
+      "ts": "2026-09-24T09:37:00-04:00",
+      "session": "open",
+      "date": "2026-09-24",
+      "tickets": {
+        "PAPER-001": 3.57,
+        "PAPER-002": 0.31
+      },
+      "bookMTM": 388,
+      "bookNet": 123
+    },
+    {
+      "ts": "2026-09-24T12:33:00-04:00",
+      "session": "midday",
+      "date": "2026-09-24",
+      "tickets": {
+        "PAPER-001": 3.57,
+        "PAPER-002": 0.6
+      },
+      "bookMTM": 417,
+      "bookNet": 152
+    },
+    {
+      "ts": "2026-09-24T16:17:00-04:00",
+      "session": "close",
+      "date": "2026-09-24",
+      "tickets": {
+        "PAPER-001": 3.58,
+        "PAPER-002": 0.38
+      },
+      "bookMTM": 396,
+      "bookNet": 131
+    },
+    {
+      "ts": "2026-09-25T09:32:00-04:00",
+      "session": "open",
+      "date": "2026-09-25",
+      "tickets": {
+        "PAPER-001": 3.13,
+        "PAPER-002": 0.35
+      },
+      "bookMTM": 348,
+      "bookNet": 83
+    },
+    {
+      "ts": "2026-09-25T12:37:00-04:00",
+      "session": "midday",
+      "date": "2026-09-25",
+      "tickets": {
+        "PAPER-001": 3.37,
+        "PAPER-002": 0.24
+      },
+      "bookMTM": 361.0,
+      "bookNet": 96
+    },
+    {
+      "ts": "2026-09-25T16:14:00-04:00",
+      "session": "close",
+      "date": "2026-09-25",
+      "tickets": {
+        "PAPER-001": 3.67,
+        "PAPER-002": 0.0
+      },
+      "bookMTM": 367,
+      "bookNet": 102
+    }
+  ]
+};</script>
+  <script>
+/**
+ * Paper Desk Tracker — Santiago Blanco
+ * Paper trading only. Vanilla JS, localStorage persistence.
+ * v1.1 — Swift Dev UX polish
+ */
+(function () {
+  "use strict";
+
+  const STORAGE_KEY = "paper-desk-tracker-v1";
+  const RISK_CEILING = 2000;
+
+  /** @type {object|null} */
+  let state = null;
+
+  // ---------- helpers ----------
+  const $ = (sel, el = document) => el.querySelector(sel);
+  const $$ = (sel, el = document) => [...el.querySelectorAll(sel)];
+
+  function money(n, opts = {}) {
+    const abs = Math.abs(n);
+    const formatted = abs.toLocaleString("en-US", {
+      minimumFractionDigits: opts.digits ?? 0,
+      maximumFractionDigits: opts.digits ?? 0,
+    });
+    const sign = n < 0 ? "−" : opts.signed && n > 0 ? "+" : "";
+    return `${sign}$${formatted}`;
+  }
+
+  function moneyDec(n, signed = false) {
+    return money(n, { digits: 2, signed });
+  }
+
+  function pct(n) {
+    const sign = n > 0 ? "+" : n < 0 ? "−" : "";
+    return `${sign}${Math.abs(n).toFixed(1)}%`;
+  }
+
+  function pnlClass(n) {
+    if (n > 0.005) return "pos";
+    if (n < -0.005) return "neg";
+    return "neu";
+  }
+
+  function latestMark(pos) {
+    if (!pos.marks || !pos.marks.length) return pos.entry;
+    return pos.marks[pos.marks.length - 1].mid;
+  }
+
+  function paperValue(pos) {
+    return Math.abs(latestMark(pos)) * 100 * pos.qty;
+  }
+
+  function uPnL(pos) {
+    // Debit vertical: uP&L = (mark − entry) × 100 × qty
+    return (latestMark(pos) - pos.entry) * 100 * pos.qty;
+  }
+
+  function formatTs(iso) {
+    try {
+      const d = new Date(iso);
+      return (
+        d.toLocaleString("en-US", {
+          timeZone: "America/New_York",
+          month: "short",
+          day: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+        }) + " ET"
+      );
+    } catch {
+      return iso;
+    }
+  }
+
+  function relativeTs(iso) {
+    try {
+      const d = new Date(iso);
+      const now = Date.now();
+      const diff = Math.max(0, now - d.getTime());
+      const sec = Math.floor(diff / 1000);
+      if (sec < 60) return "just now";
+      const min = Math.floor(sec / 60);
+      if (min < 60) return `${min}m ago`;
+      const hr = Math.floor(min / 60);
+      if (hr < 48) return `${hr}h ago`;
+      const day = Math.floor(hr / 24);
+      if (day < 14) return `${day}d ago`;
+      return formatTs(iso);
+    } catch {
+      return iso;
+    }
+  }
+
+  function legsHtml(legs) {
+    return legs
+      .map((l) => {
+        const cls = l.side === "long" ? "leg-long" : "leg-short";
+        const side = l.side === "long" ? "long" : "short";
+        return `<span class="${cls}">${side} ${l.exp} ${l.strike}${l.right}</span>`;
+      })
+      .join(" / ");
+  }
+
+  function legsPlain(legs) {
+    return legs
+      .map((l) => `${l.side} ${l.exp} ${l.strike}${l.right}`)
+      .join(" / ");
+  }
+
+  let toastTimer = null;
+  function showToast(msg) {
+    const el = $("#toast");
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove("show"), 1600);
+  }
+
+  // ---------- book math ----------
+  function bookStats(data) {
+    const positions = data.positions || [];
+    const open = positions.filter((p) => p.status !== "EXIT");
+    const openCapital = open.reduce((s, p) => s + p.cost, 0);
+    // Capital is invested basis, including settled/EXIT tickets, so a flat
+    // book keeps its denominator and realized P&L remains visible.
+    const capital = positions.reduce((s, p) => s + p.cost, 0);
+    // latestMark() returns the settlement mark for EXIT positions.
+    const mtm = positions.reduce((s, p) => s + paperValue(p), 0);
+    const net = positions.reduce((s, p) => s + uPnL(p), 0);
+    const roc = capital > 0 ? (net / capital) * 100 : 0;
+    const unused = RISK_CEILING - openCapital;
+
+    const bucketUsed = { A: 0, B: 0, C: 0 };
+    open.forEach((p) => {
+      const b = p.bucket || "A";
+      if (bucketUsed[b] !== undefined) bucketUsed[b] += p.cost;
+    });
+
+    return { capital, mtm, net, roc, unused, bucketUsed, openCount: open.length };
+  }
+
+  // ---------- persistence ----------
+  function revisedAtOf(obj) {
+    const r = obj?.meta?.revisedAt;
+    return typeof r === "string" ? r : "";
+  }
+
+  function hasTickets(obj) {
+    return (
+      obj !== null &&
+      typeof obj === "object" &&
+      !Array.isArray(obj) &&
+      Array.isArray(obj.positions) &&
+      obj.positions.length > 0
+    );
+  }
+
+  function cloneBook(obj) {
+    return JSON.parse(JSON.stringify(obj));
+  }
+
+  /**
+   * Soft-fetch remote desk-latest.json. Prefer it when meta.revisedAt is
+   * strictly newer than the current state (or when local is empty). Fail soft.
+   * @returns {Promise<boolean>} true if state was replaced
+   */
+  async function tryAdoptRemoteDesk(opts = {}) {
+    const soft = opts.soft === true;
+    const DESK_LATEST_URL =
+      (typeof window !== "undefined" && window.__DESK_LATEST_URL__) ||
+      "data/desk-latest.json";
+    try {
+      const res = await fetch(DESK_LATEST_URL, { cache: "no-store" });
+      if (!res.ok) return false;
+      const remote = await res.json();
+      if (!hasTickets(remote)) return false;
+      const remoteRev = revisedAtOf(remote);
+      const curRev = revisedAtOf(state);
+      // Adopt when remote is newer, or when we have no tickets yet.
+      if (hasTickets(state) && !(remoteRev && remoteRev > curRev)) {
+        return false;
+      }
+      state = cloneBook(remote);
+      persist();
+      if (soft) {
+        try {
+          renderAll();
+        } catch (e) {
+          console.warn("soft refresh render failed", e);
+        }
+      }
+      return true;
+    } catch (e) {
+      // Offline / missing file — keep current state
+      console.warn("desk-latest fetch skipped", e);
+      return false;
+    }
+  }
+
+  async function loadState() {
+    let localState = null;
+    let localParsed = false;
+
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        localState = JSON.parse(raw);
+        localParsed = true;
+      }
+    } catch (e) {
+      console.warn("localStorage read failed", e);
+    }
+
+    // Prefer an inlined seed when localStorage is empty/corrupt, or when the
+    // published seed is newer. Keep equal-revision local edits intact.
+    const seed =
+      typeof window !== "undefined" && window.__SEED__ && typeof window.__SEED__ === "object"
+        ? window.__SEED__
+        : null;
+    const seedHasPositions = hasTickets(seed);
+    const localIsObject =
+      localState !== null && typeof localState === "object" && !Array.isArray(localState);
+    const localHasTickets = hasTickets(localState);
+    const seedRevisedAt = revisedAtOf(seed);
+    const localRevisedAt = revisedAtOf(localState);
+    const seedIsNewer =
+      seedHasPositions &&
+      localHasTickets &&
+      seedRevisedAt &&
+      seedRevisedAt > localRevisedAt;
+
+    if (seedHasPositions && (!localHasTickets || seedIsNewer)) {
+      state = cloneBook(seed);
+      persist();
+    } else if (localParsed && localIsObject) {
+      state = localState;
+    } else if (seed) {
+      // Prefer inlined __SEED__ (single-file build) over network fetch
+      state = cloneBook(seed);
+      persist();
+    } else {
+      const res = await fetch("data/seed.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("Failed to load seed.json");
+      state = await res.json();
+      persist();
+    }
+
+    // After resolving seed/local, prefer a newer remote desk-latest.json.
+    await tryAdoptRemoteDesk();
+    return state;
+  }
+
+  let softRefreshTimer = null;
+  function scheduleSoftRefresh() {
+    clearTimeout(softRefreshTimer);
+    softRefreshTimer = setTimeout(() => {
+      tryAdoptRemoteDesk({ soft: true });
+    }, 250);
+  }
+
+  function startDeskLiveRefresh() {
+    // Soft-refresh on visibility/focus every few minutes without wiping
+    // equal-revision local edits (tryAdoptRemoteDesk only adopts newer rev).
+    const MIN_INTERVAL_MS = 3 * 60 * 1000;
+    let lastAttempt = 0;
+    const maybeRefresh = () => {
+      const now = Date.now();
+      if (now - lastAttempt < MIN_INTERVAL_MS) return;
+      lastAttempt = now;
+      scheduleSoftRefresh();
+    };
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") maybeRefresh();
+    });
+    window.addEventListener("focus", maybeRefresh);
+    setInterval(maybeRefresh, MIN_INTERVAL_MS);
+  }
+
+  function persist() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) {
+      console.warn("localStorage write failed", e);
+    }
+  }
+
+  // ---------- renderers ----------
+  function renderBook() {
+    const s = bookStats(state);
+    const el = $("#screen-book");
+
+    // Only show buckets with capital used; quiet + Add for empty slots
+    const usedBuckets = ["A", "B", "C"].filter((k) => s.bucketUsed[k] > 0);
+    const nextEmpty = ["A", "B", "C"].find((k) => s.bucketUsed[k] === 0);
+    const bucketHtml =
+      usedBuckets
+        .map(
+          (k) => `
+          <div class="bucket-line ${k.toLowerCase()}">
+            <span class="b-name">Bucket ${k} · <span class="b-val">${money(s.bucketUsed[k])}</span></span>
+          </div>`
+        )
+        .join("") ||
+      `<div class="bucket-line a"><span class="b-name">Bucket A · <span class="b-val">${money(0)}</span></span></div>`;
+
+    el.innerHTML = `
+      <div class="card">
+        <div class="card-title">Options Desk · Paper Book</div>
+        <div class="hero-pnl">
+          <div class="label">Net P&amp;L</div>
+          <div class="value ${pnlClass(s.net)}">${money(s.net, { signed: true })}</div>
+        </div>
+        <div class="secondary-row">
+          <div class="secondary-metric">
+            <div class="label">Capital</div>
+            <div class="value">${money(s.capital)}</div>
+          </div>
+          <div class="secondary-metric">
+            <div class="label">ROC</div>
+            <div class="value ${pnlClass(s.roc)}">${pct(s.roc)}</div>
+          </div>
+        </div>
+        <div class="tertiary-row">
+          <div class="tertiary-metric">
+            <div class="label">MTM (paper)</div>
+            <div class="value">${money(Math.round(s.mtm))}</div>
+          </div>
+          <div class="tertiary-metric">
+            <div class="label">Unused ceiling</div>
+            <div class="value">${money(s.unused)}</div>
+          </div>
+        </div>
+        <details class="disclosure">
+          <summary>
+            <span>How ROC is calculated</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="disclosure-body">
+            <p><strong>ROC</strong> = Net P&amp;L ÷ Capital invested (${money(s.capital)}) — <em>not</em> ÷ risk ceiling. Ceiling is unused capacity, not the denominator.</p>
+            <p><strong>Ceiling:</strong> $${RISK_CEILING.toLocaleString()} − open capital ${money(RISK_CEILING - s.unused)} = ${money(s.unused)} unused. Invested basis remains ${money(s.capital)} after exits. Do not divide P&amp;L by $2,000.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Bucket capital used</div>
+        <div class="bucket-list">
+          ${bucketHtml}
+          ${
+            nextEmpty
+              ? `<button type="button" class="bucket-add" data-action="add-bucket" data-bucket="${nextEmpty}">+ Add bucket</button>`
+              : ""
+          }
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Snapshot</div>
+        <div class="kv-grid">
+          <div class="kv"><span class="k">Open tickets</span><span class="v">${s.openCount}</span></div>
+          <div class="kv"><span class="k">Mode</span><span class="v">PAPER</span></div>
+          <div class="kv"><span class="k">Seed date</span><span class="v">${state.meta?.seedDate || "—"}</span></div>
+          <div class="kv"><span class="k">Owner</span><span class="v">S. Blanco</span></div>
+        </div>
+      </div>
+      <p class="footer-note">Paper only · no live broker · teaching ledger</p>
+    `;
+
+    const addBtn = el.querySelector("[data-action='add-bucket']");
+    if (addBtn) {
+      addBtn.addEventListener("click", () => {
+        // Stub: ensure empty bucket key exists in state.buckets (non-destructive)
+        const key = addBtn.dataset.bucket;
+        state.buckets = state.buckets || {};
+        if (!state.buckets[key]) {
+          state.buckets[key] = {
+            label: key === "B" ? "Tactical" : key === "C" ? "Event / lottery" : "Core",
+            used: 0,
+          };
+        }
+        // Visual cue only — create an empty line by forcing a zero-used display flag
+        state._showBuckets = state._showBuckets || {};
+        state._showBuckets[key] = true;
+        persist();
+        showToast(`Bucket ${key} ready`);
+        renderBook();
+      });
+    }
+
+    // If user stub-added empty buckets, show them quietly at $0
+    if (state._showBuckets) {
+      const list = el.querySelector(".bucket-list");
+      if (list) {
+        ["A", "B", "C"].forEach((k) => {
+          if (state._showBuckets[k] && s.bucketUsed[k] === 0 && !list.querySelector(`.bucket-line.${k.toLowerCase()}`)) {
+            const line = document.createElement("div");
+            line.className = `bucket-line ${k.toLowerCase()}`;
+            line.innerHTML = `<span class="b-name">Bucket ${k} · <span class="b-val">${money(0)}</span></span>`;
+            const add = list.querySelector(".bucket-add");
+            if (add) list.insertBefore(line, add);
+            else list.appendChild(line);
+          }
+        });
+        // Refresh + Add to next still-empty not yet shown
+        const still = ["A", "B", "C"].find(
+          (k) => s.bucketUsed[k] === 0 && !state._showBuckets[k]
+        );
+        const add = list.querySelector(".bucket-add");
+        if (add) {
+          if (still) {
+            add.dataset.bucket = still;
+          } else {
+            add.remove();
+          }
+        }
+      }
+    }
+  }
+
+  function renderPositions() {
+    const el = $("#screen-positions");
+    const positions = state.positions || [];
+    if (!positions.length) {
+      el.innerHTML = `<div class="empty">No positions in the book.</div>`;
+      return;
+    }
+
+    el.innerHTML =
+      `<div class="section-label">${positions.length} ticket${positions.length === 1 ? "" : "s"}</div>` +
+      positions
+        .map((p) => {
+          const mark = latestMark(p);
+          const val = paperValue(p);
+          const upnl = uPnL(p);
+          return `
+          <article class="pos-card" data-id="${p.id}">
+            <div class="pos-strip">
+              <div class="pos-strip-left">
+                <span class="pos-under">${p.underlying}</span>
+                <span class="pos-struct">${p.structure} ×${p.qty}</span>
+              </div>
+              <div class="pos-strip-right">
+                <span class="status-badge ${p.status}">${p.status}</span>
+                <span class="pos-upnl ${pnlClass(upnl)}">${money(Math.round(upnl), { signed: true })}</span>
+              </div>
+            </div>
+            <div class="pos-body">
+              <div class="pos-id">${p.id} · bucket ${p.bucket}</div>
+              <div class="legs">${legsHtml(p.legs)}</div>
+              <p class="thesis">${p.thesis}</p>
+              <div class="kv-grid">
+                <div class="kv"><span class="k">Entry</span><span class="v">${p.entry.toFixed(2)}</span></div>
+                <div class="kv">
+                  <span class="k">Cost $ <button type="button" class="help-q" data-action="cost-help" data-id="${p.id}" aria-label="How Cost $ is calculated">?</button></span>
+                  <span class="v">${money(p.cost)}</span>
+                </div>
+                <div class="kv"><span class="k">Max loss</span><span class="v">${money(p.maxLoss)}</span></div>
+                <div class="kv"><span class="k">Mark</span><span class="v">${mark.toFixed(2)}</span></div>
+                <div class="kv"><span class="k">Paper value</span><span class="v">${money(Math.round(val))}</span></div>
+                <div class="kv"><span class="k">Bucket</span><span class="v">${p.bucket}</span></div>
+                <div class="cost-help" data-help-for="${p.id}"><strong>Cost $:</strong> |net debit| × 100 × qty = |${p.entry.toFixed(2)}| × 100 × ${p.qty} = ${money(p.cost)}. Max loss on a debit vertical equals Cost $.</div>
+              </div>
+              <div class="pos-actions">
+                <button class="btn secondary primary" data-action="mark" data-id="${p.id}">Update mark</button>
+                <button class="btn secondary ${p.status === "HOLD" ? "danger" : "success"}" data-action="toggle" data-id="${p.id}">
+                  ${p.status === "HOLD" ? "Mark EXIT" : "Mark HOLD"}
+                </button>
+              </div>
+            </div>
+          </article>`;
+        })
+        .join("");
+
+    el.querySelectorAll("[data-action='mark'], [data-action='toggle']").forEach((btn) => {
+      btn.addEventListener("click", onPosAction);
+    });
+    el.querySelectorAll("[data-action='cost-help']").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        const help = el.querySelector(`[data-help-for="${id}"]`);
+        if (help) help.classList.toggle("open");
+      });
+    });
+
+    // Swipe gestures on position cards
+    el.querySelectorAll(".pos-card").forEach(bindPosSwipe);
+  }
+
+  function bindPosSwipe(card) {
+    let startX = 0;
+    let startY = 0;
+    let dx = 0;
+    let tracking = false;
+    const THRESH = 72;
+
+    const onStart = (e) => {
+      const t = e.touches ? e.touches[0] : e;
+      startX = t.clientX;
+      startY = t.clientY;
+      dx = 0;
+      tracking = true;
+      card.classList.add("swiping");
+    };
+
+    const onMove = (e) => {
+      if (!tracking) return;
+      const t = e.touches ? e.touches[0] : e;
+      const adx = t.clientX - startX;
+      const ady = t.clientY - startY;
+      if (Math.abs(ady) > Math.abs(adx) && Math.abs(ady) > 12) {
+        tracking = false;
+        card.style.transform = "";
+        card.classList.remove("swiping");
+        return;
+      }
+      dx = adx;
+      const clamped = Math.max(-110, Math.min(110, dx));
+      card.style.transform = `translateX(${clamped * 0.35}px)`;
+      if (e.cancelable && Math.abs(adx) > 10) e.preventDefault();
+    };
+
+    const onEnd = () => {
+      if (!tracking && dx === 0) {
+        card.style.transform = "";
+        card.classList.remove("swiping");
+        return;
+      }
+      tracking = false;
+      card.classList.remove("swiping");
+      card.style.transform = "";
+      const id = card.dataset.id;
+      const pos = state.positions.find((p) => p.id === id);
+      if (!pos) return;
+      if (dx <= -THRESH) {
+        // Swipe left → Mark EXIT
+        if (pos.status !== "EXIT") {
+          pos.status = "EXIT";
+          persist();
+          renderAll();
+          showToast(`${id} → EXIT`);
+        }
+      } else if (dx >= THRESH) {
+        // Swipe right → Update mark
+        openMarkModal(pos);
+      }
+      dx = 0;
+    };
+
+    card.addEventListener("touchstart", onStart, { passive: true });
+    card.addEventListener("touchmove", onMove, { passive: false });
+    card.addEventListener("touchend", onEnd);
+    card.addEventListener("touchcancel", onEnd);
+  }
+
+  function onPosAction(e) {
+    const btn = e.currentTarget;
+    const id = btn.dataset.id;
+    const action = btn.dataset.action;
+    const pos = state.positions.find((p) => p.id === id);
+    if (!pos) return;
+
+    if (action === "toggle") {
+      pos.status = pos.status === "HOLD" ? "EXIT" : "HOLD";
+      persist();
+      renderAll();
+      return;
+    }
+
+    if (action === "mark") {
+      openMarkModal(pos);
+    }
+  }
+
+  function openMarkModal(pos) {
+    const backdrop = $("#mark-modal");
+    $("#mark-modal-title").textContent = `Mark ${pos.id} · ${pos.underlying}`;
+    const input = $("#mark-input");
+    input.value = latestMark(pos).toFixed(2);
+    backdrop.dataset.ticketId = pos.id;
+    backdrop.classList.add("open");
+    setTimeout(() => input.focus(), 50);
+  }
+
+  function closeMarkModal() {
+    $("#mark-modal").classList.remove("open");
+  }
+
+  function saveMarkFromModal() {
+    const backdrop = $("#mark-modal");
+    const id = backdrop.dataset.ticketId;
+    const pos = state.positions.find((p) => p.id === id);
+    const raw = parseFloat($("#mark-input").value);
+    if (!pos || Number.isNaN(raw) || raw < 0) return;
+
+    const now = new Date();
+    const pad = (n) => String(n).padStart(2, "0");
+    const ts = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}-04:00`;
+
+    pos.marks = pos.marks || [];
+    pos.marks.push({ ts, label: "manual", mid: raw });
+
+    state.transactions = state.transactions || [];
+    state.transactions.push({
+      id: `TXN-${String(state.transactions.length + 1).padStart(3, "0")}`,
+      type: "mark",
+      ticketId: pos.id,
+      ts,
+      underlying: pos.underlying,
+      legs: legsPlain(pos.legs),
+      fill: raw,
+      debitCredit: 0,
+      dayPnL: Math.round(uPnL(pos)),
+      note: "Manual mark update",
+    });
+
+    const stats = bookStats(state);
+    const tickets = {};
+    state.positions.forEach((p) => {
+      if (p.status !== "EXIT") tickets[p.id] = latestMark(p);
+    });
+    state.marksHistory = state.marksHistory || [];
+    state.marksHistory.push({
+      ts,
+      session: "manual",
+      date: ts.slice(0, 10),
+      tickets,
+      bookMTM: Math.round(stats.mtm),
+      bookNet: Math.round(stats.net),
+    });
+
+    persist();
+    closeMarkModal();
+    renderAll();
+  }
+
+  function renderBlotter() {
+    const el = $("#screen-blotter");
+    const txns = [...(state.transactions || [])].sort(
+      (a, b) => new Date(b.ts) - new Date(a.ts)
+    );
+    if (!txns.length) {
+      el.innerHTML = `<div class="empty">No transactions yet.</div>`;
+      return;
+    }
+
+    el.innerHTML =
+      `<div class="section-label">Blotter · ${txns.length} entries</div>` +
+      txns
+        .map((t) => {
+          const dc =
+            t.debitCredit == null
+              ? "—"
+              : t.debitCredit === 0
+              ? "$0"
+              : money(t.debitCredit, { signed: true });
+          const fill = t.fill == null ? "—" : Number(t.fill).toFixed(2);
+          const day =
+            t.dayPnL == null
+              ? "—"
+              : `<span class="${pnlClass(t.dayPnL)}">${money(t.dayPnL, { signed: true })}</span>`;
+          const ticketAttr =
+            t.ticketId && t.ticketId !== "BOOK" ? t.ticketId : t.id || "";
+          return `
+          <div class="txn-row" data-ticket="${ticketAttr}" data-txn="${t.id}">
+            <div class="txn-bar ${t.type}"></div>
+            <div class="txn-type ${t.type}">${t.type}</div>
+            <div class="txn-ts">
+              <span class="rel">${relativeTs(t.ts)}</span>
+              <span class="abs">${formatTs(t.ts)}</span>
+            </div>
+            <div class="txn-legs">${t.underlying} · ${t.legs}${t.ticketId && t.ticketId !== "BOOK" ? " · " + t.ticketId : ""}</div>
+            <div class="txn-meta">
+              <span>Fill <strong>${fill}</strong></span>
+              <span>D/C <strong>${dc}</strong></span>
+              <span>Day P&amp;L <strong>${day}</strong></span>
+            </div>
+          </div>`;
+        })
+        .join("");
+
+    el.querySelectorAll(".txn-row").forEach(bindBlotterLongPress);
+  }
+
+  function bindBlotterLongPress(row) {
+    let timer = null;
+    let startX = 0;
+    let startY = 0;
+    const LONG_MS = 520;
+
+    const clear = () => {
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+    };
+
+    const fire = () => {
+      timer = null;
+      const ticket = row.dataset.ticket;
+      if (!ticket) {
+        showToast("No ticket id");
+        return;
+      }
+      const copy = () => {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          return navigator.clipboard.writeText(ticket);
+        }
+        const ta = document.createElement("textarea");
+        ta.value = ticket;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand("copy");
+        } finally {
+          document.body.removeChild(ta);
+        }
+        return Promise.resolve();
+      };
+      copy()
+        .then(() => showToast(`Copied ${ticket}`))
+        .catch(() => showToast(`Copy failed · ${ticket}`));
+    };
+
+    const onDown = (e) => {
+      const t = e.touches ? e.touches[0] : e;
+      startX = t.clientX;
+      startY = t.clientY;
+      clear();
+      timer = setTimeout(fire, LONG_MS);
+    };
+
+    const onMove = (e) => {
+      if (!timer) return;
+      const t = e.touches ? e.touches[0] : e;
+      if (Math.abs(t.clientX - startX) > 10 || Math.abs(t.clientY - startY) > 10) {
+        clear();
+      }
+    };
+
+    row.addEventListener("touchstart", onDown, { passive: true });
+    row.addEventListener("touchmove", onMove, { passive: true });
+    row.addEventListener("touchend", clear);
+    row.addEventListener("touchcancel", clear);
+    row.addEventListener("mousedown", onDown);
+    row.addEventListener("mouseup", clear);
+    row.addEventListener("mouseleave", clear);
+  }
+
+  function renderMarks() {
+    const el = $("#screen-marks");
+    const hist = [...(state.marksHistory || [])].sort(
+      (a, b) => new Date(b.ts) - new Date(a.ts)
+    );
+    if (!hist.length) {
+      el.innerHTML = `<div class="empty">No marks snapshots yet.</div>`;
+      return;
+    }
+
+    el.innerHTML =
+      `<div class="section-label">Marks history · open / midday / close</div>` +
+      hist
+        .map((h) => {
+          const tickets = Object.entries(h.tickets || {})
+            .map(([id, mid]) => `${id}: ${Number(mid).toFixed(2)}`)
+            .join("<br>");
+          return `
+          <div class="mark-snap">
+            <div class="mark-snap-head">
+              <span class="session-pill ${h.session}">${h.session}</span>
+              <span class="txn-ts">
+                <span class="rel">${relativeTs(h.ts)}</span>
+                <span class="abs">${formatTs(h.ts)}</span>
+              </span>
+            </div>
+            <div class="mark-tickets">${tickets || "—"}</div>
+            <div class="mark-book">
+              <span>MTM ${money(h.bookMTM)}</span>
+              <span class="${pnlClass(h.bookNet)}">Net ${money(h.bookNet, { signed: true })}</span>
+            </div>
+          </div>`;
+        })
+        .join("");
+  }
+
+  function renderUniverse() {
+    const el = $("#screen-universe");
+    const uni = state.universe || [];
+    el.innerHTML =
+      `<div class="section-label">Desk universe</div>` +
+      `<div class="tip" style="margin-bottom:10px"><strong>Note:</strong> QQQ is a separate Nasdaq unit — not a BTC factor with MSTR / ASST / STRC / SATA.</div>` +
+      uni
+        .map((u) => {
+          const unitClass = u.unit === "Nasdaq" ? "nasdaq" : "btc";
+          return `
+          <div class="uni-card">
+            <div class="uni-sym">${u.symbol}</div>
+            <div class="uni-body">
+              <div class="uni-name">${u.name}</div>
+              <div class="uni-note">${u.note}</div>
+            </div>
+            <span class="unit-tag ${unitClass}">${u.unit}</span>
+          </div>`;
+        })
+        .join("");
+  }
+
+  function renderAll() {
+    renderBook();
+    renderPositions();
+    renderBlotter();
+    renderMarks();
+    renderUniverse();
+  }
+
+  // ---------- navigation ----------
+  function showScreen(name) {
+    $$(".screen").forEach((s) => s.classList.remove("active"));
+    $$(".tab-btn").forEach((b) => b.classList.remove("active"));
+    const screen = $(`#screen-${name}`);
+    const tab = $(`.tab-btn[data-screen="${name}"]`);
+    if (screen) screen.classList.add("active");
+    if (tab) tab.classList.add("active");
+  }
+
+  // ---------- boot ----------
+  async function init() {
+    try {
+      await loadState();
+    } catch (err) {
+      $("#screen-book").innerHTML = `<div class="empty">Failed to load seed: ${err.message}</div>`;
+      $("#screen-book").classList.add("active");
+      return;
+    }
+
+    renderAll();
+    showScreen("book");
+    startDeskLiveRefresh();
+
+    $$(".tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => showScreen(btn.dataset.screen));
+    });
+
+    $("#mark-cancel").addEventListener("click", closeMarkModal);
+    $("#mark-save").addEventListener("click", saveMarkFromModal);
+    $("#mark-modal").addEventListener("click", (e) => {
+      if (e.target.id === "mark-modal") closeMarkModal();
+    });
+    $("#mark-input").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") saveMarkFromModal();
+      if (e.key === "Escape") closeMarkModal();
+    });
+
+    // Soft reset: hold header badge 1.5s to reload seed
+    let holdTimer = null;
+    const badge = $(".badge");
+    if (badge) {
+      badge.addEventListener("pointerdown", () => {
+        holdTimer = setTimeout(() => {
+          if (confirm("Reload seed from JSON and wipe local edits?")) {
+            localStorage.removeItem(STORAGE_KEY);
+            location.reload();
+          }
+        }, 1500);
+      });
+      badge.addEventListener("pointerup", () => clearTimeout(holdTimer));
+      badge.addEventListener("pointerleave", () => clearTimeout(holdTimer));
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+
+  </script>
+</body>
+</html>
