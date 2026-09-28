@@ -123,12 +123,11 @@
     const positions = data.positions || [];
     const open = positions.filter((p) => p.status !== "EXIT");
     const openCapital = open.reduce((s, p) => s + p.cost, 0);
-    // Capital is invested basis, including settled/EXIT tickets, so a flat
-    // book keeps its denominator and realized P&L remains visible.
-    const capital = positions.reduce((s, p) => s + p.cost, 0);
-    // latestMark() returns the settlement mark for EXIT positions.
-    const mtm = positions.reduce((s, p) => s + paperValue(p), 0);
-    const net = positions.reduce((s, p) => s + uPnL(p), 0);
+    // Current book metrics exclude settled/EXIT tickets; those remain in the
+    // position and blotter history with their settlement marks.
+    const capital = openCapital;
+    const mtm = open.reduce((s, p) => s + paperValue(p), 0);
+    const net = open.reduce((s, p) => s + uPnL(p), 0);
     const roc = capital > 0 ? (net / capital) * 100 : 0;
     const unused = RISK_CEILING + net - openCapital;
 

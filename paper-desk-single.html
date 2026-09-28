@@ -1033,13 +1033,13 @@ body {
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Fri Sep 25, 2026 close — both EXIT exp settlement 3.67 / 0.00, Net +$102",
-    "revisedAt": "2026-09-28T09:20:00-04:00"
+    "seedNote": "Mon Sep 28, 2026 midday — PAPER-003 HOLD at 2.40, Capital $240, Net $0",
+    "revisedAt": "2026-09-28T12:45:00-04:00"
   },
   "buckets": {
     "A": {
       "label": "Core defined-risk",
-      "used": 0
+      "used": 240
     },
     "B": {
       "label": "Tactical",
@@ -1244,6 +1244,42 @@ body {
           "mid": 0.0
         }
       ]
+    },
+    {
+      "id": "PAPER-003",
+      "underlying": "MSTR",
+      "structure": "Call debit vertical",
+      "structureSide": "long",
+      "qty": 1,
+      "expiration": "2026-10-16",
+      "legs": [
+        {
+          "side": "long",
+          "right": "C",
+          "strike": 155,
+          "exp": "Oct16"
+        },
+        {
+          "side": "short",
+          "right": "C",
+          "strike": 160,
+          "exp": "Oct16"
+        }
+      ],
+      "entry": 2.4,
+      "cost": 240,
+      "maxLoss": 240,
+      "bucket": "A",
+      "thesis": "Defined-risk long BTC-proxy into Oct16 window — buy 155C / sell 160C so max loss is the debit.",
+      "status": "HOLD",
+      "openedAt": "2026-09-28T12:45:00-04:00",
+      "marks": [
+        {
+          "ts": "2026-09-28T12:45:00-04:00",
+          "label": "midday",
+          "mid": 2.4
+        }
+      ]
     }
   ],
   "transactions": [
@@ -1330,6 +1366,18 @@ body {
       "debitCredit": -75,
       "dayPnL": -75,
       "note": "Fri Sep 25 expiry settlement — realized -$75"
+    },
+    {
+      "id": "TXN-008",
+      "type": "open",
+      "ticketId": "PAPER-003",
+      "ts": "2026-09-28T12:45:00-04:00",
+      "underlying": "MSTR",
+      "legs": "long Oct16 155C / short Oct16 160C",
+      "fill": 2.4,
+      "debitCredit": -240,
+      "dayPnL": 0,
+      "note": "Mon midday paper fill — Ready A after open deferred pre-RTH"
     }
   ],
   "marksHistory": [
@@ -1451,6 +1499,16 @@ body {
       },
       "bookMTM": 367,
       "bookNet": 102
+    },
+    {
+      "ts": "2026-09-28T12:45:00-04:00",
+      "session": "midday",
+      "date": "2026-09-28",
+      "tickets": {
+        "PAPER-003": 2.4
+      },
+      "bookMTM": 240,
+      "bookNet": 0
     }
   ]
 };</script>
@@ -1580,12 +1638,11 @@ body {
     const positions = data.positions || [];
     const open = positions.filter((p) => p.status !== "EXIT");
     const openCapital = open.reduce((s, p) => s + p.cost, 0);
-    // Capital is invested basis, including settled/EXIT tickets, so a flat
-    // book keeps its denominator and realized P&L remains visible.
-    const capital = positions.reduce((s, p) => s + p.cost, 0);
-    // latestMark() returns the settlement mark for EXIT positions.
-    const mtm = positions.reduce((s, p) => s + paperValue(p), 0);
-    const net = positions.reduce((s, p) => s + uPnL(p), 0);
+    // Current book metrics exclude settled/EXIT tickets; those remain in the
+    // position and blotter history with their settlement marks.
+    const capital = openCapital;
+    const mtm = open.reduce((s, p) => s + paperValue(p), 0);
+    const net = open.reduce((s, p) => s + uPnL(p), 0);
     const roc = capital > 0 ? (net / capital) * 100 : 0;
     const unused = RISK_CEILING + net - openCapital;
 
