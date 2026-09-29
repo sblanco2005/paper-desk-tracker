@@ -1033,8 +1033,8 @@ body {
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Mon Sep 28, 2026 midday — PAPER-003 HOLD at 2.40, Capital $240, Net $0",
-    "revisedAt": "2026-09-28T12:45:00-04:00"
+    "seedNote": "Tue Sep 29, 2026 close — PAPER-003 HOLD at 2.03, Capital $240, Net −$37, ROC −15.4%",
+    "revisedAt": "2026-09-29T16:12:00-04:00"
   },
   "buckets": {
     "A": {
@@ -1270,7 +1270,7 @@ body {
       "cost": 240,
       "maxLoss": 240,
       "bucket": "A",
-      "thesis": "Defined-risk long BTC-proxy into Oct16 window — buy 155C / sell 160C so max loss is the debit.",
+      "thesis": "Defined-risk long BTC-proxy into Oct16 — buy 155C / sell 160C so max loss is the debit.",
       "status": "HOLD",
       "openedAt": "2026-09-28T12:45:00-04:00",
       "marks": [
@@ -1278,6 +1278,16 @@ body {
           "ts": "2026-09-28T12:45:00-04:00",
           "label": "midday",
           "mid": 2.4
+        },
+        {
+          "ts": "2026-09-28T16:20:00-04:00",
+          "label": "close",
+          "mid": 2.2
+        },
+        {
+          "ts": "2026-09-29T16:12:00-04:00",
+          "label": "close",
+          "mid": 2.03
         }
       ]
     }
@@ -1509,6 +1519,26 @@ body {
       },
       "bookMTM": 240,
       "bookNet": 0
+    },
+    {
+      "ts": "2026-09-28T16:20:00-04:00",
+      "session": "close",
+      "date": "2026-09-28",
+      "tickets": {
+        "PAPER-003": 2.2
+      },
+      "bookMTM": 220,
+      "bookNet": -20
+    },
+    {
+      "ts": "2026-09-29T16:12:00-04:00",
+      "session": "close",
+      "date": "2026-09-29",
+      "tickets": {
+        "PAPER-003": 2.03
+      },
+      "bookMTM": 203,
+      "bookNet": -37
     }
   ]
 };</script>
