@@ -266,8 +266,7 @@
           "label": "open",
           "mid": 2.03
         }
-      ],
-      "mark": 2.03
+      ]
     }
   ],
   "transactions": [
@@ -525,8 +524,8 @@
       "tickets": {
         "PAPER-003": 2.03
       },
-      "bookMTM": 203.0,
-      "bookNet": -37.0
+      "bookMTM": 203,
+      "bookNet": -37
     }
   ]
 }
