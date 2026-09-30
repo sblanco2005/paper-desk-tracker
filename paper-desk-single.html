@@ -1033,8 +1033,8 @@ body {
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Wed Sep 30, 2026 midday \u2014 PAPER-003 HOLD at 2.00, Capital $240, Net \u2212$40, ROC \u221216.7%",
-    "revisedAt": "2026-09-30T12:38:00-04:00"
+    "seedNote": "Wed Sep 30, 2026 close \u2014 PAPER-003 HOLD at 1.85, Capital $240, Net \u2212$55, ROC \u221222.9%",
+    "revisedAt": "2026-09-30T16:20:00-04:00"
   },
   "buckets": {
     "A": {
@@ -1298,6 +1298,11 @@ body {
           "ts": "2026-09-30T12:38:00-04:00",
           "label": "midday",
           "mid": 2.0
+        },
+        {
+          "ts": "2026-09-30T16:20:00-04:00",
+          "label": "close",
+          "mid": 1.85
         }
       ]
     }
@@ -1398,6 +1403,18 @@ body {
       "debitCredit": -240,
       "dayPnL": 0,
       "note": "Mon midday paper fill \u2014 Ready A after open deferred pre-RTH"
+    },
+    {
+      "id": "TXN-009",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-09-30T16:20:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot \u2014 PAPER-003 @ 1.85",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -55,
+      "note": "Wed close marks (Options Desk sync) \u2014 book Net \u2212$55"
     }
   ],
   "marksHistory": [
@@ -1569,6 +1586,16 @@ body {
       },
       "bookMTM": 200,
       "bookNet": -40
+    },
+    {
+      "ts": "2026-09-30T16:20:00-04:00",
+      "session": "close",
+      "date": "2026-09-30",
+      "tickets": {
+        "PAPER-003": 1.85
+      },
+      "bookMTM": 185,
+      "bookNet": -55
     }
   ]
 };</script>
