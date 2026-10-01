@@ -122,14 +122,19 @@
   function bookStats(data) {
     const positions = data.positions || [];
     const open = positions.filter((p) => p.status !== "EXIT");
+    const exited = positions.filter((p) => p.status === "EXIT");
     const openCapital = open.reduce((s, p) => s + p.cost, 0);
-    // Current book metrics exclude settled/EXIT tickets; those remain in the
-    // position and blotter history with their settlement marks.
+    // Headline Net / ROC use open-book uP&L only. Unused ceiling uses
+    // bankrollNet = realized (EXIT settlement) + openNet so closed P&L
+    // still frees or consumes bankroll capacity.
     const capital = openCapital;
     const mtm = open.reduce((s, p) => s + paperValue(p), 0);
-    const net = open.reduce((s, p) => s + uPnL(p), 0);
-    const roc = capital > 0 ? (net / capital) * 100 : 0;
-    const unused = RISK_CEILING + net - openCapital;
+    const openNet = open.reduce((s, p) => s + uPnL(p), 0);
+    const realized = exited.reduce((s, p) => s + uPnL(p), 0);
+    const bankrollNet = realized + openNet;
+    const net = openNet; // headline Net = open uP&L
+    const roc = capital > 0 ? (openNet / capital) * 100 : 0;
+    const unused = RISK_CEILING + bankrollNet - openCapital;
 
     const bucketUsed = { A: 0, B: 0, C: 0 };
     open.forEach((p) => {
@@ -137,7 +142,19 @@
       if (bucketUsed[b] !== undefined) bucketUsed[b] += p.cost;
     });
 
-    return { capital, mtm, net, roc, unused, openCapital, bucketUsed, openCount: open.length };
+    return {
+      capital,
+      mtm,
+      net,
+      openNet,
+      realized,
+      bankrollNet,
+      roc,
+      unused,
+      openCapital,
+      bucketUsed,
+      openCount: open.length,
+    };
   }
 
   // ---------- persistence ----------
@@ -308,7 +325,7 @@
       <div class="card">
         <div class="card-title">Options Desk · Paper Book</div>
         <div class="hero-pnl">
-          <div class="label">Net P&amp;L</div>
+          <div class="label">Net P&amp;L (open)</div>
           <div class="value ${pnlClass(s.net)}">${money(s.net, { signed: true })}</div>
         </div>
         <div class="secondary-row">
@@ -337,8 +354,8 @@
             <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
           </summary>
           <div class="disclosure-body">
-            <p><strong>ROC</strong> = Net P&amp;L ÷ Capital invested (${money(s.capital)}) — <em>not</em> ÷ risk ceiling. Ceiling is unused capacity, not the denominator.</p>
-            <p><strong>Bankroll:</strong> $${RISK_CEILING.toLocaleString()} + Net P&amp;L ${money(s.net, { signed: true })} − open capital ${money(s.openCapital)} = ${money(s.unused)} unused. With a flat book and Net +$102, unused is $2,102. ROC still uses capital invested, not bankroll.</p>
+            <p><strong>ROC</strong> = Open Net P&amp;L (${money(s.openNet, { signed: true })}) ÷ Capital invested (${money(s.capital)}) — <em>not</em> ÷ risk ceiling, and <em>not</em> lifetime realized over current capital.</p>
+            <p><strong>Bankroll / Unused:</strong> $${RISK_CEILING.toLocaleString()} + bankroll net (realized ${money(s.realized, { signed: true })} + open ${money(s.openNet, { signed: true })} = ${money(s.bankrollNet, { signed: true })}) − open capital ${money(s.openCapital)} = ${money(s.unused)} unused. Headline Net is open-book uP&amp;L only; unused includes EXIT realized P&amp;L.</p>
           </div>
         </details>
       </div>
