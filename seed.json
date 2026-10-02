@@ -6,7 +6,7 @@
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
     "seedNote": "Thu Oct 1, 2026 close — PAPER-003 HOLD at 2.63, Capital $240, Net +$23, ROC +9.6%",
-    "revisedAt": "2026-10-02T12:41:00-04:00"
+    "revisedAt": "2026-10-02T16:10:00-04:00"
   },
   "buckets": {
     "A": {
@@ -300,6 +300,11 @@
           "ts": "2026-10-02T12:41:00-04:00",
           "label": "midday",
           "mid": 2.5
+        },
+        {
+          "ts": "2026-10-02T16:10:00-04:00",
+          "label": "close",
+          "mid": 2.33
         }
       ]
     }
@@ -643,6 +648,16 @@
       },
       "bookMTM": 250,
       "bookNet": 10
+    },
+    {
+      "ts": "2026-10-02T16:10:00-04:00",
+      "session": "close",
+      "date": "2026-10-02",
+      "tickets": {
+        "PAPER-003": 2.33
+      },
+      "bookMTM": 233,
+      "bookNet": -7
     }
   ]
 }
