@@ -5,8 +5,8 @@
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Mon Oct 5, 2026 midday \u2014 PAPER-003 HOLD at 2.75, Capital $240, Net +35, ROC +14.6%",
-    "revisedAt": "2026-10-05T12:40:00-04:00"
+    "seedNote": "Mon Oct 5, 2026 close \u2014 PAPER-003 HOLD at 3.15, Capital $240, Net +75, ROC +31.2%",
+    "revisedAt": "2026-10-05T16:15:00-04:00"
   },
   "buckets": {
     "A": {
@@ -315,9 +315,14 @@
           "ts": "2026-10-05T12:40:00-04:00",
           "label": "midday",
           "mid": 2.75
+        },
+        {
+          "ts": "2026-10-05T16:15:00-04:00",
+          "label": "close",
+          "mid": 3.15
         }
       ],
-      "mark": 2.75
+      "mark": 3.15
     }
   ],
   "transactions": [
