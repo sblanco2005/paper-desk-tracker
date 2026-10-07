@@ -1033,8 +1033,8 @@ body {
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Wed Oct 7, 2026 midday — PAPER-003 HOLD 2.00, Capital $240, Net -40, ROC -16.7%",
-    "revisedAt": "2026-10-07T12:44:00-04:00"
+    "seedNote": "Wed Oct 7, 2026 close — PAPER-003 HOLD 1.75, Capital $240, Net -65, ROC -27.1%",
+    "revisedAt": "2026-10-07T16:15:00-04:00"
   },
   "buckets": {
     "A": {
@@ -1236,12 +1236,12 @@ body {
         {
           "ts": "2026-09-25T16:14:00-04:00",
           "label": "close",
-          "mid": 0.0
+          "mid": 0
         },
         {
           "ts": "2026-09-28T09:20:00-04:00",
           "label": "open",
-          "mid": 0.0
+          "mid": 0
         }
       ]
     },
@@ -1297,7 +1297,7 @@ body {
         {
           "ts": "2026-09-30T12:38:00-04:00",
           "label": "midday",
-          "mid": 2.0
+          "mid": 2
         },
         {
           "ts": "2026-09-30T16:20:00-04:00",
@@ -1372,10 +1372,15 @@ body {
         {
           "ts": "2026-10-07T12:44:00-04:00",
           "label": "midday",
-          "mid": 2.0
+          "mid": 2
+        },
+        {
+          "ts": "2026-10-07T16:15:00-04:00",
+          "label": "close",
+          "mid": 1.75
         }
       ],
-      "mark": 2.0
+      "mark": 1.75
     }
   ],
   "transactions": [
@@ -1458,7 +1463,7 @@ body {
       "ts": "2026-09-25T16:14:00-04:00",
       "underlying": "ASST",
       "legs": "exp settlement EXIT @ 0.00",
-      "fill": 0.0,
+      "fill": 0,
       "debitCredit": -75,
       "dayPnL": -75,
       "note": "Fri Sep 25 expiry settlement — realized -$75"
@@ -1486,6 +1491,18 @@ body {
       "debitCredit": 0,
       "dayPnL": -55,
       "note": "Wed close marks (Options Desk sync) — book Net −$55"
+    },
+    {
+      "id": "TXN-010",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-07T16:15:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-003 @ 1.75",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -65,
+      "note": "Wed close marks (Options Desk sync) — book Net −$65"
     }
   ],
   "marksHistory": [
@@ -1594,7 +1611,7 @@ body {
         "PAPER-001": 3.37,
         "PAPER-002": 0.24
       },
-      "bookMTM": 361.0,
+      "bookMTM": 361,
       "bookNet": 96
     },
     {
@@ -1603,7 +1620,7 @@ body {
       "date": "2026-09-25",
       "tickets": {
         "PAPER-001": 3.67,
-        "PAPER-002": 0.0
+        "PAPER-002": 0
       },
       "bookMTM": 367,
       "bookNet": 102
@@ -1653,7 +1670,7 @@ body {
       "session": "midday",
       "date": "2026-09-30",
       "tickets": {
-        "PAPER-003": 2.0
+        "PAPER-003": 2
       },
       "bookMTM": 200,
       "bookNet": -40
@@ -1685,8 +1702,8 @@ body {
       "tickets": {
         "PAPER-003": 2.3
       },
-      "bookMTM": 230.0,
-      "bookNet": -10.0
+      "bookMTM": 230,
+      "bookNet": -10
     },
     {
       "ts": "2026-10-01T16:10:00-04:00",
@@ -1753,10 +1770,20 @@ body {
       "session": "midday",
       "date": "2026-10-07",
       "tickets": {
-        "PAPER-003": 2.0
+        "PAPER-003": 2
       },
       "bookMTM": 200,
       "bookNet": -40
+    },
+    {
+      "ts": "2026-10-07T16:15:00-04:00",
+      "session": "close",
+      "date": "2026-10-07",
+      "tickets": {
+        "PAPER-003": 1.75
+      },
+      "bookMTM": 175,
+      "bookNet": -65
     }
   ]
 };</script>
