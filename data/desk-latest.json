@@ -5,8 +5,8 @@
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Thu Oct 8, 2026 open \u2014 PAPER-003 HOLD 1.75, Capital $240, Net -65, ROC -27.1%",
-    "revisedAt": "2026-10-08T09:23:00-04:00"
+    "seedNote": "Thu Oct 8, 2026 close \u2014 PAPER-003 HOLD 1.43, Capital $240, Net -97, ROC -40.4%",
+    "revisedAt": "2026-10-08T16:05:00-04:00"
   },
   "buckets": {
     "A": {
@@ -355,9 +355,14 @@
           "ts": "2026-10-08T09:23:00-04:00",
           "label": "open",
           "mid": 1.75
+        },
+        {
+          "ts": "2026-10-08T16:05:00-04:00",
+          "label": "close",
+          "mid": 1.43
         }
       ],
-      "mark": 1.75
+      "mark": 1.43
     }
   ],
   "transactions": [
@@ -480,6 +485,18 @@
       "debitCredit": 0,
       "dayPnL": -65,
       "note": "Wed close marks (Options Desk sync) \u2014 book Net \u2212$65"
+    },
+    {
+      "id": "TXN-011",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-08T16:05:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot \u2014 PAPER-003 @ 1.43",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -97,
+      "note": "Thu close marks (Chief Orchestrator sync from Robinhood settles) \u2014 book Net \u2212$97"
     }
   ],
   "marksHistory": [
@@ -771,6 +788,16 @@
       },
       "bookMTM": 175,
       "bookNet": -65
+    },
+    {
+      "ts": "2026-10-08T16:05:00-04:00",
+      "session": "close",
+      "date": "2026-10-08",
+      "tickets": {
+        "PAPER-003": 1.43
+      },
+      "bookMTM": 143,
+      "bookNet": -97
     }
   ]
 }
