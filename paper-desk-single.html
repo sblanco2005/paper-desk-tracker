@@ -1033,8 +1033,8 @@ body {
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Fri Oct 9, 2026 midday \u2014 PAPER-003 HOLD 1.95, Capital $240, Net -45, ROC -18.8%",
-    "revisedAt": "2026-10-09T11:16:00-04:00"
+    "seedNote": "Fri Oct 9, 2026 midday — PAPER-003 HOLD 2.15, Capital $240, Net -25, ROC -10.4%",
+    "revisedAt": "2026-10-09T12:53:00-04:00"
   },
   "buckets": {
     "A": {
@@ -1061,25 +1061,25 @@ body {
       "symbol": "ASST",
       "name": "Asset Entities",
       "unit": "BTC factor",
-      "note": "Smaller BTC-adjacent name \u2014 size down"
+      "note": "Smaller BTC-adjacent name — size down"
     },
     {
       "symbol": "STRC",
       "name": "STRC (paper)",
       "unit": "BTC factor",
-      "note": "Watchlist \u2014 no open tickets"
+      "note": "Watchlist — no open tickets"
     },
     {
       "symbol": "SATA",
       "name": "SATA (paper)",
       "unit": "BTC factor",
-      "note": "Watchlist \u2014 no open tickets"
+      "note": "Watchlist — no open tickets"
     },
     {
       "symbol": "QQQ",
       "name": "Invesco QQQ Trust",
       "unit": "Nasdaq",
-      "note": "Separate Nasdaq unit \u2014 not a BTC factor with MSTR/ASST"
+      "note": "Separate Nasdaq unit — not a BTC factor with MSTR/ASST"
     }
   ],
   "positions": [
@@ -1108,7 +1108,7 @@ body {
       "cost": 190,
       "maxLoss": 190,
       "bucket": "A",
-      "thesis": "Defined-risk long on MSTR/BTC rebound \u2014 buy the 155C, sell the 160C so max loss is the $190 debit while upside is capped at the short strike.",
+      "thesis": "Defined-risk long on MSTR/BTC rebound — buy the 155C, sell the 160C so max loss is the $190 debit while upside is capped at the short strike.",
       "status": "EXIT",
       "openedAt": "2026-09-23T10:15:00-04:00",
       "marks": [
@@ -1189,7 +1189,7 @@ body {
       "cost": 75,
       "maxLoss": 75,
       "bucket": "A",
-      "thesis": "Small defined-risk ASST upside on the BTC-treasury microcap tape \u2014 $1-wide call vertical keeps max loss to $75 if the bounce fails.",
+      "thesis": "Small defined-risk ASST upside on the BTC-treasury microcap tape — $1-wide call vertical keeps max loss to $75 if the bounce fails.",
       "status": "EXIT",
       "openedAt": "2026-09-23T14:05:00-04:00",
       "marks": [
@@ -1270,7 +1270,7 @@ body {
       "cost": 240,
       "maxLoss": 240,
       "bucket": "A",
-      "thesis": "Defined-risk long BTC-proxy into Oct16 \u2014 buy 155C / sell 160C so max loss is the debit.",
+      "thesis": "Defined-risk long BTC-proxy into Oct16 — buy 155C / sell 160C so max loss is the debit.",
       "status": "HOLD",
       "openedAt": "2026-09-28T12:45:00-04:00",
       "marks": [
@@ -1398,9 +1398,14 @@ body {
           "ts": "2026-10-09T11:16:00-04:00",
           "label": "midday",
           "mid": 1.95
+        },
+        {
+          "ts": "2026-10-09T12:53:00-04:00",
+          "label": "midday",
+          "mid": 2.15
         }
       ],
-      "mark": 1.49
+      "mark": 2.15
     }
   ],
   "transactions": [
@@ -1414,7 +1419,7 @@ body {
       "fill": 1.9,
       "debitCredit": -190,
       "dayPnL": 0,
-      "note": "Open fill \u2014 morning"
+      "note": "Open fill — morning"
     },
     {
       "id": "TXN-002",
@@ -1426,7 +1431,7 @@ body {
       "fill": 0.75,
       "debitCredit": -75,
       "dayPnL": 0,
-      "note": "Open fill \u2014 afternoon"
+      "note": "Open fill — afternoon"
     },
     {
       "id": "TXN-003",
@@ -1434,11 +1439,11 @@ body {
       "ticketId": "BOOK",
       "ts": "2026-09-23T16:38:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot \u2014 PAPER-001 @ 3.27, PAPER-002 @ 0.22",
+      "legs": "close snapshot — PAPER-001 @ 3.27, PAPER-002 @ 0.22",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": 84,
-      "note": "Wed close marks (Options Desk sync) \u2014 book Net ~+$84"
+      "note": "Wed close marks (Options Desk sync) — book Net ~+$84"
     },
     {
       "id": "TXN-004",
@@ -1446,11 +1451,11 @@ body {
       "ticketId": "BOOK",
       "ts": "2026-09-24T12:33:00-04:00",
       "underlying": "BOOK",
-      "legs": "midday snapshot \u2014 PAPER-001 @ 3.57, PAPER-002 @ 0.60",
+      "legs": "midday snapshot — PAPER-001 @ 3.57, PAPER-002 @ 0.60",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": 152,
-      "note": "Thu midday marks (Options Desk sync) \u2014 book Net ~+$152"
+      "note": "Thu midday marks (Options Desk sync) — book Net ~+$152"
     },
     {
       "id": "TXN-005",
@@ -1458,11 +1463,11 @@ body {
       "ticketId": "BOOK",
       "ts": "2026-09-25T12:37:00-04:00",
       "underlying": "BOOK",
-      "legs": "midday snapshot \u2014 PAPER-001 @ 3.37, PAPER-002 @ 0.24",
+      "legs": "midday snapshot — PAPER-001 @ 3.37, PAPER-002 @ 0.24",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": 96,
-      "note": "Fri midday marks (Options Desk sync) \u2014 book Net ~+$96"
+      "note": "Fri midday marks (Options Desk sync) — book Net ~+$96"
     },
     {
       "id": "TXN-006",
@@ -1474,7 +1479,7 @@ body {
       "fill": 3.67,
       "debitCredit": 177,
       "dayPnL": 177,
-      "note": "Fri Sep 25 expiry settlement \u2014 realized +$177"
+      "note": "Fri Sep 25 expiry settlement — realized +$177"
     },
     {
       "id": "TXN-007",
@@ -1486,7 +1491,7 @@ body {
       "fill": 0,
       "debitCredit": -75,
       "dayPnL": -75,
-      "note": "Fri Sep 25 expiry settlement \u2014 realized -$75"
+      "note": "Fri Sep 25 expiry settlement — realized -$75"
     },
     {
       "id": "TXN-008",
@@ -1498,7 +1503,7 @@ body {
       "fill": 2.4,
       "debitCredit": -240,
       "dayPnL": 0,
-      "note": "Mon midday paper fill \u2014 Ready A after open deferred pre-RTH"
+      "note": "Mon midday paper fill — Ready A after open deferred pre-RTH"
     },
     {
       "id": "TXN-009",
@@ -1506,11 +1511,11 @@ body {
       "ticketId": "BOOK",
       "ts": "2026-09-30T16:20:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot \u2014 PAPER-003 @ 1.85",
+      "legs": "close snapshot — PAPER-003 @ 1.85",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -55,
-      "note": "Wed close marks (Options Desk sync) \u2014 book Net \u2212$55"
+      "note": "Wed close marks (Options Desk sync) — book Net −$55"
     },
     {
       "id": "TXN-010",
@@ -1518,11 +1523,11 @@ body {
       "ticketId": "BOOK",
       "ts": "2026-10-07T16:15:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot \u2014 PAPER-003 @ 1.75",
+      "legs": "close snapshot — PAPER-003 @ 1.75",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -65,
-      "note": "Wed close marks (Options Desk sync) \u2014 book Net \u2212$65"
+      "note": "Wed close marks (Options Desk sync) — book Net −$65"
     },
     {
       "id": "TXN-011",
@@ -1530,11 +1535,11 @@ body {
       "ticketId": "BOOK",
       "ts": "2026-10-08T16:05:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot \u2014 PAPER-003 @ 1.43",
+      "legs": "close snapshot — PAPER-003 @ 1.43",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -97,
-      "note": "Thu close marks (Chief Orchestrator sync from Robinhood settles) \u2014 book Net \u2212$97"
+      "note": "Thu close marks (Chief Orchestrator sync from Robinhood settles) — book Net −$97"
     }
   ],
   "marksHistory": [
@@ -1846,6 +1851,26 @@ body {
       },
       "bookMTM": 149,
       "bookNet": -91
+    },
+    {
+      "ts": "2026-10-09T11:16:00-04:00",
+      "session": "midday",
+      "date": "2026-10-09",
+      "tickets": {
+        "PAPER-003": 1.95
+      },
+      "bookMTM": 195,
+      "bookNet": -45
+    },
+    {
+      "ts": "2026-10-09T12:53:00-04:00",
+      "session": "midday",
+      "date": "2026-10-09",
+      "tickets": {
+        "PAPER-003": 2.15
+      },
+      "bookMTM": 215,
+      "bookNet": -25
     }
   ]
 };</script>
