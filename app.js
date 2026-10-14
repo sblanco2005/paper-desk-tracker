@@ -56,8 +56,11 @@
 
   function uPnL(pos) {
     // Debit: (mark − entry) × 100 × qty. Credit: (entry credit − mark) × 100 × qty
-    if (isCredit(pos)) return (pos.entry - latestMark(pos)) * 100 * pos.qty;
-    return (latestMark(pos) - pos.entry) * 100 * pos.qty;
+    // Round to cents so 0.36−0.325 does not become 3.499999...
+    const raw = isCredit(pos)
+      ? (pos.entry - latestMark(pos)) * 100 * pos.qty
+      : (latestMark(pos) - pos.entry) * 100 * pos.qty;
+    return Math.round(raw * 100) / 100;
   }
 
   function formatTs(iso) {
@@ -331,7 +334,7 @@
         <div class="card-title">Options Desk · Paper Book</div>
         <div class="hero-pnl">
           <div class="label">Net P&amp;L (open)</div>
-          <div class="value ${pnlClass(s.net)}">${money(s.net, { signed: true })}</div>
+          <div class="value ${pnlClass(s.net)}">${moneyDec(s.net, true)}</div>
         </div>
         <div class="secondary-row">
           <div class="secondary-metric">
@@ -465,7 +468,7 @@
               </div>
               <div class="pos-strip-right">
                 <span class="status-badge ${p.status}">${p.status}</span>
-                <span class="pos-upnl ${pnlClass(upnl)}">${money(Math.round(upnl), { signed: true })}</span>
+                <span class="pos-upnl ${pnlClass(upnl)}">${moneyDec(upnl, true)}</span>
               </div>
             </div>
             <div class="pos-body">
