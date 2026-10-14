@@ -1037,17 +1037,17 @@ body {
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Wed Oct 14, 2026 midday — NEW PAPER-004 MSTR Nov20 190/195 call credit vertical @ 0.36 credit; capital (max loss) $464; realized WTD -$89",
-    "revisedAt": "2026-10-14T12:39:00-04:00"
+    "seedNote": "Wed Oct 14, 2026 close — PAPER-004 mark 0.325 (credit); uP&L +$3.50; net +$3.50; ROC 0.8%; capital $464; realized WTD -$89",
+    "revisedAt": "2026-10-14T16:14:00-04:00"
   },
   "buckets": {
     "A": {
       "label": "Core defined-risk",
-      "used": 240
+      "used": 0
     },
     "B": {
       "label": "Tactical",
-      "used": 0
+      "used": 464
     },
     "C": {
       "label": "Event / lottery",
@@ -1475,9 +1475,19 @@ body {
           "ts": "2026-10-14T12:39:00-04:00",
           "label": "midday",
           "mid": 0.36
+        },
+        {
+          "ts": "2026-10-14T16:14:00-04:00",
+          "label": "close",
+          "mid": 0.325
         }
       ],
-      "mark": 0.36
+      "mark": 0.325,
+      "legMarks": {
+        "190C": 2.1,
+        "195C": 1.775
+      },
+      "underlyingMark": 143.23
     }
   ],
   "transactions": [
@@ -1650,6 +1660,18 @@ body {
       "maxLoss": 464,
       "dayPnL": 0,
       "note": "First credit ticket. Capital = max loss $464; cash flow +$36."
+    },
+    {
+      "id": "TXN-015",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-14T16:14:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-004 @ 0.325 (credit)",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 3.5,
+      "note": "Wed close marks (Options Desk sync) — credit uP&L +$3.50; book Net +$3.50 (ROC 0.8%)"
     }
   ],
   "marksHistory": [
@@ -2031,6 +2053,25 @@ body {
       "bookMTM": 0,
       "bookNet": 0,
       "underlyings": {}
+    },
+    {
+      "ts": "2026-10-14T16:14:00-04:00",
+      "session": "close",
+      "date": "2026-10-14",
+      "tickets": {
+        "PAPER-004": 0.325
+      },
+      "bookMTM": 32.5,
+      "bookNet": 3.5,
+      "underlyings": {
+        "MSTR": 143.23
+      },
+      "legMarks": {
+        "PAPER-004": {
+          "190C": 2.1,
+          "195C": 1.775
+        }
+      }
     }
   ]
 };</script>
