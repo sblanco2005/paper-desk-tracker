@@ -50,8 +50,13 @@
     return Math.abs(latestMark(pos)) * 100 * pos.qty;
   }
 
+  function isCredit(pos) {
+    return pos.side === "credit" || pos.structureSide === "short";
+  }
+
   function uPnL(pos) {
-    // Debit vertical: uP&L = (mark − entry) × 100 × qty
+    // Debit: (mark − entry) × 100 × qty. Credit: (entry credit − mark) × 100 × qty
+    if (isCredit(pos)) return (pos.entry - latestMark(pos)) * 100 * pos.qty;
     return (latestMark(pos) - pos.entry) * 100 * pos.qty;
   }
 
@@ -456,6 +461,7 @@
               <div class="pos-strip-left">
                 <span class="pos-under">${p.underlying}</span>
                 <span class="pos-struct">${p.structure} ×${p.qty}</span>
+                <span class="side-badge ${isCredit(p) ? "credit" : "debit"}">${isCredit(p) ? "CREDIT" : "DEBIT"}</span>
               </div>
               <div class="pos-strip-right">
                 <span class="status-badge ${p.status}">${p.status}</span>
@@ -467,16 +473,17 @@
               <div class="legs">${legsHtml(p.legs)}</div>
               <p class="thesis">${p.thesis}</p>
               <div class="kv-grid">
-                <div class="kv"><span class="k">Entry</span><span class="v">${p.entry.toFixed(2)}</span></div>
+                <div class="kv"><span class="k">Entry${isCredit(p) ? " (credit)" : ""}</span><span class="v">${p.entry.toFixed(2)}</span></div>
+                ${isCredit(p) ? `<div class="kv"><span class="k">Credit rcvd</span><span class="v">+${money(p.credit != null ? p.credit : p.entry * 100 * p.qty)}</span></div><div class="kv"><span class="k">Max gain</span><span class="v">${money(p.maxGain)}</span></div><div class="kv"><span class="k">Breakeven</span><span class="v">${p.breakeven}</span></div>` : ""}
                 <div class="kv">
-                  <span class="k">Cost $ <button type="button" class="help-q" data-action="cost-help" data-id="${p.id}" aria-label="How Cost $ is calculated">?</button></span>
+                  <span class="k">${isCredit(p) ? "Capital (max loss)" : "Cost $"} <button type="button" class="help-q" data-action="cost-help" data-id="${p.id}" aria-label="How Cost $ is calculated">?</button></span>
                   <span class="v">${money(p.cost)}</span>
                 </div>
                 <div class="kv"><span class="k">Max loss</span><span class="v">${money(p.maxLoss)}</span></div>
                 <div class="kv"><span class="k">Mark</span><span class="v">${mark.toFixed(2)}</span></div>
                 <div class="kv"><span class="k">Paper value</span><span class="v">${money(Math.round(val))}</span></div>
                 <div class="kv"><span class="k">Bucket</span><span class="v">${p.bucket}</span></div>
-                <div class="cost-help" data-help-for="${p.id}"><strong>Cost $:</strong> |net debit| × 100 × qty = |${p.entry.toFixed(2)}| × 100 × ${p.qty} = ${money(p.cost)}. Max loss on a debit vertical equals Cost $.</div>
+                <div class="cost-help" data-help-for="${p.id}">${isCredit(p) ? `<strong>Capital:</strong> (width − credit) × 100 × qty = max loss ${money(p.maxLoss)}. Credit +${money(p.entry * 100 * p.qty)} received; uP&amp;L = (entry credit − mark) × 100 × qty.` : `<strong>Cost $:</strong> |net debit| × 100 × qty = |${p.entry.toFixed(2)}| × 100 × ${p.qty} = ${money(p.cost)}. Max loss on a debit vertical equals Cost $.`}</div>
               </div>
               <div class="pos-actions">
                 <button class="btn secondary primary" data-action="mark" data-id="${p.id}">Update mark</button>

@@ -960,3 +960,7 @@ body {
     min-height: 100vh;
   }
 }
+
+.side-badge{font-size:.65rem;font-weight:700;padding:1px 6px;border-radius:6px;margin-left:6px;letter-spacing:.04em}
+.side-badge.credit{background:#1f6f4a;color:#fff}
+.side-badge.debit{background:#3a4a6b;color:#fff}

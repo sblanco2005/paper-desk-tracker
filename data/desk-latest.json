@@ -5,8 +5,8 @@
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Mon Oct 12, 2026 close — PAPER-003 EXIT @ 1.51, realized -$89 (-37.1%); book flat, Capital $0",
-    "revisedAt": "2026-10-12T16:25:00-04:00"
+    "seedNote": "Wed Oct 14, 2026 midday — NEW PAPER-004 MSTR Nov20 190/195 call credit vertical @ 0.36 credit; capital (max loss) $464; realized WTD -$89",
+    "revisedAt": "2026-10-14T12:39:00-04:00"
   },
   "buckets": {
     "A": {
@@ -401,6 +401,51 @@
       "closedAt": "2026-10-12T16:25:00-04:00",
       "exitPrice": 1.51,
       "realizedPnl": -89
+    },
+    {
+      "id": "PAPER-004",
+      "underlying": "MSTR",
+      "structure": "Call credit vertical",
+      "structureSide": "short",
+      "side": "credit",
+      "qty": 1,
+      "expiration": "2026-11-20",
+      "legs": [
+        {
+          "side": "short",
+          "right": "C",
+          "strike": 190,
+          "exp": "Nov20",
+          "price": 2.325
+        },
+        {
+          "side": "long",
+          "right": "C",
+          "strike": 195,
+          "exp": "Nov20",
+          "price": 1.965
+        }
+      ],
+      "entry": 0.36,
+      "credit": 36,
+      "cost": 464,
+      "maxLoss": 464,
+      "maxGain": 36,
+      "breakeven": 190.36,
+      "bucket": "B",
+      "kill": "Spread mark >=0.72 or MSTR daily close >=$170 or 190C delta >0.30; TP 0.18; close/roll by Oct 21 (30 DTE)",
+      "thesis": "Post-hot-CPI income: hike odds up caps MSTR upside near term; elevated IV pays for ~15-delta calls 31% OTM; defined risk, 1 lot (~23% of unused).",
+      "status": "HOLD",
+      "openedAt": "2026-10-14T12:39:00-04:00",
+      "entryDate": "2026-10-14",
+      "marks": [
+        {
+          "ts": "2026-10-14T12:39:00-04:00",
+          "label": "midday",
+          "mid": 0.36
+        }
+      ],
+      "mark": 0.36
     }
   ],
   "transactions": [
@@ -559,6 +604,20 @@
       "debitCredit": 151,
       "dayPnL": -89,
       "note": "Mon Oct 12 close EXIT — realized -$89 (-37.1% on $240). Standing rule: MSTR closed 152.79 < ~155 before CPI Wed Oct 14. Book flat."
+    },
+    {
+      "id": "TXN-014",
+      "type": "open",
+      "ticketId": "PAPER-004",
+      "ts": "2026-10-14T12:39:00-04:00",
+      "underlying": "MSTR",
+      "legs": "Sold 1x MSTR Nov20 190/195 call credit vertical @ 0.36 credit (mid; natural 0.24)",
+      "fill": 0.36,
+      "debitCredit": 36,
+      "side": "credit",
+      "maxLoss": 464,
+      "dayPnL": 0,
+      "note": "First credit ticket. Capital = max loss $464; cash flow +$36."
     }
   ],
   "marksHistory": [
@@ -929,6 +988,17 @@
         "QQQ": 746.02,
         "BTC": 82978
       }
+    },
+    {
+      "ts": "2026-10-14T12:39:00-04:00",
+      "session": "midday",
+      "date": "2026-10-14",
+      "tickets": {
+        "PAPER-004": 0.36
+      },
+      "bookMTM": 0,
+      "bookNet": 0,
+      "underlyings": {}
     }
   ]
 }
