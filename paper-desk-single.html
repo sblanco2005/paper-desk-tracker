@@ -1037,8 +1037,8 @@ body {
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Wed Oct 14, 2026 close — PAPER-004 mark 0.325 (credit); uP&L +$3.50; net +$3.50; ROC 0.8%; capital $464; realized WTD -$89",
-    "revisedAt": "2026-10-14T16:14:00-04:00"
+    "seedNote": "Thu Oct 15, 2026 midday — PAPER-004 mark 0.47 (credit); uP&L −$11; net −$11; ROC −2.4%; capital $464; realized WTD −$89. MSTR bounce + IV; kills not hit; no QQQ A (SPY 770 > 760).",
+    "revisedAt": "2026-10-15T12:36:00-04:00"
   },
   "buckets": {
     "A": {
@@ -1480,14 +1480,19 @@ body {
           "ts": "2026-10-14T16:14:00-04:00",
           "label": "close",
           "mid": 0.325
+        },
+        {
+          "ts": "2026-10-15T12:36:00-04:00",
+          "label": "midday",
+          "mid": 0.47
         }
       ],
-      "mark": 0.325,
+      "mark": 0.47,
       "legMarks": {
-        "190C": 2.1,
-        "195C": 1.775
+        "190C": 2.76,
+        "195C": 2.29
       },
-      "underlyingMark": 143.23
+      "underlyingMark": 148.08
     }
   ],
   "transactions": [
@@ -1672,6 +1677,18 @@ body {
       "debitCredit": 0,
       "dayPnL": 3.5,
       "note": "Wed close marks (Options Desk sync) — credit uP&L +$3.50; book Net +$3.50 (ROC 0.8%)"
+    },
+    {
+      "id": "TXN-016",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-15T12:36:00-04:00",
+      "underlying": "BOOK",
+      "legs": "midday snapshot — PAPER-004 @ 0.47 (credit)",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -11,
+      "note": "Thu midday marks (Options Desk sync) — credit uP&L −$11; book Net −$11 (ROC −2.4%). MSTR bounce + IV; kills not hit; no QQQ A."
     }
   ],
   "marksHistory": [
@@ -2072,6 +2089,31 @@ body {
           "195C": 1.775
         }
       }
+    },
+    {
+      "ts": "2026-10-15T12:36:00-04:00",
+      "session": "midday",
+      "date": "2026-10-15",
+      "tickets": {
+        "PAPER-004": 0.47
+      },
+      "bookMTM": 47,
+      "bookNet": -11,
+      "underlyings": {
+        "MSTR": 148.08,
+        "ASST": 25.07,
+        "STRC": 99.47,
+        "SATA": 97.82,
+        "QQQ": 723.93,
+        "BTC": 82050
+      },
+      "legMarks": {
+        "PAPER-004": {
+          "190C": 2.76,
+          "195C": 2.29
+        }
+      },
+      "note": "MSTR bounce + IV; kills not hit; no QQQ A (SPY 770 > 760)."
     }
   ]
 };</script>
