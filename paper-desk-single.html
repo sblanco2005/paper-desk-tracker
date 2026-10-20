@@ -1031,1327 +1031,1415 @@ body {
   <div id="toast" class="toast" aria-live="polite"></div>
 
   <script>window.__SEED__ = {
- "meta": {
-  "app": "Paper Desk Tracker",
-  "owner": "Santiago Blanco",
-  "mode": "paper",
-  "riskCeiling": 2000,
-  "seedDate": "2026-09-23",
-  "seedNote": "Mon Oct 19, 2026 close — PAPER-004 mark 0.17 (credit); uP&L +$19; natural buyback 0.26; TP 0.18 hit on mid only — work ≤0.20 natural Tue, hard close Wed Oct 21. Kills clear.",
-  "revisedAt": "2026-10-19T16:16:00-04:00"
- },
- "buckets": {
-  "A": {
-   "label": "Core defined-risk",
-   "used": 0
+  "meta": {
+    "app": "Paper Desk Tracker",
+    "owner": "Santiago Blanco",
+    "mode": "paper",
+    "riskCeiling": 2000,
+    "seedDate": "2026-09-23",
+    "seedNote": "Tue Oct 20, 2026 open — PAPER-004 mark 0.155 (credit, +$20.50); NEW PAPER-005 QQQ Nov20 700/680 put debit @ 4.54 (mark 4.45, −$9). Capital $918, Net +$11.50, ROC 1.25%.",
+    "revisedAt": "2026-10-20T09:32:37-04:00"
   },
-  "B": {
-   "label": "Tactical",
-   "used": 464
-  },
-  "C": {
-   "label": "Event / lottery",
-   "used": 0
-  }
- },
- "universe": [
-  {
-   "symbol": "MSTR",
-   "name": "MicroStrategy",
-   "unit": "BTC factor",
-   "note": "High-beta BTC proxy via corporate treasury"
-  },
-  {
-   "symbol": "ASST",
-   "name": "Asset Entities",
-   "unit": "BTC factor",
-   "note": "Smaller BTC-adjacent name — size down"
-  },
-  {
-   "symbol": "STRC",
-   "name": "STRC (paper)",
-   "unit": "BTC factor",
-   "note": "Watchlist — no open tickets"
-  },
-  {
-   "symbol": "SATA",
-   "name": "SATA (paper)",
-   "unit": "BTC factor",
-   "note": "Watchlist — no open tickets"
-  },
-  {
-   "symbol": "QQQ",
-   "name": "Invesco QQQ Trust",
-   "unit": "Nasdaq",
-   "note": "Separate Nasdaq unit — not a BTC factor with MSTR/ASST"
-  }
- ],
- "positions": [
-  {
-   "id": "PAPER-001",
-   "underlying": "MSTR",
-   "structure": "Call debit vertical",
-   "structureSide": "long",
-   "qty": 1,
-   "expiration": "2026-09-25",
-   "legs": [
-    {
-     "side": "long",
-     "right": "C",
-     "strike": 155,
-     "exp": "Sep25"
+  "buckets": {
+    "A": {
+      "label": "Core defined-risk",
+      "used": 454
     },
-    {
-     "side": "short",
-     "right": "C",
-     "strike": 160,
-     "exp": "Sep25"
+    "B": {
+      "label": "Tactical",
+      "used": 464
+    },
+    "C": {
+      "label": "Event / lottery",
+      "used": 0
     }
-   ],
-   "entry": 1.9,
-   "cost": 190,
-   "maxLoss": 190,
-   "bucket": "A",
-   "thesis": "Defined-risk long on MSTR/BTC rebound — buy the 155C, sell the 160C so max loss is the $190 debit while upside is capped at the short strike.",
-   "status": "EXIT",
-   "openedAt": "2026-09-23T10:15:00-04:00",
-   "marks": [
+  },
+  "universe": [
     {
-     "ts": "2026-09-23T10:15:00-04:00",
-     "label": "open",
-     "mid": 1.9
+      "symbol": "MSTR",
+      "name": "MicroStrategy",
+      "unit": "BTC factor",
+      "note": "High-beta BTC proxy via corporate treasury"
     },
     {
-     "ts": "2026-09-23T12:45:00-04:00",
-     "label": "midday",
-     "mid": 2.15
+      "symbol": "ASST",
+      "name": "Asset Entities",
+      "unit": "BTC factor",
+      "note": "Smaller BTC-adjacent name — size down"
     },
     {
-     "ts": "2026-09-23T16:38:00-04:00",
-     "label": "close",
-     "mid": 3.27
+      "symbol": "STRC",
+      "name": "STRC (paper)",
+      "unit": "BTC factor",
+      "note": "Watchlist — no open tickets"
     },
     {
-     "ts": "2026-09-24T09:37:00-04:00",
-     "label": "open",
-     "mid": 3.57
+      "symbol": "SATA",
+      "name": "SATA (paper)",
+      "unit": "BTC factor",
+      "note": "Watchlist — no open tickets"
     },
     {
-     "ts": "2026-09-24T12:33:00-04:00",
-     "label": "midday",
-     "mid": 3.57
-    },
-    {
-     "ts": "2026-09-24T16:17:00-04:00",
-     "label": "close",
-     "mid": 3.58
-    },
-    {
-     "ts": "2026-09-25T09:32:00-04:00",
-     "label": "open",
-     "mid": 3.13
-    },
-    {
-     "ts": "2026-09-25T12:37:00-04:00",
-     "label": "midday",
-     "mid": 3.37
-    },
-    {
-     "ts": "2026-09-25T16:14:00-04:00",
-     "label": "close",
-     "mid": 3.67
-    },
-    {
-     "ts": "2026-09-28T09:20:00-04:00",
-     "label": "open",
-     "mid": 3.67
+      "symbol": "QQQ",
+      "name": "Invesco QQQ Trust",
+      "unit": "Nasdaq",
+      "note": "Separate Nasdaq unit — not a BTC factor with MSTR/ASST"
     }
-   ]
-  },
-  {
-   "id": "PAPER-002",
-   "underlying": "ASST",
-   "structure": "Call debit vertical",
-   "structureSide": "long",
-   "qty": 1,
-   "expiration": "2026-09-25",
-   "legs": [
+  ],
+  "positions": [
     {
-     "side": "long",
-     "right": "C",
-     "strike": 29.5,
-     "exp": "Sep25"
+      "id": "PAPER-001",
+      "underlying": "MSTR",
+      "structure": "Call debit vertical",
+      "structureSide": "long",
+      "qty": 1,
+      "expiration": "2026-09-25",
+      "legs": [
+        {
+          "side": "long",
+          "right": "C",
+          "strike": 155,
+          "exp": "Sep25"
+        },
+        {
+          "side": "short",
+          "right": "C",
+          "strike": 160,
+          "exp": "Sep25"
+        }
+      ],
+      "entry": 1.9,
+      "cost": 190,
+      "maxLoss": 190,
+      "bucket": "A",
+      "thesis": "Defined-risk long on MSTR/BTC rebound — buy the 155C, sell the 160C so max loss is the $190 debit while upside is capped at the short strike.",
+      "status": "EXIT",
+      "openedAt": "2026-09-23T10:15:00-04:00",
+      "marks": [
+        {
+          "ts": "2026-09-23T10:15:00-04:00",
+          "label": "open",
+          "mid": 1.9
+        },
+        {
+          "ts": "2026-09-23T12:45:00-04:00",
+          "label": "midday",
+          "mid": 2.15
+        },
+        {
+          "ts": "2026-09-23T16:38:00-04:00",
+          "label": "close",
+          "mid": 3.27
+        },
+        {
+          "ts": "2026-09-24T09:37:00-04:00",
+          "label": "open",
+          "mid": 3.57
+        },
+        {
+          "ts": "2026-09-24T12:33:00-04:00",
+          "label": "midday",
+          "mid": 3.57
+        },
+        {
+          "ts": "2026-09-24T16:17:00-04:00",
+          "label": "close",
+          "mid": 3.58
+        },
+        {
+          "ts": "2026-09-25T09:32:00-04:00",
+          "label": "open",
+          "mid": 3.13
+        },
+        {
+          "ts": "2026-09-25T12:37:00-04:00",
+          "label": "midday",
+          "mid": 3.37
+        },
+        {
+          "ts": "2026-09-25T16:14:00-04:00",
+          "label": "close",
+          "mid": 3.67
+        },
+        {
+          "ts": "2026-09-28T09:20:00-04:00",
+          "label": "open",
+          "mid": 3.67
+        }
+      ]
     },
     {
-     "side": "short",
-     "right": "C",
-     "strike": 30.5,
-     "exp": "Sep25"
+      "id": "PAPER-002",
+      "underlying": "ASST",
+      "structure": "Call debit vertical",
+      "structureSide": "long",
+      "qty": 1,
+      "expiration": "2026-09-25",
+      "legs": [
+        {
+          "side": "long",
+          "right": "C",
+          "strike": 29.5,
+          "exp": "Sep25"
+        },
+        {
+          "side": "short",
+          "right": "C",
+          "strike": 30.5,
+          "exp": "Sep25"
+        }
+      ],
+      "entry": 0.75,
+      "cost": 75,
+      "maxLoss": 75,
+      "bucket": "A",
+      "thesis": "Small defined-risk ASST upside on the BTC-treasury microcap tape — $1-wide call vertical keeps max loss to $75 if the bounce fails.",
+      "status": "EXIT",
+      "openedAt": "2026-09-23T14:05:00-04:00",
+      "marks": [
+        {
+          "ts": "2026-09-23T14:05:00-04:00",
+          "label": "open",
+          "mid": 0.75
+        },
+        {
+          "ts": "2026-09-23T15:00:00-04:00",
+          "label": "midday",
+          "mid": 0.92
+        },
+        {
+          "ts": "2026-09-23T16:38:00-04:00",
+          "label": "close",
+          "mid": 0.22
+        },
+        {
+          "ts": "2026-09-24T09:37:00-04:00",
+          "label": "open",
+          "mid": 0.31
+        },
+        {
+          "ts": "2026-09-24T12:33:00-04:00",
+          "label": "midday",
+          "mid": 0.6
+        },
+        {
+          "ts": "2026-09-24T16:17:00-04:00",
+          "label": "close",
+          "mid": 0.38
+        },
+        {
+          "ts": "2026-09-25T09:32:00-04:00",
+          "label": "open",
+          "mid": 0.35
+        },
+        {
+          "ts": "2026-09-25T12:37:00-04:00",
+          "label": "midday",
+          "mid": 0.24
+        },
+        {
+          "ts": "2026-09-25T16:14:00-04:00",
+          "label": "close",
+          "mid": 0
+        },
+        {
+          "ts": "2026-09-28T09:20:00-04:00",
+          "label": "open",
+          "mid": 0
+        }
+      ]
+    },
+    {
+      "id": "PAPER-003",
+      "underlying": "MSTR",
+      "structure": "Call debit vertical",
+      "structureSide": "long",
+      "qty": 1,
+      "expiration": "2026-10-16",
+      "legs": [
+        {
+          "side": "long",
+          "right": "C",
+          "strike": 155,
+          "exp": "Oct16"
+        },
+        {
+          "side": "short",
+          "right": "C",
+          "strike": 160,
+          "exp": "Oct16"
+        }
+      ],
+      "entry": 2.4,
+      "cost": 240,
+      "maxLoss": 240,
+      "bucket": "A",
+      "thesis": "Defined-risk long BTC-proxy into Oct16 — buy 155C / sell 160C so max loss is the debit.",
+      "status": "EXIT",
+      "openedAt": "2026-09-28T12:45:00-04:00",
+      "marks": [
+        {
+          "ts": "2026-09-28T12:45:00-04:00",
+          "label": "midday",
+          "mid": 2.4
+        },
+        {
+          "ts": "2026-09-28T16:20:00-04:00",
+          "label": "close",
+          "mid": 2.2
+        },
+        {
+          "ts": "2026-09-29T16:12:00-04:00",
+          "label": "close",
+          "mid": 2.03
+        },
+        {
+          "ts": "2026-09-30T09:10:00-04:00",
+          "label": "open",
+          "mid": 2.03
+        },
+        {
+          "ts": "2026-09-30T12:38:00-04:00",
+          "label": "midday",
+          "mid": 2
+        },
+        {
+          "ts": "2026-09-30T16:20:00-04:00",
+          "label": "close",
+          "mid": 1.85
+        },
+        {
+          "ts": "2026-10-01T09:08:00-04:00",
+          "label": "open",
+          "mid": 1.85
+        },
+        {
+          "ts": "2026-10-01T12:34:00-04:00",
+          "label": "midday",
+          "mid": 2.3
+        },
+        {
+          "ts": "2026-10-01T16:10:00-04:00",
+          "label": "close",
+          "mid": 2.63
+        },
+        {
+          "ts": "2026-10-02T09:11:00-04:00",
+          "label": "open",
+          "mid": 2.63
+        },
+        {
+          "ts": "2026-10-02T12:41:00-04:00",
+          "label": "midday",
+          "mid": 2.5
+        },
+        {
+          "ts": "2026-10-02T16:10:00-04:00",
+          "label": "close",
+          "mid": 2.33
+        },
+        {
+          "ts": "2026-10-05T09:11:00-04:00",
+          "label": "open",
+          "mid": 2.33
+        },
+        {
+          "ts": "2026-10-05T12:40:00-04:00",
+          "label": "midday",
+          "mid": 2.75
+        },
+        {
+          "ts": "2026-10-05T16:15:00-04:00",
+          "label": "close",
+          "mid": 3.15
+        },
+        {
+          "ts": "2026-10-06T09:18:00-04:00",
+          "label": "open",
+          "mid": 3.15
+        },
+        {
+          "ts": "2026-10-06T12:40:00-04:00",
+          "label": "midday",
+          "mid": 3.2
+        },
+        {
+          "ts": "2026-10-06T16:13:00-04:00",
+          "label": "close",
+          "mid": 3.25
+        },
+        {
+          "ts": "2026-10-07T09:22:00-04:00",
+          "label": "open",
+          "mid": 3.25
+        },
+        {
+          "ts": "2026-10-07T12:44:00-04:00",
+          "label": "midday",
+          "mid": 2
+        },
+        {
+          "ts": "2026-10-07T16:15:00-04:00",
+          "label": "close",
+          "mid": 1.75
+        },
+        {
+          "ts": "2026-10-08T09:23:00-04:00",
+          "label": "open",
+          "mid": 1.75
+        },
+        {
+          "ts": "2026-10-08T16:05:00-04:00",
+          "label": "close",
+          "mid": 1.43
+        },
+        {
+          "ts": "2026-10-09T09:38:00-04:00",
+          "label": "open",
+          "mid": 1.49
+        },
+        {
+          "ts": "2026-10-09T11:16:00-04:00",
+          "label": "midday",
+          "mid": 1.95
+        },
+        {
+          "ts": "2026-10-09T12:53:00-04:00",
+          "label": "midday",
+          "mid": 2.15
+        },
+        {
+          "ts": "2026-10-09T14:18:00-04:00",
+          "label": "afternoon",
+          "mid": 1.95
+        },
+        {
+          "ts": "2026-10-09T16:24:00-04:00",
+          "label": "close",
+          "mid": 1.85
+        },
+        {
+          "ts": "2026-10-12T12:54:00-04:00",
+          "label": "midday",
+          "mid": 1.65
+        },
+        {
+          "ts": "2026-10-12T16:25:00-04:00",
+          "label": "close",
+          "mid": 1.51
+        }
+      ],
+      "mark": 1.65,
+      "closedAt": "2026-10-12T16:25:00-04:00",
+      "exitPrice": 1.51,
+      "realizedPnl": -89
+    },
+    {
+      "id": "PAPER-004",
+      "underlying": "MSTR",
+      "structure": "Call credit vertical",
+      "structureSide": "short",
+      "side": "credit",
+      "qty": 1,
+      "expiration": "2026-11-20",
+      "legs": [
+        {
+          "side": "short",
+          "right": "C",
+          "strike": 190,
+          "exp": "Nov20",
+          "price": 2.325
+        },
+        {
+          "side": "long",
+          "right": "C",
+          "strike": 195,
+          "exp": "Nov20",
+          "price": 1.965
+        }
+      ],
+      "entry": 0.36,
+      "credit": 36,
+      "cost": 464,
+      "maxLoss": 464,
+      "maxGain": 36,
+      "breakeven": 190.36,
+      "bucket": "B",
+      "kill": "Spread mark >=0.72 or MSTR daily close >=$170 or 190C delta >0.30; TP 0.18; close/roll by Oct 21 (30 DTE)",
+      "thesis": "Post-hot-CPI income: hike odds up caps MSTR upside near term; elevated IV pays for ~15-delta calls 31% OTM; defined risk, 1 lot (~23% of unused).",
+      "status": "HOLD",
+      "openedAt": "2026-10-14T12:39:00-04:00",
+      "entryDate": "2026-10-14",
+      "marks": [
+        {
+          "ts": "2026-10-14T12:39:00-04:00",
+          "label": "midday",
+          "mid": 0.36
+        },
+        {
+          "ts": "2026-10-14T16:14:00-04:00",
+          "label": "close",
+          "mid": 0.325
+        },
+        {
+          "ts": "2026-10-15T12:36:00-04:00",
+          "label": "midday",
+          "mid": 0.47
+        },
+        {
+          "ts": "2026-10-15T16:18:00-04:00",
+          "label": "close",
+          "mid": 0.51
+        },
+        {
+          "ts": "2026-10-16T12:38:00-04:00",
+          "label": "midday",
+          "mid": 0.24
+        },
+        {
+          "ts": "2026-10-16T16:18:00-04:00",
+          "label": "close",
+          "mid": 0.225
+        },
+        {
+          "ts": "2026-10-19T09:34:00-04:00",
+          "label": "open",
+          "mid": 0.1
+        },
+        {
+          "ts": "2026-10-19T10:44:11-04:00",
+          "label": "midday",
+          "mid": 0.21
+        },
+        {
+          "ts": "2026-10-19T12:40:00-04:00",
+          "label": "midday",
+          "mid": 0.215
+        },
+        {
+          "ts": "2026-10-19T16:16:00-04:00",
+          "label": "close",
+          "mid": 0.17
+        },
+        {
+          "ts": "2026-10-20T09:32:37-04:00",
+          "label": "open",
+          "mid": 0.155
+        }
+      ],
+      "mark": 0.155,
+      "legMarks": {
+        "190C": 0.915,
+        "195C": 0.745
+      },
+      "underlyingMark": 135.8
+    },
+    {
+      "id": "PAPER-005",
+      "underlying": "QQQ",
+      "structure": "Put debit vertical",
+      "structureSide": "long",
+      "side": "debit",
+      "qty": 1,
+      "expiration": "2026-11-20",
+      "legs": [
+        {
+          "side": "long",
+          "right": "P",
+          "strike": 700,
+          "exp": "Nov20"
+        },
+        {
+          "side": "short",
+          "right": "P",
+          "strike": 680,
+          "exp": "Nov20"
+        }
+      ],
+      "entry": 4.54,
+      "cost": 454,
+      "maxLoss": 454,
+      "maxGain": 1546,
+      "breakeven": 695.46,
+      "bucket": "A",
+      "riskUnit": "QQQ",
+      "kill": "QQQ daily close >=725 or mark <=2.25",
+      "takeProfit": "mark >=9.00 or QQQ <=690",
+      "timeStop": "2026-11-13",
+      "thesis": "Failed retest: QQQ tagged 720+ Mon then closed 718.36 <720 with QQQ<730/SMH<590; gap-down confirms. Defined-risk put spread toward 690 bear line.",
+      "status": "HOLD",
+      "openedAt": "2026-10-20T09:32:37-04:00",
+      "entryDate": "2026-10-20",
+      "marks": [
+        {
+          "ts": "2026-10-20T09:32:37-04:00",
+          "label": "open",
+          "mid": 4.45
+        }
+      ],
+      "mark": 4.45
     }
-   ],
-   "entry": 0.75,
-   "cost": 75,
-   "maxLoss": 75,
-   "bucket": "A",
-   "thesis": "Small defined-risk ASST upside on the BTC-treasury microcap tape — $1-wide call vertical keeps max loss to $75 if the bounce fails.",
-   "status": "EXIT",
-   "openedAt": "2026-09-23T14:05:00-04:00",
-   "marks": [
+  ],
+  "transactions": [
     {
-     "ts": "2026-09-23T14:05:00-04:00",
-     "label": "open",
-     "mid": 0.75
+      "id": "TXN-001",
+      "type": "open",
+      "ticketId": "PAPER-001",
+      "ts": "2026-09-23T10:15:00-04:00",
+      "underlying": "MSTR",
+      "legs": "long Sep25 155C / short Sep25 160C",
+      "fill": 1.9,
+      "debitCredit": -190,
+      "dayPnL": 0,
+      "note": "Open fill — morning"
     },
     {
-     "ts": "2026-09-23T15:00:00-04:00",
-     "label": "midday",
-     "mid": 0.92
+      "id": "TXN-002",
+      "type": "open",
+      "ticketId": "PAPER-002",
+      "ts": "2026-09-23T14:05:00-04:00",
+      "underlying": "ASST",
+      "legs": "long Sep25 29.5C / short Sep25 30.5C",
+      "fill": 0.75,
+      "debitCredit": -75,
+      "dayPnL": 0,
+      "note": "Open fill — afternoon"
     },
     {
-     "ts": "2026-09-23T16:38:00-04:00",
-     "label": "close",
-     "mid": 0.22
+      "id": "TXN-003",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-09-23T16:38:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-001 @ 3.27, PAPER-002 @ 0.22",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 84,
+      "note": "Wed close marks (Options Desk sync) — book Net ~+$84"
     },
     {
-     "ts": "2026-09-24T09:37:00-04:00",
-     "label": "open",
-     "mid": 0.31
+      "id": "TXN-004",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-09-24T12:33:00-04:00",
+      "underlying": "BOOK",
+      "legs": "midday snapshot — PAPER-001 @ 3.57, PAPER-002 @ 0.60",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 152,
+      "note": "Thu midday marks (Options Desk sync) — book Net ~+$152"
     },
     {
-     "ts": "2026-09-24T12:33:00-04:00",
-     "label": "midday",
-     "mid": 0.6
+      "id": "TXN-005",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-09-25T12:37:00-04:00",
+      "underlying": "BOOK",
+      "legs": "midday snapshot — PAPER-001 @ 3.37, PAPER-002 @ 0.24",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 96,
+      "note": "Fri midday marks (Options Desk sync) — book Net ~+$96"
     },
     {
-     "ts": "2026-09-24T16:17:00-04:00",
-     "label": "close",
-     "mid": 0.38
+      "id": "TXN-006",
+      "type": "exit",
+      "ticketId": "PAPER-001",
+      "ts": "2026-09-25T16:14:00-04:00",
+      "underlying": "MSTR",
+      "legs": "exp settlement EXIT @ 3.67",
+      "fill": 3.67,
+      "debitCredit": 177,
+      "dayPnL": 177,
+      "note": "Fri Sep 25 expiry settlement — realized +$177"
     },
     {
-     "ts": "2026-09-25T09:32:00-04:00",
-     "label": "open",
-     "mid": 0.35
+      "id": "TXN-007",
+      "type": "exit",
+      "ticketId": "PAPER-002",
+      "ts": "2026-09-25T16:14:00-04:00",
+      "underlying": "ASST",
+      "legs": "exp settlement EXIT @ 0.00",
+      "fill": 0,
+      "debitCredit": -75,
+      "dayPnL": -75,
+      "note": "Fri Sep 25 expiry settlement — realized -$75"
     },
     {
-     "ts": "2026-09-25T12:37:00-04:00",
-     "label": "midday",
-     "mid": 0.24
+      "id": "TXN-008",
+      "type": "open",
+      "ticketId": "PAPER-003",
+      "ts": "2026-09-28T12:45:00-04:00",
+      "underlying": "MSTR",
+      "legs": "long Oct16 155C / short Oct16 160C",
+      "fill": 2.4,
+      "debitCredit": -240,
+      "dayPnL": 0,
+      "note": "Mon midday paper fill — Ready A after open deferred pre-RTH"
     },
     {
-     "ts": "2026-09-25T16:14:00-04:00",
-     "label": "close",
-     "mid": 0
+      "id": "TXN-009",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-09-30T16:20:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-003 @ 1.85",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -55,
+      "note": "Wed close marks (Options Desk sync) — book Net −$55"
     },
     {
-     "ts": "2026-09-28T09:20:00-04:00",
-     "label": "open",
-     "mid": 0
+      "id": "TXN-010",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-07T16:15:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-003 @ 1.75",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -65,
+      "note": "Wed close marks (Options Desk sync) — book Net −$65"
+    },
+    {
+      "id": "TXN-011",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-08T16:05:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-003 @ 1.43",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -97,
+      "note": "Thu close marks (Chief Orchestrator sync from Robinhood settles) — book Net −$97"
+    },
+    {
+      "id": "TXN-012",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-09T16:24:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-003 @ 1.85",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -55,
+      "note": "Fri close marks (Options Desk sync) — book Net −$55"
+    },
+    {
+      "id": "TXN-013",
+      "type": "exit",
+      "ticketId": "PAPER-003",
+      "ts": "2026-10-12T16:25:00-04:00",
+      "underlying": "MSTR",
+      "legs": "sell to close Oct16 155C / 160C debit vertical x1 EXIT @ 1.51 (mid 1.555)",
+      "fill": 1.51,
+      "debitCredit": 151,
+      "dayPnL": -89,
+      "note": "Mon Oct 12 close EXIT — realized -$89 (-37.1% on $240). Standing rule: MSTR closed 152.79 < ~155 before CPI Wed Oct 14. Book flat."
+    },
+    {
+      "id": "TXN-014",
+      "type": "open",
+      "ticketId": "PAPER-004",
+      "ts": "2026-10-14T12:39:00-04:00",
+      "underlying": "MSTR",
+      "legs": "Sold 1x MSTR Nov20 190/195 call credit vertical @ 0.36 credit (mid; natural 0.24)",
+      "fill": 0.36,
+      "debitCredit": 36,
+      "side": "credit",
+      "maxLoss": 464,
+      "dayPnL": 0,
+      "note": "First credit ticket. Capital = max loss $464; cash flow +$36."
+    },
+    {
+      "id": "TXN-015",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-14T16:14:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-004 @ 0.325 (credit)",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 3.5,
+      "note": "Wed close marks (Options Desk sync) — credit uP&L +$3.50; book Net +$3.50 (ROC 0.8%)"
+    },
+    {
+      "id": "TXN-016",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-15T12:36:00-04:00",
+      "underlying": "BOOK",
+      "legs": "midday snapshot — PAPER-004 @ 0.47 (credit)",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -11,
+      "note": "Thu midday marks (Options Desk sync) — credit uP&L −$11; book Net −$11 (ROC −2.4%). MSTR bounce + IV; kills not hit; no QQQ A."
+    },
+    {
+      "id": "TXN-017",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-15T16:18:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-004 @ 0.51 (credit)",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -15,
+      "note": "Thu close marks (Options Desk sync) — credit uP&L −$15; book Net −$15 (ROC −3.2%). dayPnL −$18.50 vs Wed settle."
+    },
+    {
+      "id": "TXN-018",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-16T12:38:00-04:00",
+      "underlying": "BOOK",
+      "legs": "midday snapshot — PAPER-004 @ 0.24 (credit)",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 12,
+      "note": "Fri midday marks (Options Desk sync) — credit uP&L +$12; book Net +$12 (ROC 2.6%). MSTR −8.8% on MSCI non-operating-company index rules (list Nov 11, effective after Nov 30); BTC flat ~81.5k. Kills clear; TP 0.18 not hit; close by Wed Oct 21."
+    },
+    {
+      "id": "TXN-019",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-16T16:18:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-004 @ 0.225 (credit)",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 13.5,
+      "note": "Fri close marks (Options Desk sync) — credit uP&L +$13.50; book Net +$13.50 (ROC 2.9%). dayPnL +$28.50 vs Thu close 0.51. MSTR −9.6% on MSCI non-operating index overhang; kills clear; TP 0.18 not hit; close by Wed Oct 21."
+    },
+    {
+      "id": "TXN-020",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-19T09:34:00-04:00",
+      "underlying": "BOOK",
+      "legs": "open snapshot — PAPER-004 @ 0.10 (credit)",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 26,
+      "note": "Mon open marks (Options Desk sync) — credit uP&L +$26; book Net +$26 (ROC 5.6%). Mid 0.10 through TP 0.18 but natural buyback 0.46 — no paper fill; work ≤0.20 natural by Tue, hard close Wed Oct 21."
+    },
+    {
+      "id": "TXN-021",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-19T16:16:00-04:00",
+      "underlying": "BOOK",
+      "legs": "close snapshot — PAPER-004 @ 0.17 (credit)",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": 5.5,
+      "note": "Mon close marks (Options Desk sync) — PAPER-004 mid 0.17 (190C 0.915 / 195C 0.745), natural buyback 0.26; credit uP&L +$19; book Net +$19 (ROC 4.1%). Day +$5.50 vs Fri close 0.225. Mid through TP 0.18 but natural 0.26 > 0.20 work level — no paper fill; work ≤0.20 natural Tue, hard close Wed Oct 21. Kills clear (mark≥0.72 / close≥170 / Δ>0.30)."
+    },
+    {
+      "id": "TXN-022",
+      "type": "open",
+      "ticketId": "PAPER-005",
+      "ts": "2026-10-20T09:32:37-04:00",
+      "underlying": "QQQ",
+      "legs": "Bought 1x QQQ Nov20 700/680 put debit vertical @ 4.54 debit (natural; mid 4.45)",
+      "fill": 4.54,
+      "debitCredit": -454,
+      "side": "debit",
+      "maxLoss": 454,
+      "dayPnL": 0,
+      "note": "Bought at natural; mid 4.45. Bucket A, QQQ risk unit. Kill: QQQ close >=725 or mark <=2.25; TP mark >=9.00 or QQQ <=690; time stop Nov 13."
+    },
+    {
+      "id": "TXN-023",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-20T09:32:37-04:00",
+      "underlying": "BOOK",
+      "legs": "open snapshot — PAPER-004 @ 0.155 (credit) / PAPER-005 @ 4.45",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -7.5,
+      "note": "Tue open marks (Options Desk sync) — PAPER-004 credit uP&L +$20.50; new PAPER-005 QQQ 700/680 put debit @ 4.54, mark 4.45 (−$9). Book capital $918, Net +$11.50 (ROC 1.25%)."
     }
-   ]
-  },
-  {
-   "id": "PAPER-003",
-   "underlying": "MSTR",
-   "structure": "Call debit vertical",
-   "structureSide": "long",
-   "qty": 1,
-   "expiration": "2026-10-16",
-   "legs": [
+  ],
+  "marksHistory": [
     {
-     "side": "long",
-     "right": "C",
-     "strike": 155,
-     "exp": "Oct16"
+      "ts": "2026-09-23T10:15:00-04:00",
+      "session": "open",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 1.9
+      },
+      "bookMTM": 190,
+      "bookNet": 0
     },
     {
-     "side": "short",
-     "right": "C",
-     "strike": 160,
-     "exp": "Oct16"
+      "ts": "2026-09-23T12:45:00-04:00",
+      "session": "midday",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 2.15
+      },
+      "bookMTM": 215,
+      "bookNet": 25
+    },
+    {
+      "ts": "2026-09-23T14:05:00-04:00",
+      "session": "open",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 2.15,
+        "PAPER-002": 0.75
+      },
+      "bookMTM": 290,
+      "bookNet": 25
+    },
+    {
+      "ts": "2026-09-23T15:00:00-04:00",
+      "session": "midday",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 2.28,
+        "PAPER-002": 0.92
+      },
+      "bookMTM": 320,
+      "bookNet": 55
+    },
+    {
+      "ts": "2026-09-23T16:38:00-04:00",
+      "session": "close",
+      "date": "2026-09-23",
+      "tickets": {
+        "PAPER-001": 3.27,
+        "PAPER-002": 0.22
+      },
+      "bookMTM": 349,
+      "bookNet": 84
+    },
+    {
+      "ts": "2026-09-24T09:37:00-04:00",
+      "session": "open",
+      "date": "2026-09-24",
+      "tickets": {
+        "PAPER-001": 3.57,
+        "PAPER-002": 0.31
+      },
+      "bookMTM": 388,
+      "bookNet": 123
+    },
+    {
+      "ts": "2026-09-24T12:33:00-04:00",
+      "session": "midday",
+      "date": "2026-09-24",
+      "tickets": {
+        "PAPER-001": 3.57,
+        "PAPER-002": 0.6
+      },
+      "bookMTM": 417,
+      "bookNet": 152
+    },
+    {
+      "ts": "2026-09-24T16:17:00-04:00",
+      "session": "close",
+      "date": "2026-09-24",
+      "tickets": {
+        "PAPER-001": 3.58,
+        "PAPER-002": 0.38
+      },
+      "bookMTM": 396,
+      "bookNet": 131
+    },
+    {
+      "ts": "2026-09-25T09:32:00-04:00",
+      "session": "open",
+      "date": "2026-09-25",
+      "tickets": {
+        "PAPER-001": 3.13,
+        "PAPER-002": 0.35
+      },
+      "bookMTM": 348,
+      "bookNet": 83
+    },
+    {
+      "ts": "2026-09-25T12:37:00-04:00",
+      "session": "midday",
+      "date": "2026-09-25",
+      "tickets": {
+        "PAPER-001": 3.37,
+        "PAPER-002": 0.24
+      },
+      "bookMTM": 361,
+      "bookNet": 96
+    },
+    {
+      "ts": "2026-09-25T16:14:00-04:00",
+      "session": "close",
+      "date": "2026-09-25",
+      "tickets": {
+        "PAPER-001": 3.67,
+        "PAPER-002": 0
+      },
+      "bookMTM": 367,
+      "bookNet": 102
+    },
+    {
+      "ts": "2026-09-28T12:45:00-04:00",
+      "session": "midday",
+      "date": "2026-09-28",
+      "tickets": {
+        "PAPER-003": 2.4
+      },
+      "bookMTM": 240,
+      "bookNet": 0
+    },
+    {
+      "ts": "2026-09-28T16:20:00-04:00",
+      "session": "close",
+      "date": "2026-09-28",
+      "tickets": {
+        "PAPER-003": 2.2
+      },
+      "bookMTM": 220,
+      "bookNet": -20
+    },
+    {
+      "ts": "2026-09-29T16:12:00-04:00",
+      "session": "close",
+      "date": "2026-09-29",
+      "tickets": {
+        "PAPER-003": 2.03
+      },
+      "bookMTM": 203,
+      "bookNet": -37
+    },
+    {
+      "ts": "2026-09-30T09:10:00-04:00",
+      "session": "open",
+      "date": "2026-09-30",
+      "tickets": {
+        "PAPER-003": 2.03
+      },
+      "bookMTM": 203,
+      "bookNet": -37
+    },
+    {
+      "ts": "2026-09-30T12:38:00-04:00",
+      "session": "midday",
+      "date": "2026-09-30",
+      "tickets": {
+        "PAPER-003": 2
+      },
+      "bookMTM": 200,
+      "bookNet": -40
+    },
+    {
+      "ts": "2026-09-30T16:20:00-04:00",
+      "session": "close",
+      "date": "2026-09-30",
+      "tickets": {
+        "PAPER-003": 1.85
+      },
+      "bookMTM": 185,
+      "bookNet": -55
+    },
+    {
+      "ts": "2026-10-01T09:08:00-04:00",
+      "session": "open",
+      "date": "2026-10-01",
+      "tickets": {
+        "PAPER-003": 1.85
+      },
+      "bookMTM": 185,
+      "bookNet": -55
+    },
+    {
+      "ts": "2026-10-01T12:34:00-04:00",
+      "session": "midday",
+      "date": "2026-10-01",
+      "tickets": {
+        "PAPER-003": 2.3
+      },
+      "bookMTM": 230,
+      "bookNet": -10
+    },
+    {
+      "ts": "2026-10-01T16:10:00-04:00",
+      "session": "close",
+      "date": "2026-10-01",
+      "tickets": {
+        "PAPER-003": 2.63
+      },
+      "bookMTM": 263,
+      "bookNet": 23
+    },
+    {
+      "ts": "2026-10-02T09:11:00-04:00",
+      "session": "open",
+      "date": "2026-10-02",
+      "tickets": {
+        "PAPER-003": 2.63
+      },
+      "bookMTM": 263,
+      "bookNet": 23
+    },
+    {
+      "ts": "2026-10-02T12:41:00-04:00",
+      "session": "midday",
+      "date": "2026-10-02",
+      "tickets": {
+        "PAPER-003": 2.5
+      },
+      "bookMTM": 250,
+      "bookNet": 10
+    },
+    {
+      "ts": "2026-10-02T16:10:00-04:00",
+      "session": "close",
+      "date": "2026-10-02",
+      "tickets": {
+        "PAPER-003": 2.33
+      },
+      "bookMTM": 233,
+      "bookNet": -7
+    },
+    {
+      "ts": "2026-10-06T16:13:00-04:00",
+      "session": "close",
+      "date": "2026-10-06",
+      "tickets": {
+        "PAPER-003": 3.25
+      },
+      "bookMTM": 325,
+      "bookNet": 85
+    },
+    {
+      "ts": "2026-10-07T09:22:00-04:00",
+      "session": "open",
+      "date": "2026-10-07",
+      "tickets": {
+        "PAPER-003": 3.25
+      },
+      "bookMTM": 325,
+      "bookNet": 85
+    },
+    {
+      "ts": "2026-10-07T12:44:00-04:00",
+      "session": "midday",
+      "date": "2026-10-07",
+      "tickets": {
+        "PAPER-003": 2
+      },
+      "bookMTM": 200,
+      "bookNet": -40
+    },
+    {
+      "ts": "2026-10-07T16:15:00-04:00",
+      "session": "close",
+      "date": "2026-10-07",
+      "tickets": {
+        "PAPER-003": 1.75
+      },
+      "bookMTM": 175,
+      "bookNet": -65
+    },
+    {
+      "ts": "2026-10-08T09:23:00-04:00",
+      "session": "open",
+      "date": "2026-10-08",
+      "tickets": {
+        "PAPER-003": 1.75
+      },
+      "bookMTM": 175,
+      "bookNet": -65
+    },
+    {
+      "ts": "2026-10-08T16:05:00-04:00",
+      "session": "close",
+      "date": "2026-10-08",
+      "tickets": {
+        "PAPER-003": 1.43
+      },
+      "bookMTM": 143,
+      "bookNet": -97
+    },
+    {
+      "ts": "2026-10-09T09:38:00-04:00",
+      "session": "open",
+      "date": "2026-10-09",
+      "tickets": {
+        "PAPER-003": 1.49
+      },
+      "bookMTM": 149,
+      "bookNet": -91
+    },
+    {
+      "ts": "2026-10-09T11:16:00-04:00",
+      "session": "midday",
+      "date": "2026-10-09",
+      "tickets": {
+        "PAPER-003": 1.95
+      },
+      "bookMTM": 195,
+      "bookNet": -45
+    },
+    {
+      "ts": "2026-10-09T12:53:00-04:00",
+      "session": "midday",
+      "date": "2026-10-09",
+      "tickets": {
+        "PAPER-003": 2.15
+      },
+      "bookMTM": 215,
+      "bookNet": -25
+    },
+    {
+      "ts": "2026-10-09T16:24:00-04:00",
+      "session": "close",
+      "date": "2026-10-09",
+      "tickets": {
+        "PAPER-003": 1.85
+      },
+      "bookMTM": 185,
+      "bookNet": -55
+    },
+    {
+      "ts": "2026-10-12T12:54:00-04:00",
+      "session": "midday",
+      "date": "2026-10-12",
+      "tickets": {
+        "PAPER-003": 1.65
+      },
+      "bookMTM": 165,
+      "bookNet": -75
+    },
+    {
+      "ts": "2026-10-12T16:25:00-04:00",
+      "session": "close",
+      "date": "2026-10-12",
+      "tickets": {},
+      "bookMTM": 0,
+      "bookNet": 0,
+      "exits": {
+        "PAPER-003": 1.51
+      },
+      "underlyings": {
+        "MSTR": 152.79,
+        "ASST": 27.72,
+        "STRC": 99.9,
+        "SATA": 99.395,
+        "QQQ": 746.02,
+        "BTC": 82978
+      }
+    },
+    {
+      "ts": "2026-10-14T12:39:00-04:00",
+      "session": "midday",
+      "date": "2026-10-14",
+      "tickets": {
+        "PAPER-004": 0.36
+      },
+      "bookMTM": 0,
+      "bookNet": 0,
+      "underlyings": {}
+    },
+    {
+      "ts": "2026-10-14T16:14:00-04:00",
+      "session": "close",
+      "date": "2026-10-14",
+      "tickets": {
+        "PAPER-004": 0.325
+      },
+      "bookMTM": 32.5,
+      "bookNet": 3.5,
+      "underlyings": {
+        "MSTR": 143.23
+      },
+      "legMarks": {
+        "PAPER-004": {
+          "190C": 2.1,
+          "195C": 1.775
+        }
+      }
+    },
+    {
+      "ts": "2026-10-15T12:36:00-04:00",
+      "session": "midday",
+      "date": "2026-10-15",
+      "tickets": {
+        "PAPER-004": 0.47
+      },
+      "bookMTM": 47,
+      "bookNet": -11,
+      "underlyings": {
+        "MSTR": 148.08,
+        "ASST": 25.07,
+        "STRC": 99.47,
+        "SATA": 97.82,
+        "QQQ": 723.93,
+        "BTC": 82050
+      },
+      "legMarks": {
+        "PAPER-004": {
+          "190C": 2.76,
+          "195C": 2.29
+        }
+      },
+      "note": "MSTR bounce + IV; kills not hit; no QQQ A (SPY 770 > 760)."
+    },
+    {
+      "ts": "2026-10-15T16:18:00-04:00",
+      "session": "close",
+      "date": "2026-10-15",
+      "tickets": {
+        "PAPER-004": 0.51
+      },
+      "bookMTM": 51,
+      "bookNet": -15,
+      "underlyings": {
+        "MSTR": 151.28,
+        "ASST": 25.64,
+        "STRC": 99.58,
+        "SATA": 97.68,
+        "QQQ": 728.04,
+        "BTC": 82300
+      },
+      "legMarks": {
+        "PAPER-004": {
+          "190C": 3.125,
+          "195C": 2.615
+        }
+      },
+      "note": "Close mark; dayPnL −$18.50 vs Wed settle 0.325."
+    },
+    {
+      "ts": "2026-10-16T12:38:00-04:00",
+      "session": "midday",
+      "date": "2026-10-16",
+      "tickets": {
+        "PAPER-004": 0.24
+      },
+      "bookMTM": 24.0,
+      "bookNet": 12,
+      "underlyings": {
+        "MSTR": 137.92
+      },
+      "legMarks": {
+        "PAPER-004": {
+          "190C": 1.45,
+          "195C": 1.21
+        }
+      },
+      "note": "MSTR −8.8% on MSCI non-operating-company index rules (list Nov 11, effective after Nov 30); BTC flat ~81.5k. Kills clear; TP 0.18 not hit; close by Wed Oct 21."
+    },
+    {
+      "ts": "2026-10-16T16:18:00-04:00",
+      "session": "close",
+      "date": "2026-10-16",
+      "tickets": {
+        "PAPER-004": 0.225
+      },
+      "bookMTM": 22.5,
+      "bookNet": 13.5,
+      "underlyings": {
+        "MSTR": 136.83,
+        "ASST": 24.1,
+        "STRC": 97.72,
+        "SATA": 96.86,
+        "QQQ": 709.86,
+        "BTC": 81520
+      },
+      "legMarks": {
+        "PAPER-004": {
+          "190C": 1.255,
+          "195C": 1.03
+        }
+      },
+      "note": "MSTR −9.6% on MSCI non-operating index overhang; kills clear; TP 0.18 not hit; close by Wed Oct 21."
+    },
+    {
+      "ts": "2026-10-19T09:34:00-04:00",
+      "session": "open",
+      "date": "2026-10-19",
+      "tickets": {
+        "PAPER-004": 0.1
+      },
+      "bookMTM": 10.0,
+      "bookNet": 26,
+      "underlyings": {
+        "MSTR": 140.45,
+        "ASST": 24.89,
+        "STRC": 98.18,
+        "SATA": 97.2,
+        "QQQ": 720.06,
+        "BTC": 82384
+      },
+      "legMarks": {
+        "PAPER-004": {
+          "190C": 1.28,
+          "195C": 1.18
+        }
+      },
+      "note": "Mid 0.10 through TP 0.18 but natural buyback 0.46 — no paper fill; work ≤0.20 natural by Tue, hard close Wed Oct 21."
+    },
+    {
+      "ts": "2026-10-19T10:44:11-04:00",
+      "session": "midday",
+      "date": "2026-10-19",
+      "tickets": {
+        "PAPER-004": 0.21
+      },
+      "bookMTM": 15,
+      "bookNet": 15
+    },
+    {
+      "ts": "2026-10-19T12:40:00-04:00",
+      "session": "midday",
+      "date": "2026-10-19",
+      "tickets": {
+        "PAPER-004": 0.215
+      },
+      "bookMTM": 21.5,
+      "bookNet": 14.5,
+      "note": "credit uP&L +$14.50; natural buyback ~0.28; ROC 3.1%"
+    },
+    {
+      "ts": "2026-10-19T16:16:00-04:00",
+      "session": "close",
+      "date": "2026-10-19",
+      "tickets": {
+        "PAPER-004": 0.17
+      },
+      "bookMTM": 17.0,
+      "bookNet": 19,
+      "underlyings": {
+        "MSTR": 135.8,
+        "ASST": 25.56,
+        "STRC": 98.6,
+        "SATA": 97.68,
+        "QQQ": 718.32,
+        "BTC": 81905
+      },
+      "legMarks": {
+        "PAPER-004": {
+          "190C": 0.915,
+          "195C": 0.745
+        }
+      },
+      "note": "credit uP&L +$19; natural buyback 0.26; ROC 4.1%"
+    },
+    {
+      "ts": "2026-10-20T09:32:37-04:00",
+      "session": "open",
+      "date": "2026-10-20",
+      "tickets": {
+        "PAPER-004": 0.155,
+        "PAPER-005": 4.45
+      },
+      "bookMTM": 460.5,
+      "bookNet": 11.5,
+      "note": "PAPER-004 +$20.50; PAPER-005 opened @ 4.54 (mark 4.45, −$9); capital $918; ROC 1.25%"
     }
-   ],
-   "entry": 2.4,
-   "cost": 240,
-   "maxLoss": 240,
-   "bucket": "A",
-   "thesis": "Defined-risk long BTC-proxy into Oct16 — buy 155C / sell 160C so max loss is the debit.",
-   "status": "EXIT",
-   "openedAt": "2026-09-28T12:45:00-04:00",
-   "marks": [
-    {
-     "ts": "2026-09-28T12:45:00-04:00",
-     "label": "midday",
-     "mid": 2.4
-    },
-    {
-     "ts": "2026-09-28T16:20:00-04:00",
-     "label": "close",
-     "mid": 2.2
-    },
-    {
-     "ts": "2026-09-29T16:12:00-04:00",
-     "label": "close",
-     "mid": 2.03
-    },
-    {
-     "ts": "2026-09-30T09:10:00-04:00",
-     "label": "open",
-     "mid": 2.03
-    },
-    {
-     "ts": "2026-09-30T12:38:00-04:00",
-     "label": "midday",
-     "mid": 2
-    },
-    {
-     "ts": "2026-09-30T16:20:00-04:00",
-     "label": "close",
-     "mid": 1.85
-    },
-    {
-     "ts": "2026-10-01T09:08:00-04:00",
-     "label": "open",
-     "mid": 1.85
-    },
-    {
-     "ts": "2026-10-01T12:34:00-04:00",
-     "label": "midday",
-     "mid": 2.3
-    },
-    {
-     "ts": "2026-10-01T16:10:00-04:00",
-     "label": "close",
-     "mid": 2.63
-    },
-    {
-     "ts": "2026-10-02T09:11:00-04:00",
-     "label": "open",
-     "mid": 2.63
-    },
-    {
-     "ts": "2026-10-02T12:41:00-04:00",
-     "label": "midday",
-     "mid": 2.5
-    },
-    {
-     "ts": "2026-10-02T16:10:00-04:00",
-     "label": "close",
-     "mid": 2.33
-    },
-    {
-     "ts": "2026-10-05T09:11:00-04:00",
-     "label": "open",
-     "mid": 2.33
-    },
-    {
-     "ts": "2026-10-05T12:40:00-04:00",
-     "label": "midday",
-     "mid": 2.75
-    },
-    {
-     "ts": "2026-10-05T16:15:00-04:00",
-     "label": "close",
-     "mid": 3.15
-    },
-    {
-     "ts": "2026-10-06T09:18:00-04:00",
-     "label": "open",
-     "mid": 3.15
-    },
-    {
-     "ts": "2026-10-06T12:40:00-04:00",
-     "label": "midday",
-     "mid": 3.2
-    },
-    {
-     "ts": "2026-10-06T16:13:00-04:00",
-     "label": "close",
-     "mid": 3.25
-    },
-    {
-     "ts": "2026-10-07T09:22:00-04:00",
-     "label": "open",
-     "mid": 3.25
-    },
-    {
-     "ts": "2026-10-07T12:44:00-04:00",
-     "label": "midday",
-     "mid": 2
-    },
-    {
-     "ts": "2026-10-07T16:15:00-04:00",
-     "label": "close",
-     "mid": 1.75
-    },
-    {
-     "ts": "2026-10-08T09:23:00-04:00",
-     "label": "open",
-     "mid": 1.75
-    },
-    {
-     "ts": "2026-10-08T16:05:00-04:00",
-     "label": "close",
-     "mid": 1.43
-    },
-    {
-     "ts": "2026-10-09T09:38:00-04:00",
-     "label": "open",
-     "mid": 1.49
-    },
-    {
-     "ts": "2026-10-09T11:16:00-04:00",
-     "label": "midday",
-     "mid": 1.95
-    },
-    {
-     "ts": "2026-10-09T12:53:00-04:00",
-     "label": "midday",
-     "mid": 2.15
-    },
-    {
-     "ts": "2026-10-09T14:18:00-04:00",
-     "label": "afternoon",
-     "mid": 1.95
-    },
-    {
-     "ts": "2026-10-09T16:24:00-04:00",
-     "label": "close",
-     "mid": 1.85
-    },
-    {
-     "ts": "2026-10-12T12:54:00-04:00",
-     "label": "midday",
-     "mid": 1.65
-    },
-    {
-     "ts": "2026-10-12T16:25:00-04:00",
-     "label": "close",
-     "mid": 1.51
-    }
-   ],
-   "mark": 1.65,
-   "closedAt": "2026-10-12T16:25:00-04:00",
-   "exitPrice": 1.51,
-   "realizedPnl": -89
-  },
-  {
-   "id": "PAPER-004",
-   "underlying": "MSTR",
-   "structure": "Call credit vertical",
-   "structureSide": "short",
-   "side": "credit",
-   "qty": 1,
-   "expiration": "2026-11-20",
-   "legs": [
-    {
-     "side": "short",
-     "right": "C",
-     "strike": 190,
-     "exp": "Nov20",
-     "price": 2.325
-    },
-    {
-     "side": "long",
-     "right": "C",
-     "strike": 195,
-     "exp": "Nov20",
-     "price": 1.965
-    }
-   ],
-   "entry": 0.36,
-   "credit": 36,
-   "cost": 464,
-   "maxLoss": 464,
-   "maxGain": 36,
-   "breakeven": 190.36,
-   "bucket": "B",
-   "kill": "Spread mark >=0.72 or MSTR daily close >=$170 or 190C delta >0.30; TP 0.18; close/roll by Oct 21 (30 DTE)",
-   "thesis": "Post-hot-CPI income: hike odds up caps MSTR upside near term; elevated IV pays for ~15-delta calls 31% OTM; defined risk, 1 lot (~23% of unused).",
-   "status": "HOLD",
-   "openedAt": "2026-10-14T12:39:00-04:00",
-   "entryDate": "2026-10-14",
-   "marks": [
-    {
-     "ts": "2026-10-14T12:39:00-04:00",
-     "label": "midday",
-     "mid": 0.36
-    },
-    {
-     "ts": "2026-10-14T16:14:00-04:00",
-     "label": "close",
-     "mid": 0.325
-    },
-    {
-     "ts": "2026-10-15T12:36:00-04:00",
-     "label": "midday",
-     "mid": 0.47
-    },
-    {
-     "ts": "2026-10-15T16:18:00-04:00",
-     "label": "close",
-     "mid": 0.51
-    },
-    {
-     "ts": "2026-10-16T12:38:00-04:00",
-     "label": "midday",
-     "mid": 0.24
-    },
-    {
-     "ts": "2026-10-16T16:18:00-04:00",
-     "label": "close",
-     "mid": 0.225
-    },
-    {
-     "ts": "2026-10-19T09:34:00-04:00",
-     "label": "open",
-     "mid": 0.1
-    },
-    {
-     "ts": "2026-10-19T10:44:11-04:00",
-     "label": "midday",
-     "mid": 0.21
-    },
-    {
-     "ts": "2026-10-19T12:40:00-04:00",
-     "label": "midday",
-     "mid": 0.215
-    },
-    {
-     "ts": "2026-10-19T16:16:00-04:00",
-     "label": "close",
-     "mid": 0.17
-    }
-   ],
-   "mark": 0.17,
-   "legMarks": {
-    "190C": 0.915,
-    "195C": 0.745
-   },
-   "underlyingMark": 135.8
-  }
- ],
- "transactions": [
-  {
-   "id": "TXN-001",
-   "type": "open",
-   "ticketId": "PAPER-001",
-   "ts": "2026-09-23T10:15:00-04:00",
-   "underlying": "MSTR",
-   "legs": "long Sep25 155C / short Sep25 160C",
-   "fill": 1.9,
-   "debitCredit": -190,
-   "dayPnL": 0,
-   "note": "Open fill — morning"
-  },
-  {
-   "id": "TXN-002",
-   "type": "open",
-   "ticketId": "PAPER-002",
-   "ts": "2026-09-23T14:05:00-04:00",
-   "underlying": "ASST",
-   "legs": "long Sep25 29.5C / short Sep25 30.5C",
-   "fill": 0.75,
-   "debitCredit": -75,
-   "dayPnL": 0,
-   "note": "Open fill — afternoon"
-  },
-  {
-   "id": "TXN-003",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-09-23T16:38:00-04:00",
-   "underlying": "BOOK",
-   "legs": "close snapshot — PAPER-001 @ 3.27, PAPER-002 @ 0.22",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": 84,
-   "note": "Wed close marks (Options Desk sync) — book Net ~+$84"
-  },
-  {
-   "id": "TXN-004",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-09-24T12:33:00-04:00",
-   "underlying": "BOOK",
-   "legs": "midday snapshot — PAPER-001 @ 3.57, PAPER-002 @ 0.60",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": 152,
-   "note": "Thu midday marks (Options Desk sync) — book Net ~+$152"
-  },
-  {
-   "id": "TXN-005",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-09-25T12:37:00-04:00",
-   "underlying": "BOOK",
-   "legs": "midday snapshot — PAPER-001 @ 3.37, PAPER-002 @ 0.24",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": 96,
-   "note": "Fri midday marks (Options Desk sync) — book Net ~+$96"
-  },
-  {
-   "id": "TXN-006",
-   "type": "exit",
-   "ticketId": "PAPER-001",
-   "ts": "2026-09-25T16:14:00-04:00",
-   "underlying": "MSTR",
-   "legs": "exp settlement EXIT @ 3.67",
-   "fill": 3.67,
-   "debitCredit": 177,
-   "dayPnL": 177,
-   "note": "Fri Sep 25 expiry settlement — realized +$177"
-  },
-  {
-   "id": "TXN-007",
-   "type": "exit",
-   "ticketId": "PAPER-002",
-   "ts": "2026-09-25T16:14:00-04:00",
-   "underlying": "ASST",
-   "legs": "exp settlement EXIT @ 0.00",
-   "fill": 0,
-   "debitCredit": -75,
-   "dayPnL": -75,
-   "note": "Fri Sep 25 expiry settlement — realized -$75"
-  },
-  {
-   "id": "TXN-008",
-   "type": "open",
-   "ticketId": "PAPER-003",
-   "ts": "2026-09-28T12:45:00-04:00",
-   "underlying": "MSTR",
-   "legs": "long Oct16 155C / short Oct16 160C",
-   "fill": 2.4,
-   "debitCredit": -240,
-   "dayPnL": 0,
-   "note": "Mon midday paper fill — Ready A after open deferred pre-RTH"
-  },
-  {
-   "id": "TXN-009",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-09-30T16:20:00-04:00",
-   "underlying": "BOOK",
-   "legs": "close snapshot — PAPER-003 @ 1.85",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": -55,
-   "note": "Wed close marks (Options Desk sync) — book Net −$55"
-  },
-  {
-   "id": "TXN-010",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-10-07T16:15:00-04:00",
-   "underlying": "BOOK",
-   "legs": "close snapshot — PAPER-003 @ 1.75",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": -65,
-   "note": "Wed close marks (Options Desk sync) — book Net −$65"
-  },
-  {
-   "id": "TXN-011",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-10-08T16:05:00-04:00",
-   "underlying": "BOOK",
-   "legs": "close snapshot — PAPER-003 @ 1.43",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": -97,
-   "note": "Thu close marks (Chief Orchestrator sync from Robinhood settles) — book Net −$97"
-  },
-  {
-   "id": "TXN-012",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-10-09T16:24:00-04:00",
-   "underlying": "BOOK",
-   "legs": "close snapshot — PAPER-003 @ 1.85",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": -55,
-   "note": "Fri close marks (Options Desk sync) — book Net −$55"
-  },
-  {
-   "id": "TXN-013",
-   "type": "exit",
-   "ticketId": "PAPER-003",
-   "ts": "2026-10-12T16:25:00-04:00",
-   "underlying": "MSTR",
-   "legs": "sell to close Oct16 155C / 160C debit vertical x1 EXIT @ 1.51 (mid 1.555)",
-   "fill": 1.51,
-   "debitCredit": 151,
-   "dayPnL": -89,
-   "note": "Mon Oct 12 close EXIT — realized -$89 (-37.1% on $240). Standing rule: MSTR closed 152.79 < ~155 before CPI Wed Oct 14. Book flat."
-  },
-  {
-   "id": "TXN-014",
-   "type": "open",
-   "ticketId": "PAPER-004",
-   "ts": "2026-10-14T12:39:00-04:00",
-   "underlying": "MSTR",
-   "legs": "Sold 1x MSTR Nov20 190/195 call credit vertical @ 0.36 credit (mid; natural 0.24)",
-   "fill": 0.36,
-   "debitCredit": 36,
-   "side": "credit",
-   "maxLoss": 464,
-   "dayPnL": 0,
-   "note": "First credit ticket. Capital = max loss $464; cash flow +$36."
-  },
-  {
-   "id": "TXN-015",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-10-14T16:14:00-04:00",
-   "underlying": "BOOK",
-   "legs": "close snapshot — PAPER-004 @ 0.325 (credit)",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": 3.5,
-   "note": "Wed close marks (Options Desk sync) — credit uP&L +$3.50; book Net +$3.50 (ROC 0.8%)"
-  },
-  {
-   "id": "TXN-016",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-10-15T12:36:00-04:00",
-   "underlying": "BOOK",
-   "legs": "midday snapshot — PAPER-004 @ 0.47 (credit)",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": -11,
-   "note": "Thu midday marks (Options Desk sync) — credit uP&L −$11; book Net −$11 (ROC −2.4%). MSTR bounce + IV; kills not hit; no QQQ A."
-  },
-  {
-   "id": "TXN-017",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-10-15T16:18:00-04:00",
-   "underlying": "BOOK",
-   "legs": "close snapshot — PAPER-004 @ 0.51 (credit)",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": -15,
-   "note": "Thu close marks (Options Desk sync) — credit uP&L −$15; book Net −$15 (ROC −3.2%). dayPnL −$18.50 vs Wed settle."
-  },
-  {
-   "id": "TXN-018",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-10-16T12:38:00-04:00",
-   "underlying": "BOOK",
-   "legs": "midday snapshot — PAPER-004 @ 0.24 (credit)",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": 12,
-   "note": "Fri midday marks (Options Desk sync) — credit uP&L +$12; book Net +$12 (ROC 2.6%). MSTR −8.8% on MSCI non-operating-company index rules (list Nov 11, effective after Nov 30); BTC flat ~81.5k. Kills clear; TP 0.18 not hit; close by Wed Oct 21."
-  },
-  {
-   "id": "TXN-019",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-10-16T16:18:00-04:00",
-   "underlying": "BOOK",
-   "legs": "close snapshot — PAPER-004 @ 0.225 (credit)",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": 13.5,
-   "note": "Fri close marks (Options Desk sync) — credit uP&L +$13.50; book Net +$13.50 (ROC 2.9%). dayPnL +$28.50 vs Thu close 0.51. MSTR −9.6% on MSCI non-operating index overhang; kills clear; TP 0.18 not hit; close by Wed Oct 21."
-  },
-  {
-   "id": "TXN-020",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-10-19T09:34:00-04:00",
-   "underlying": "BOOK",
-   "legs": "open snapshot — PAPER-004 @ 0.10 (credit)",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": 26,
-   "note": "Mon open marks (Options Desk sync) — credit uP&L +$26; book Net +$26 (ROC 5.6%). Mid 0.10 through TP 0.18 but natural buyback 0.46 — no paper fill; work ≤0.20 natural by Tue, hard close Wed Oct 21."
-  },
-  {
-   "id": "TXN-021",
-   "type": "mark",
-   "ticketId": "BOOK",
-   "ts": "2026-10-19T16:16:00-04:00",
-   "underlying": "BOOK",
-   "legs": "close snapshot — PAPER-004 @ 0.17 (credit)",
-   "fill": null,
-   "debitCredit": 0,
-   "dayPnL": 5.5,
-   "note": "Mon close marks (Options Desk sync) — PAPER-004 mid 0.17 (190C 0.915 / 195C 0.745), natural buyback 0.26; credit uP&L +$19; book Net +$19 (ROC 4.1%). Day +$5.50 vs Fri close 0.225. Mid through TP 0.18 but natural 0.26 > 0.20 work level — no paper fill; work ≤0.20 natural Tue, hard close Wed Oct 21. Kills clear (mark≥0.72 / close≥170 / Δ>0.30)."
-  }
- ],
- "marksHistory": [
-  {
-   "ts": "2026-09-23T10:15:00-04:00",
-   "session": "open",
-   "date": "2026-09-23",
-   "tickets": {
-    "PAPER-001": 1.9
-   },
-   "bookMTM": 190,
-   "bookNet": 0
-  },
-  {
-   "ts": "2026-09-23T12:45:00-04:00",
-   "session": "midday",
-   "date": "2026-09-23",
-   "tickets": {
-    "PAPER-001": 2.15
-   },
-   "bookMTM": 215,
-   "bookNet": 25
-  },
-  {
-   "ts": "2026-09-23T14:05:00-04:00",
-   "session": "open",
-   "date": "2026-09-23",
-   "tickets": {
-    "PAPER-001": 2.15,
-    "PAPER-002": 0.75
-   },
-   "bookMTM": 290,
-   "bookNet": 25
-  },
-  {
-   "ts": "2026-09-23T15:00:00-04:00",
-   "session": "midday",
-   "date": "2026-09-23",
-   "tickets": {
-    "PAPER-001": 2.28,
-    "PAPER-002": 0.92
-   },
-   "bookMTM": 320,
-   "bookNet": 55
-  },
-  {
-   "ts": "2026-09-23T16:38:00-04:00",
-   "session": "close",
-   "date": "2026-09-23",
-   "tickets": {
-    "PAPER-001": 3.27,
-    "PAPER-002": 0.22
-   },
-   "bookMTM": 349,
-   "bookNet": 84
-  },
-  {
-   "ts": "2026-09-24T09:37:00-04:00",
-   "session": "open",
-   "date": "2026-09-24",
-   "tickets": {
-    "PAPER-001": 3.57,
-    "PAPER-002": 0.31
-   },
-   "bookMTM": 388,
-   "bookNet": 123
-  },
-  {
-   "ts": "2026-09-24T12:33:00-04:00",
-   "session": "midday",
-   "date": "2026-09-24",
-   "tickets": {
-    "PAPER-001": 3.57,
-    "PAPER-002": 0.6
-   },
-   "bookMTM": 417,
-   "bookNet": 152
-  },
-  {
-   "ts": "2026-09-24T16:17:00-04:00",
-   "session": "close",
-   "date": "2026-09-24",
-   "tickets": {
-    "PAPER-001": 3.58,
-    "PAPER-002": 0.38
-   },
-   "bookMTM": 396,
-   "bookNet": 131
-  },
-  {
-   "ts": "2026-09-25T09:32:00-04:00",
-   "session": "open",
-   "date": "2026-09-25",
-   "tickets": {
-    "PAPER-001": 3.13,
-    "PAPER-002": 0.35
-   },
-   "bookMTM": 348,
-   "bookNet": 83
-  },
-  {
-   "ts": "2026-09-25T12:37:00-04:00",
-   "session": "midday",
-   "date": "2026-09-25",
-   "tickets": {
-    "PAPER-001": 3.37,
-    "PAPER-002": 0.24
-   },
-   "bookMTM": 361,
-   "bookNet": 96
-  },
-  {
-   "ts": "2026-09-25T16:14:00-04:00",
-   "session": "close",
-   "date": "2026-09-25",
-   "tickets": {
-    "PAPER-001": 3.67,
-    "PAPER-002": 0
-   },
-   "bookMTM": 367,
-   "bookNet": 102
-  },
-  {
-   "ts": "2026-09-28T12:45:00-04:00",
-   "session": "midday",
-   "date": "2026-09-28",
-   "tickets": {
-    "PAPER-003": 2.4
-   },
-   "bookMTM": 240,
-   "bookNet": 0
-  },
-  {
-   "ts": "2026-09-28T16:20:00-04:00",
-   "session": "close",
-   "date": "2026-09-28",
-   "tickets": {
-    "PAPER-003": 2.2
-   },
-   "bookMTM": 220,
-   "bookNet": -20
-  },
-  {
-   "ts": "2026-09-29T16:12:00-04:00",
-   "session": "close",
-   "date": "2026-09-29",
-   "tickets": {
-    "PAPER-003": 2.03
-   },
-   "bookMTM": 203,
-   "bookNet": -37
-  },
-  {
-   "ts": "2026-09-30T09:10:00-04:00",
-   "session": "open",
-   "date": "2026-09-30",
-   "tickets": {
-    "PAPER-003": 2.03
-   },
-   "bookMTM": 203,
-   "bookNet": -37
-  },
-  {
-   "ts": "2026-09-30T12:38:00-04:00",
-   "session": "midday",
-   "date": "2026-09-30",
-   "tickets": {
-    "PAPER-003": 2
-   },
-   "bookMTM": 200,
-   "bookNet": -40
-  },
-  {
-   "ts": "2026-09-30T16:20:00-04:00",
-   "session": "close",
-   "date": "2026-09-30",
-   "tickets": {
-    "PAPER-003": 1.85
-   },
-   "bookMTM": 185,
-   "bookNet": -55
-  },
-  {
-   "ts": "2026-10-01T09:08:00-04:00",
-   "session": "open",
-   "date": "2026-10-01",
-   "tickets": {
-    "PAPER-003": 1.85
-   },
-   "bookMTM": 185,
-   "bookNet": -55
-  },
-  {
-   "ts": "2026-10-01T12:34:00-04:00",
-   "session": "midday",
-   "date": "2026-10-01",
-   "tickets": {
-    "PAPER-003": 2.3
-   },
-   "bookMTM": 230,
-   "bookNet": -10
-  },
-  {
-   "ts": "2026-10-01T16:10:00-04:00",
-   "session": "close",
-   "date": "2026-10-01",
-   "tickets": {
-    "PAPER-003": 2.63
-   },
-   "bookMTM": 263,
-   "bookNet": 23
-  },
-  {
-   "ts": "2026-10-02T09:11:00-04:00",
-   "session": "open",
-   "date": "2026-10-02",
-   "tickets": {
-    "PAPER-003": 2.63
-   },
-   "bookMTM": 263,
-   "bookNet": 23
-  },
-  {
-   "ts": "2026-10-02T12:41:00-04:00",
-   "session": "midday",
-   "date": "2026-10-02",
-   "tickets": {
-    "PAPER-003": 2.5
-   },
-   "bookMTM": 250,
-   "bookNet": 10
-  },
-  {
-   "ts": "2026-10-02T16:10:00-04:00",
-   "session": "close",
-   "date": "2026-10-02",
-   "tickets": {
-    "PAPER-003": 2.33
-   },
-   "bookMTM": 233,
-   "bookNet": -7
-  },
-  {
-   "ts": "2026-10-06T16:13:00-04:00",
-   "session": "close",
-   "date": "2026-10-06",
-   "tickets": {
-    "PAPER-003": 3.25
-   },
-   "bookMTM": 325,
-   "bookNet": 85
-  },
-  {
-   "ts": "2026-10-07T09:22:00-04:00",
-   "session": "open",
-   "date": "2026-10-07",
-   "tickets": {
-    "PAPER-003": 3.25
-   },
-   "bookMTM": 325,
-   "bookNet": 85
-  },
-  {
-   "ts": "2026-10-07T12:44:00-04:00",
-   "session": "midday",
-   "date": "2026-10-07",
-   "tickets": {
-    "PAPER-003": 2
-   },
-   "bookMTM": 200,
-   "bookNet": -40
-  },
-  {
-   "ts": "2026-10-07T16:15:00-04:00",
-   "session": "close",
-   "date": "2026-10-07",
-   "tickets": {
-    "PAPER-003": 1.75
-   },
-   "bookMTM": 175,
-   "bookNet": -65
-  },
-  {
-   "ts": "2026-10-08T09:23:00-04:00",
-   "session": "open",
-   "date": "2026-10-08",
-   "tickets": {
-    "PAPER-003": 1.75
-   },
-   "bookMTM": 175,
-   "bookNet": -65
-  },
-  {
-   "ts": "2026-10-08T16:05:00-04:00",
-   "session": "close",
-   "date": "2026-10-08",
-   "tickets": {
-    "PAPER-003": 1.43
-   },
-   "bookMTM": 143,
-   "bookNet": -97
-  },
-  {
-   "ts": "2026-10-09T09:38:00-04:00",
-   "session": "open",
-   "date": "2026-10-09",
-   "tickets": {
-    "PAPER-003": 1.49
-   },
-   "bookMTM": 149,
-   "bookNet": -91
-  },
-  {
-   "ts": "2026-10-09T11:16:00-04:00",
-   "session": "midday",
-   "date": "2026-10-09",
-   "tickets": {
-    "PAPER-003": 1.95
-   },
-   "bookMTM": 195,
-   "bookNet": -45
-  },
-  {
-   "ts": "2026-10-09T12:53:00-04:00",
-   "session": "midday",
-   "date": "2026-10-09",
-   "tickets": {
-    "PAPER-003": 2.15
-   },
-   "bookMTM": 215,
-   "bookNet": -25
-  },
-  {
-   "ts": "2026-10-09T16:24:00-04:00",
-   "session": "close",
-   "date": "2026-10-09",
-   "tickets": {
-    "PAPER-003": 1.85
-   },
-   "bookMTM": 185,
-   "bookNet": -55
-  },
-  {
-   "ts": "2026-10-12T12:54:00-04:00",
-   "session": "midday",
-   "date": "2026-10-12",
-   "tickets": {
-    "PAPER-003": 1.65
-   },
-   "bookMTM": 165,
-   "bookNet": -75
-  },
-  {
-   "ts": "2026-10-12T16:25:00-04:00",
-   "session": "close",
-   "date": "2026-10-12",
-   "tickets": {},
-   "bookMTM": 0,
-   "bookNet": 0,
-   "exits": {
-    "PAPER-003": 1.51
-   },
-   "underlyings": {
-    "MSTR": 152.79,
-    "ASST": 27.72,
-    "STRC": 99.9,
-    "SATA": 99.395,
-    "QQQ": 746.02,
-    "BTC": 82978
-   }
-  },
-  {
-   "ts": "2026-10-14T12:39:00-04:00",
-   "session": "midday",
-   "date": "2026-10-14",
-   "tickets": {
-    "PAPER-004": 0.36
-   },
-   "bookMTM": 0,
-   "bookNet": 0,
-   "underlyings": {}
-  },
-  {
-   "ts": "2026-10-14T16:14:00-04:00",
-   "session": "close",
-   "date": "2026-10-14",
-   "tickets": {
-    "PAPER-004": 0.325
-   },
-   "bookMTM": 32.5,
-   "bookNet": 3.5,
-   "underlyings": {
-    "MSTR": 143.23
-   },
-   "legMarks": {
-    "PAPER-004": {
-     "190C": 2.1,
-     "195C": 1.775
-    }
-   }
-  },
-  {
-   "ts": "2026-10-15T12:36:00-04:00",
-   "session": "midday",
-   "date": "2026-10-15",
-   "tickets": {
-    "PAPER-004": 0.47
-   },
-   "bookMTM": 47,
-   "bookNet": -11,
-   "underlyings": {
-    "MSTR": 148.08,
-    "ASST": 25.07,
-    "STRC": 99.47,
-    "SATA": 97.82,
-    "QQQ": 723.93,
-    "BTC": 82050
-   },
-   "legMarks": {
-    "PAPER-004": {
-     "190C": 2.76,
-     "195C": 2.29
-    }
-   },
-   "note": "MSTR bounce + IV; kills not hit; no QQQ A (SPY 770 > 760)."
-  },
-  {
-   "ts": "2026-10-15T16:18:00-04:00",
-   "session": "close",
-   "date": "2026-10-15",
-   "tickets": {
-    "PAPER-004": 0.51
-   },
-   "bookMTM": 51,
-   "bookNet": -15,
-   "underlyings": {
-    "MSTR": 151.28,
-    "ASST": 25.64,
-    "STRC": 99.58,
-    "SATA": 97.68,
-    "QQQ": 728.04,
-    "BTC": 82300
-   },
-   "legMarks": {
-    "PAPER-004": {
-     "190C": 3.125,
-     "195C": 2.615
-    }
-   },
-   "note": "Close mark; dayPnL −$18.50 vs Wed settle 0.325."
-  },
-  {
-   "ts": "2026-10-16T12:38:00-04:00",
-   "session": "midday",
-   "date": "2026-10-16",
-   "tickets": {
-    "PAPER-004": 0.24
-   },
-   "bookMTM": 24.0,
-   "bookNet": 12,
-   "underlyings": {
-    "MSTR": 137.92
-   },
-   "legMarks": {
-    "PAPER-004": {
-     "190C": 1.45,
-     "195C": 1.21
-    }
-   },
-   "note": "MSTR −8.8% on MSCI non-operating-company index rules (list Nov 11, effective after Nov 30); BTC flat ~81.5k. Kills clear; TP 0.18 not hit; close by Wed Oct 21."
-  },
-  {
-   "ts": "2026-10-16T16:18:00-04:00",
-   "session": "close",
-   "date": "2026-10-16",
-   "tickets": {
-    "PAPER-004": 0.225
-   },
-   "bookMTM": 22.5,
-   "bookNet": 13.5,
-   "underlyings": {
-    "MSTR": 136.83,
-    "ASST": 24.1,
-    "STRC": 97.72,
-    "SATA": 96.86,
-    "QQQ": 709.86,
-    "BTC": 81520
-   },
-   "legMarks": {
-    "PAPER-004": {
-     "190C": 1.255,
-     "195C": 1.03
-    }
-   },
-   "note": "MSTR −9.6% on MSCI non-operating index overhang; kills clear; TP 0.18 not hit; close by Wed Oct 21."
-  },
-  {
-   "ts": "2026-10-19T09:34:00-04:00",
-   "session": "open",
-   "date": "2026-10-19",
-   "tickets": {
-    "PAPER-004": 0.1
-   },
-   "bookMTM": 10.0,
-   "bookNet": 26,
-   "underlyings": {
-    "MSTR": 140.45,
-    "ASST": 24.89,
-    "STRC": 98.18,
-    "SATA": 97.2,
-    "QQQ": 720.06,
-    "BTC": 82384
-   },
-   "legMarks": {
-    "PAPER-004": {
-     "190C": 1.28,
-     "195C": 1.18
-    }
-   },
-   "note": "Mid 0.10 through TP 0.18 but natural buyback 0.46 — no paper fill; work ≤0.20 natural by Tue, hard close Wed Oct 21."
-  },
-  {
-   "ts": "2026-10-19T10:44:11-04:00",
-   "session": "midday",
-   "date": "2026-10-19",
-   "tickets": {
-    "PAPER-004": 0.21
-   },
-   "bookMTM": 15,
-   "bookNet": 15
-  },
-  {
-   "ts": "2026-10-19T12:40:00-04:00",
-   "session": "midday",
-   "date": "2026-10-19",
-   "tickets": {
-    "PAPER-004": 0.215
-   },
-   "bookMTM": 21.5,
-   "bookNet": 14.5,
-   "note": "credit uP&L +$14.50; natural buyback ~0.28; ROC 3.1%"
-  },
-  {
-   "ts": "2026-10-19T16:16:00-04:00",
-   "session": "close",
-   "date": "2026-10-19",
-   "tickets": {
-    "PAPER-004": 0.17
-   },
-   "bookMTM": 17.0,
-   "bookNet": 19,
-   "underlyings": {
-    "MSTR": 135.8,
-    "ASST": 25.56,
-    "STRC": 98.6,
-    "SATA": 97.68,
-    "QQQ": 718.32,
-    "BTC": 81905
-   },
-   "legMarks": {
-    "PAPER-004": {
-     "190C": 0.915,
-     "195C": 0.745
-    }
-   },
-   "note": "credit uP&L +$19; natural buyback 0.26; ROC 4.1%"
-  }
- ]
+  ]
 };</script>
   <script>
 /**
