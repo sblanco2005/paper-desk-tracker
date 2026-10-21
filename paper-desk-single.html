@@ -1037,8 +1037,8 @@ body {
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Wed Oct 21, 2026 open — PAPER-004 CLOSED: bought to close @ 0.42 natural (entry credit 0.36), realized −$6 (−1.3%). PAPER-005 HOLD mark 3.775 (−$76.50; natural 3.69). Capital $918, Net −$82.50, ROC −8.99%, 1 open.",
-    "revisedAt": "2026-10-21T09:33:00-04:00"
+    "seedNote": "Wed Oct 21, 2026 midday — PAPER-005 HOLD mark 3.36 (−$118; natural 3.33). Kill-watch: QQQ 725.29 intraday vs close-kill >=725. PAPER-004 EXIT (realized −$6). Capital $918, Net −$124, ROC −13.51%, 1 open.",
+    "revisedAt": "2026-10-21T12:36:48-04:00"
   },
   "buckets": {
     "A": {
@@ -1632,10 +1632,18 @@ body {
           "label": "open",
           "mid": 3.775,
           "natural": 3.69
+        },
+        {
+          "ts": "2026-10-21T12:36:48-04:00",
+          "label": "midday",
+          "mid": 3.36,
+          "natural": 3.33,
+          "note": "Kill-watch: QQQ 725.29 intraday vs close-kill >=725"
         }
       ],
-      "mark": 3.775,
-      "naturalMark": 3.69
+      "mark": 3.36,
+      "naturalMark": 3.33,
+      "note": "Kill-watch: QQQ 725.29 intraday vs close-kill >=725"
     }
   ],
   "transactions": [
@@ -1955,6 +1963,18 @@ body {
       "debitCredit": 0,
       "dayPnL": -42,
       "note": "Wed open (Options Desk sync) — PAPER-004 CLOSED (realized −$6); PAPER-005 HOLD mark 3.775, uP&L −$76.50 (natural 3.69). Book capital $918 ($454 open + $464 closed today), realized −$6, unrealized −$76.50, Net −$82.50 (ROC −8.99%). 1 open position — book NOT flat. Day −$42 vs Tue close Net −$40.50."
+    },
+    {
+      "id": "TXN-027",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-21T12:36:48-04:00",
+      "underlying": "BOOK",
+      "legs": "midday snapshot — PAPER-005 @ 3.36 (natural 3.33)",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -83.5,
+      "note": "Wed midday marks (Options Desk sync) — PAPER-005 HOLD mark 3.36, uP&L −$118 (natural 3.33). Kill-watch: QQQ 725.29 intraday vs close-kill >=725. PAPER-004 EXIT unchanged (realized −$6). Book capital $918, open risk $454, Net −$124 (ROC −13.51%). Day −$83.50 vs Tue close Net −$40.50."
     }
   ],
   "marksHistory": [
@@ -2566,6 +2586,20 @@ body {
         "MSTR": 145.38
       },
       "note": "PAPER-004 EXIT @ 0.42 (−$6 realized); PAPER-005 −$76.50; capital $918; Net −$82.50; ROC −8.99%"
+    },
+    {
+      "ts": "2026-10-21T12:36:48-04:00",
+      "session": "midday",
+      "date": "2026-10-21",
+      "tickets": {
+        "PAPER-005": 3.36
+      },
+      "naturalMarks": {
+        "PAPER-005": 3.33
+      },
+      "bookMTM": 336.0,
+      "bookNet": -124,
+      "note": "PAPER-005 −$118; PAPER-004 realized −$6; capital $918; Net −$124; ROC −13.51%; Kill-watch: QQQ 725.29 intraday vs close-kill >=725"
     }
   ]
 };</script>
