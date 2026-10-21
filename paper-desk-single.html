@@ -1037,8 +1037,8 @@ body {
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Tue Oct 20, 2026 close — PAPER-004 mark 0.255 (credit, +$10.50; natural 0.34); PAPER-005 mark 4.03 (−$51.00; natural 3.92). Capital $918, Net −$40.50, ROC -4.41%.",
-    "revisedAt": "2026-10-20T16:13:00-04:00"
+    "seedNote": "Wed Oct 21, 2026 open — PAPER-004 CLOSED: bought to close @ 0.42 natural (entry credit 0.36), realized −$6 (−1.3%). PAPER-005 HOLD mark 3.775 (−$76.50; natural 3.69). Capital $918, Net −$82.50, ROC −8.99%, 1 open.",
+    "revisedAt": "2026-10-21T09:33:00-04:00"
   },
   "buckets": {
     "A": {
@@ -1047,7 +1047,7 @@ body {
     },
     "B": {
       "label": "Tactical",
-      "used": 464
+      "used": 0
     },
     "C": {
       "label": "Event / lottery",
@@ -1467,7 +1467,7 @@ body {
       "bucket": "B",
       "kill": "Spread mark >=0.72 or MSTR daily close >=$170 or 190C delta >0.30; TP 0.18; close/roll by Oct 21 (30 DTE)",
       "thesis": "Post-hot-CPI income: hike odds up caps MSTR upside near term; elevated IV pays for ~15-delta calls 31% OTM; defined risk, 1 lot (~23% of unused).",
-      "status": "HOLD",
+      "status": "EXIT",
       "openedAt": "2026-10-14T12:39:00-04:00",
       "entryDate": "2026-10-14",
       "marks": [
@@ -1537,15 +1537,41 @@ body {
           "label": "close",
           "mid": 0.255,
           "natural": 0.34
+        },
+        {
+          "ts": "2026-10-21T09:32:00-04:00",
+          "label": "exit",
+          "mid": 0.42,
+          "natural": 0.42,
+          "midAtExit": 0.31
         }
       ],
-      "mark": 0.255,
+      "mark": 0.42,
       "legMarks": {
-        "190C": 0.915,
-        "195C": 0.745
+        "190C": 1.68,
+        "195C": 1.26
       },
-      "underlyingMark": 135.8,
-      "naturalMark": 0.34
+      "underlyingMark": 145.38,
+      "naturalMark": 0.42,
+      "closedAt": "2026-10-21T09:32:00-04:00",
+      "exitPrice": 0.42,
+      "realizedPnl": -6,
+      "exitLegs": [
+        {
+          "leg": "190C",
+          "side": "buy_to_close",
+          "price": 1.68,
+          "bid": 1.57,
+          "ask": 1.68
+        },
+        {
+          "leg": "195C",
+          "side": "sell_to_close",
+          "price": 1.26,
+          "bid": 1.26,
+          "ask": 1.37
+        }
+      ]
     },
     {
       "id": "PAPER-005",
@@ -1600,10 +1626,16 @@ body {
           "label": "close",
           "mid": 4.03,
           "natural": 3.92
+        },
+        {
+          "ts": "2026-10-21T09:33:00-04:00",
+          "label": "open",
+          "mid": 3.775,
+          "natural": 3.69
         }
       ],
-      "mark": 4.03,
-      "naturalMark": 3.92
+      "mark": 3.775,
+      "naturalMark": 3.69
     }
   ],
   "transactions": [
@@ -1898,6 +1930,31 @@ body {
       "debitCredit": 0,
       "dayPnL": -62.5,
       "note": "Tue midday marks (Options Desk sync) — PAPER-004 credit uP&L +$6.50 (natural buyback 0.38); PAPER-005 uP&L −$57.50 (natural 3.91). Book capital $918, Net −$51.00 (ROC -5.56%)."
+    },
+    {
+      "id": "TXN-025",
+      "type": "exit",
+      "ticketId": "PAPER-004",
+      "ts": "2026-10-21T09:32:00-04:00",
+      "underlying": "MSTR",
+      "legs": "buy to close Nov20 190C / sell to close Nov20 195C credit vertical x1 EXIT @ 0.42 debit (natural; mid 0.31) — 190C 1.68 / 195C 1.26",
+      "fill": 0.42,
+      "debitCredit": -42,
+      "side": "credit",
+      "dayPnL": -6,
+      "note": "Wed Oct 21 open EXIT — Wed hard-close plan, default natural at open. Entry credit 0.36 → exit debit 0.42; realized −$6 (−1.3% on $464). MSTR 145.38."
+    },
+    {
+      "id": "TXN-026",
+      "type": "mark",
+      "ticketId": "BOOK",
+      "ts": "2026-10-21T09:33:00-04:00",
+      "underlying": "BOOK",
+      "legs": "open snapshot — PAPER-005 @ 3.775 (natural 3.69)",
+      "fill": null,
+      "debitCredit": 0,
+      "dayPnL": -42,
+      "note": "Wed open (Options Desk sync) — PAPER-004 CLOSED (realized −$6); PAPER-005 HOLD mark 3.775, uP&L −$76.50 (natural 3.69). Book capital $918 ($454 open + $464 closed today), realized −$6, unrealized −$76.50, Net −$82.50 (ROC −8.99%). 1 open position — book NOT flat. Day −$42 vs Tue close Net −$40.50."
     }
   ],
   "marksHistory": [
@@ -2492,6 +2549,23 @@ body {
       "bookMTM": 426.0,
       "bookNet": -51.0,
       "note": "PAPER-004 +$6.50; PAPER-005 −$57.50; capital $918; ROC -5.56%; naturals 0.38 / 3.91"
+    },
+    {
+      "ts": "2026-10-21T09:33:00-04:00",
+      "session": "open",
+      "date": "2026-10-21",
+      "tickets": {
+        "PAPER-005": 3.775
+      },
+      "naturalMarks": {
+        "PAPER-005": 3.69
+      },
+      "bookMTM": 377.5,
+      "bookNet": -82.5,
+      "underlyings": {
+        "MSTR": 145.38
+      },
+      "note": "PAPER-004 EXIT @ 0.42 (−$6 realized); PAPER-005 −$76.50; capital $918; Net −$82.50; ROC −8.99%"
     }
   ]
 };</script>
