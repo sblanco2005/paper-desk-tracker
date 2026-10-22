@@ -5,8 +5,8 @@
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Thu Oct 22, 2026 open — book flat, no transactions. Marks: MSTR 144.33, QQQ 713.12, BTC 81,606. Capital $918, Net −$120, ROC −13.07%, 0 open.",
-    "revisedAt": "2026-10-22T09:07:00-04:00"
+    "seedNote": "Thu Oct 22, 2026 midday — book flat, no transactions. Marks: MSTR 146.57, QQQ 708.00, BTC 81,400. Capital $918, Net −$120, ROC −13.07%, 0 open.",
+    "revisedAt": "2026-10-22T12:36:00-04:00"
   },
   "buckets": {
     "A": {
@@ -1629,6 +1629,26 @@
         "BTC": 81606
       },
       "note": "Open mark — book flat, no transactions; capital $918; Net −$120; ROC −13.07%"
+    },
+    {
+      "ts": "2026-10-22T12:36:00-04:00",
+      "session": "midday",
+      "date": "2026-10-22",
+      "tickets": {},
+      "naturalMarks": {},
+      "bookMTM": 0,
+      "bookNet": -120,
+      "underlyings": {
+        "MSTR": 146.57,
+        "ASST": 28.83,
+        "STRC": 99.07,
+        "SATA": 97.47,
+        "QQQ": 708.0,
+        "SMH": 528.22,
+        "SPY": 764.2,
+        "BTC": 81400
+      },
+      "note": "Midday mark — book flat, no transactions; capital $918; Net −$120; ROC −13.07%"
     }
   ]
 }
