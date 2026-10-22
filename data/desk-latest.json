@@ -5,13 +5,13 @@
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Thu Oct 22, 2026 midday — book flat, no transactions. Marks: MSTR 146.57, QQQ 708.00, BTC 81,400. Capital $918, Net −$120, ROC −13.07%, 0 open.",
-    "revisedAt": "2026-10-22T12:36:00-04:00"
+    "seedNote": "Thu Oct 22, 2026 close — NEW PAPER-006 QQQ Nov20 695/680 put debit @ 4.50 (mark 4.305, natural 4.11, −$19.50). Realized −$120 prior. Capital $1,368, open $450, Net −$139.50, ROC −10.20%, unused $1,410.50, 1 open.",
+    "revisedAt": "2026-10-22T16:15:00-04:00"
   },
   "buckets": {
     "A": {
       "label": "Core defined-risk",
-      "used": 0
+      "used": 450
     },
     "B": {
       "label": "Tactical",
@@ -624,6 +624,56 @@
       "exitPrice": 3.4,
       "realizedPnl": -114,
       "underlyingMark": 725.21
+    },
+    {
+      "id": "PAPER-006",
+      "underlying": "QQQ",
+      "structure": "Put debit vertical",
+      "structureSide": "long",
+      "side": "debit",
+      "qty": 1,
+      "expiration": "2026-11-20",
+      "legs": [
+        {
+          "side": "long",
+          "right": "P",
+          "strike": 695,
+          "exp": "Nov20",
+          "price": 15.61
+        },
+        {
+          "side": "short",
+          "right": "P",
+          "strike": 680,
+          "exp": "Nov20",
+          "price": 11.11
+        }
+      ],
+      "entry": 4.5,
+      "cost": 450,
+      "maxLoss": 450,
+      "maxGain": 1050,
+      "breakeven": 690.5,
+      "bucket": "A",
+      "riskUnit": "QQQ",
+      "kill": "QQQ close >=716 or mark <=2.25",
+      "takeProfit": "mark >=9.00 or QQQ <=685",
+      "timeStop": "2026-11-13",
+      "thesis": "QQQ put debit spread opened at Thu Oct 22 close (Options Desk).",
+      "status": "HOLD",
+      "openedAt": "2026-10-22T16:15:00-04:00",
+      "entryDate": "2026-10-22",
+      "marks": [
+        {
+          "ts": "2026-10-22T16:15:00-04:00",
+          "label": "close",
+          "mid": 4.305,
+          "natural": 4.11
+        }
+      ],
+      "mark": 4.305,
+      "naturalMark": 4.11,
+      "underlyingMark": 704.59
     }
   ],
   "transactions": [
@@ -968,6 +1018,20 @@
       "side": "debit",
       "dayPnL": -114,
       "note": "Wed Oct 21 close EXIT — kill hit: QQQ daily close 725.21 >= 725. Entry 4.54 → exit 3.40 natural; realized −$114 (−25.1% on $454). Book flat: realized today −$120 (PAPER-004 −$6 + PAPER-005 −$114), ROC −13.07% on $918. 0 open."
+    },
+    {
+      "id": "TXN-029",
+      "type": "open",
+      "ticketId": "PAPER-006",
+      "ts": "2026-10-22T16:15:00-04:00",
+      "underlying": "QQQ",
+      "legs": "Bought 1x QQQ Nov20 695/680 put debit vertical @ 4.50 debit (695P 15.61 / 680P 11.11)",
+      "fill": 4.5,
+      "debitCredit": -450,
+      "side": "debit",
+      "maxLoss": 450,
+      "dayPnL": 0,
+      "note": "Opened at Thu Oct 22 close. Bucket A, QQQ risk unit. Kill: QQQ close >=716 or mark <=2.25; TP mark >=9.00 or QQQ <=685; time stop Nov 13. Close mark 4.305 (natural 4.11), uP&L −$19.50."
     }
   ],
   "marksHistory": [
@@ -1649,6 +1713,30 @@
         "BTC": 81400
       },
       "note": "Midday mark — book flat, no transactions; capital $918; Net −$120; ROC −13.07%"
+    },
+    {
+      "ts": "2026-10-22T16:15:00-04:00",
+      "session": "close",
+      "date": "2026-10-22",
+      "tickets": {
+        "PAPER-006": 4.305
+      },
+      "naturalMarks": {
+        "PAPER-006": 4.11
+      },
+      "bookMTM": 430.5,
+      "bookNet": -139.5,
+      "underlyings": {
+        "MSTR": 145.88,
+        "ASST": 29.04,
+        "STRC": 98.67,
+        "SATA": 97.93,
+        "QQQ": 704.59,
+        "SMH": 523.16,
+        "SPY": 763.97,
+        "BTC": 81274
+      },
+      "note": "PAPER-006 OPEN @ 4.50, mark 4.305 (−$19.50); capital $1,368; open $450; Net −$139.50; ROC −10.20%; unused $1,410.50"
     }
   ]
 }
