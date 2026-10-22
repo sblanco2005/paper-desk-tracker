@@ -5,8 +5,8 @@
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Wed Oct 21, 2026 close — PAPER-005 EXIT @ 3.40 natural (mid 3.51), realized −$114 (kill: QQQ close 725.21 ≥725). PAPER-004 EXIT at open (−$6). Book FLAT: capital $918, Net −$120, ROC −13.07%, 0 open.",
-    "revisedAt": "2026-10-21T16:14:00-04:00"
+    "seedNote": "Thu Oct 22, 2026 open — book flat, no transactions. Marks: MSTR 144.33, QQQ 713.12, BTC 81,606. Capital $918, Net −$120, ROC −13.07%, 0 open.",
+    "revisedAt": "2026-10-22T09:07:00-04:00"
   },
   "buckets": {
     "A": {
@@ -1609,6 +1609,26 @@
         "QQQ": 725.21
       },
       "note": "PAPER-005 EXIT @ 3.40 (−$114); PAPER-004 EXIT earlier (−$6); book flat; capital $918; Net −$120; ROC −13.07%"
+    },
+    {
+      "ts": "2026-10-22T09:07:00-04:00",
+      "session": "open",
+      "date": "2026-10-22",
+      "tickets": {},
+      "naturalMarks": {},
+      "bookMTM": 0,
+      "bookNet": -120,
+      "underlyings": {
+        "MSTR": 144.33,
+        "ASST": 28.99,
+        "STRC": 98.8,
+        "SATA": 98.15,
+        "QQQ": 713.12,
+        "SMH": 535.22,
+        "SPY": 765.95,
+        "BTC": 81606
+      },
+      "note": "Open mark — book flat, no transactions; capital $918; Net −$120; ROC −13.07%"
     }
   ]
 }
