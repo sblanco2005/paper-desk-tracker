@@ -1037,8 +1037,8 @@ body {
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Thu Oct 22, 2026 close — NEW PAPER-006 QQQ Nov20 695/680 put debit @ 4.50 (mark 4.305, natural 4.11, −$19.50). Realized −$120 prior. Capital $1,368, open $450, Net −$139.50, ROC −10.20%, unused $1,410.50, 1 open.",
-    "revisedAt": "2026-10-22T16:15:00-04:00"
+    "seedNote": "Fri Oct 23, 2026 open — PAPER-006 QQQ Nov20 695/680 put debit HOLD, mark 4.305 (natural 4.11, −$19.50); QQQ 702.68. Realized −$120 prior. Capital $1,368, open $450, Net −$139.50, ROC −10.20%, unused $1,410.50, 1 open.",
+    "revisedAt": "2026-10-23T09:09:00-04:00"
   },
   "buckets": {
     "A": {
@@ -1701,11 +1701,17 @@ body {
           "label": "close",
           "mid": 4.305,
           "natural": 4.11
+        },
+        {
+          "ts": "2026-10-23T09:09:00-04:00",
+          "label": "open",
+          "mid": 4.305,
+          "natural": 4.11
         }
       ],
       "mark": 4.305,
       "naturalMark": 4.11,
-      "underlyingMark": 704.59
+      "underlyingMark": 702.68
     }
   ],
   "transactions": [
@@ -2769,6 +2775,30 @@ body {
         "BTC": 81274
       },
       "note": "PAPER-006 OPEN @ 4.50, mark 4.305 (−$19.50); capital $1,368; open $450; Net −$139.50; ROC −10.20%; unused $1,410.50"
+    },
+    {
+      "ts": "2026-10-23T09:09:00-04:00",
+      "session": "open",
+      "date": "2026-10-23",
+      "tickets": {
+        "PAPER-006": 4.305
+      },
+      "naturalMarks": {
+        "PAPER-006": 4.11
+      },
+      "bookMTM": 430.5,
+      "bookNet": -139.5,
+      "underlyings": {
+        "MSTR": 145.19,
+        "ASST": 29.16,
+        "STRC": 98.93,
+        "SATA": 97.9,
+        "QQQ": 702.68,
+        "SMH": 524.6,
+        "SPY": 760.61,
+        "BTC": 81500
+      },
+      "note": "PAPER-006 HOLD mark 4.305 (natural 4.11, −$19.50); capital $1,368; open $450; Net −$139.50; ROC −10.20%; unused $1,410.50"
     }
   ]
 };</script>
