@@ -5,8 +5,8 @@
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Fri Oct 23, 2026 close — PAPER-006 QQQ Nov20 695/680 put debit HOLD, mark 4.13 (natural 4.03, −$37); QQQ 704.39. Realized −$120 prior. Capital $1,368, open $450, Net −$157, ROC −11.48%, unused $1,393, 1 open.",
-    "revisedAt": "2026-10-23T16:19:00-04:00"
+    "seedNote": "Mon Oct 26, 2026 open — PAPER-006 QQQ Nov20 695/680 put debit HOLD, mark 4.13 (natural 4.03, −$37.000000000000014); QQQ 707.58 (quotes stale pre-RTH). Realized −$120 prior. Capital $1,368, open $450, Net −$157, ROC -11.48%, unused $1,393, 1 open.",
+    "revisedAt": "2026-10-26T09:21:00-04:00"
   },
   "buckets": {
     "A": {
@@ -687,11 +687,18 @@
           "label": "close",
           "mid": 4.13,
           "natural": 4.03
+        },
+        {
+          "ts": "2026-10-26T09:21:00-04:00",
+          "label": "open",
+          "mid": 4.13,
+          "natural": 4.03
         }
       ],
       "mark": 4.13,
       "naturalMark": 4.03,
-      "underlyingMark": 704.39
+      "underlyingMark": 707.58,
+      "lastNote": "Option quotes stale from Fri close (pre-RTH); QQQ pre +0.45%; kills clear (close>=716 / mark<=2.25)"
     }
   ],
   "transactions": [
@@ -1508,7 +1515,7 @@
       "tickets": {
         "PAPER-004": 0.24
       },
-      "bookMTM": 24.0,
+      "bookMTM": 24,
       "bookNet": 12,
       "underlyings": {
         "MSTR": 137.92
@@ -1553,7 +1560,7 @@
       "tickets": {
         "PAPER-004": 0.1
       },
-      "bookMTM": 10.0,
+      "bookMTM": 10,
       "bookNet": 26,
       "underlyings": {
         "MSTR": 140.45,
@@ -1599,7 +1606,7 @@
       "tickets": {
         "PAPER-004": 0.17
       },
-      "bookMTM": 17.0,
+      "bookMTM": 17,
       "bookNet": 19,
       "underlyings": {
         "MSTR": 135.8,
@@ -1641,8 +1648,8 @@
         "PAPER-004": 0.38,
         "PAPER-005": 3.91
       },
-      "bookMTM": 426.0,
-      "bookNet": -51.0,
+      "bookMTM": 426,
+      "bookNet": -51,
       "note": "PAPER-004 +$6.50; PAPER-005 −$57.50; capital $918; ROC -5.56%; naturals 0.38 / 3.91"
     },
     {
@@ -1672,7 +1679,7 @@
       "naturalMarks": {
         "PAPER-005": 3.33
       },
-      "bookMTM": 336.0,
+      "bookMTM": 336,
       "bookNet": -124,
       "note": "PAPER-005 −$118; PAPER-004 realized −$6; capital $918; Net −$124; ROC −13.51%; Kill-watch: QQQ 725.29 intraday vs close-kill >=725"
     },
@@ -1725,7 +1732,7 @@
         "ASST": 28.83,
         "STRC": 99.07,
         "SATA": 97.47,
-        "QQQ": 708.0,
+        "QQQ": 708,
         "SMH": 528.22,
         "SPY": 764.2,
         "BTC": 81400
@@ -1790,7 +1797,7 @@
       "naturalMarks": {
         "PAPER-006": 3.96
       },
-      "bookMTM": 401.0,
+      "bookMTM": 401,
       "bookNet": -169,
       "underlyings": {
         "QQQ": 706.78
@@ -1807,12 +1814,29 @@
       "naturalMarks": {
         "PAPER-006": 4.03
       },
-      "bookMTM": 413.0,
+      "bookMTM": 413,
       "bookNet": -157,
       "underlyings": {
         "QQQ": 704.39
       },
       "note": "PAPER-006 HOLD mark 4.13 (natural 4.03, −$37); capital $1,368; open $450; Net −$157; ROC −11.48%; unused $1,393"
+    },
+    {
+      "ts": "2026-10-26T09:21:00-04:00",
+      "session": "open",
+      "date": "2026-10-26",
+      "tickets": {
+        "PAPER-006": 4.13
+      },
+      "naturalMarks": {
+        "PAPER-006": 4.03
+      },
+      "bookMTM": 413,
+      "bookNet": -157,
+      "underlyings": {
+        "QQQ": 707.58
+      },
+      "note": "PAPER-006 HOLD mark 4.13 (natural 4.03, −$37.000000000000014); capital $1,368; open $450; Net −$157; ROC -11.48%; unused $1,393. Option quotes stale from Fri close (pre-RTH); QQQ pre +0.45%; kills clear (close>=716 / mark<=2.25)"
     }
   ]
 }
