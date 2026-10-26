@@ -5,8 +5,8 @@
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Mon Oct 26, 2026 midday — PAPER-006 QQQ Nov20 695/680 put debit HOLD, mark 3.22 (natural 3.18, −$128); QQQ 712.84. Kill-watch vs 716. Realized −$120 prior. Capital $1,368, open $450, Net −$248, ROC -18.13%, unused $1,302, 1 open.",
-    "revisedAt": "2026-10-26T12:38:00-04:00"
+    "seedNote": "Mon Oct 26, 2026 close — PAPER-006 QQQ Nov20 695/680 put debit HOLD, mark 3.31 (natural 3.25, −$119); QQQ 712.12. Kill-watch vs 716. Realized −$120 prior. Capital $1,368, open $450, Net −$239, ROC -17.47%, unused $1,311, 1 open.",
+    "revisedAt": "2026-10-26T16:14:00-04:00"
   },
   "buckets": {
     "A": {
@@ -659,7 +659,7 @@
       "kill": "QQQ close >=716 or mark <=2.25",
       "takeProfit": "mark >=9.00 or QQQ <=685",
       "timeStop": "2026-11-13",
-      "thesis": "QQQ put debit spread opened at Thu Oct 22 close (Options Desk).",
+      "thesis": "Bearish QQQ bet on the Beltas downside tilt (QQQ range 680–735); the put debit spread caps risk at the $450 debit and selling the 680P cuts IV cost.",
       "status": "HOLD",
       "openedAt": "2026-10-22T16:15:00-04:00",
       "entryDate": "2026-10-22",
@@ -699,12 +699,18 @@
           "label": "midday",
           "mid": 3.22,
           "natural": 3.18
+        },
+        {
+          "ts": "2026-10-26T16:14:00-04:00",
+          "label": "close",
+          "mid": 3.31,
+          "natural": 3.25
         }
       ],
-      "mark": 3.22,
-      "naturalMark": 3.18,
-      "underlyingMark": 712.84,
-      "lastNote": "Kill-watch: QQQ 712.84 vs 716 close kill; mark>2.25"
+      "mark": 3.31,
+      "naturalMark": 3.25,
+      "underlyingMark": 712.12,
+      "lastNote": "Close 10/26: QQQ 712.12 vs 716 close kill (not hit); mark 3.31 > 2.25. HOLD."
     }
   ],
   "transactions": [
@@ -1860,6 +1866,23 @@
         "QQQ": 712.84
       },
       "note": "PAPER-006 HOLD mark 3.22 (natural 3.18, −$128); capital $1,368; open $450; Net −$248; ROC -18.13%; unused $1,302. Kill-watch: QQQ 712.84 vs 716 close kill; mark>2.25"
+    },
+    {
+      "ts": "2026-10-26T16:14:00-04:00",
+      "session": "close",
+      "date": "2026-10-26",
+      "tickets": {
+        "PAPER-006": 3.31
+      },
+      "naturalMarks": {
+        "PAPER-006": 3.25
+      },
+      "bookMTM": 331,
+      "bookNet": -239,
+      "underlyings": {
+        "QQQ": 712.12
+      },
+      "note": "PAPER-006 HOLD mark 3.31 (natural 3.25, −$119); capital $1,368; open $450; Net −$239; ROC -17.47%; unused $1,311. Kill-watch: QQQ 712.12 vs 716 close kill; mark>2.25"
     }
   ]
 }
