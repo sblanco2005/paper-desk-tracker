@@ -5,8 +5,8 @@
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Mon Oct 26, 2026 close — PAPER-006 QQQ Nov20 695/680 put debit HOLD, mark 3.31 (natural 3.25, −$119); QQQ 712.12. Kill-watch vs 716. Realized −$120 prior. Capital $1,368, open $450, Net −$239, ROC -17.47%, unused $1,311, 1 open.",
-    "revisedAt": "2026-10-26T16:14:00-04:00"
+    "seedNote": "Tue Oct 27, 2026 open (pre-RTH) \u2014 PAPER-006 QQQ Nov20 695/680 put debit HOLD, mark 3.325 (natural 3.24, \u2212$118 uP&L); QQQ 714.98. Kill-watch vs 716. Realized \u2212$120 prior. Capital $450, open $450, Net \u2212$118, ROC -26.11%, unused $1,312, 1 open. Option quotes Mon close.",
+    "revisedAt": "2026-10-27T09:15:00-04:00"
   },
   "buckets": {
     "A": {
@@ -33,25 +33,25 @@
       "symbol": "ASST",
       "name": "Asset Entities",
       "unit": "BTC factor",
-      "note": "Smaller BTC-adjacent name — size down"
+      "note": "Smaller BTC-adjacent name \u2014 size down"
     },
     {
       "symbol": "STRC",
       "name": "STRC (paper)",
       "unit": "BTC factor",
-      "note": "Watchlist — no open tickets"
+      "note": "Watchlist \u2014 no open tickets"
     },
     {
       "symbol": "SATA",
       "name": "SATA (paper)",
       "unit": "BTC factor",
-      "note": "Watchlist — no open tickets"
+      "note": "Watchlist \u2014 no open tickets"
     },
     {
       "symbol": "QQQ",
       "name": "Invesco QQQ Trust",
       "unit": "Nasdaq",
-      "note": "Separate Nasdaq unit — not a BTC factor with MSTR/ASST"
+      "note": "Separate Nasdaq unit \u2014 not a BTC factor with MSTR/ASST"
     }
   ],
   "positions": [
@@ -80,7 +80,7 @@
       "cost": 190,
       "maxLoss": 190,
       "bucket": "A",
-      "thesis": "Defined-risk long on MSTR/BTC rebound — buy the 155C, sell the 160C so max loss is the $190 debit while upside is capped at the short strike.",
+      "thesis": "Defined-risk long on MSTR/BTC rebound \u2014 buy the 155C, sell the 160C so max loss is the $190 debit while upside is capped at the short strike.",
       "status": "EXIT",
       "openedAt": "2026-09-23T10:15:00-04:00",
       "marks": [
@@ -161,7 +161,7 @@
       "cost": 75,
       "maxLoss": 75,
       "bucket": "A",
-      "thesis": "Small defined-risk ASST upside on the BTC-treasury microcap tape — $1-wide call vertical keeps max loss to $75 if the bounce fails.",
+      "thesis": "Small defined-risk ASST upside on the BTC-treasury microcap tape \u2014 $1-wide call vertical keeps max loss to $75 if the bounce fails.",
       "status": "EXIT",
       "openedAt": "2026-09-23T14:05:00-04:00",
       "marks": [
@@ -242,7 +242,7 @@
       "cost": 240,
       "maxLoss": 240,
       "bucket": "A",
-      "thesis": "Defined-risk long BTC-proxy into Oct16 — buy 155C / sell 160C so max loss is the debit.",
+      "thesis": "Defined-risk long BTC-proxy into Oct16 \u2014 buy 155C / sell 160C so max loss is the debit.",
       "status": "EXIT",
       "openedAt": "2026-09-28T12:45:00-04:00",
       "marks": [
@@ -659,7 +659,7 @@
       "kill": "QQQ close >=716 or mark <=2.25",
       "takeProfit": "mark >=9.00 or QQQ <=685",
       "timeStop": "2026-11-13",
-      "thesis": "Bearish QQQ bet on the Beltas downside tilt (QQQ range 680–735); the put debit spread caps risk at the $450 debit and selling the 680P cuts IV cost.",
+      "thesis": "Bearish QQQ bet on the Beltas downside tilt (QQQ range 680\u2013735); the put debit spread caps risk at the $450 debit and selling the 680P cuts IV cost.",
       "status": "HOLD",
       "openedAt": "2026-10-22T16:15:00-04:00",
       "entryDate": "2026-10-22",
@@ -705,12 +705,18 @@
           "label": "close",
           "mid": 3.31,
           "natural": 3.25
+        },
+        {
+          "ts": "2026-10-27T09:15:00-04:00",
+          "label": "open",
+          "mid": 3.325,
+          "natural": 3.24
         }
       ],
-      "mark": 3.31,
-      "naturalMark": 3.25,
-      "underlyingMark": 712.12,
-      "lastNote": "Close 10/26: QQQ 712.12 vs 716 close kill (not hit); mark 3.31 > 2.25. HOLD."
+      "mark": 3.325,
+      "naturalMark": 3.24,
+      "underlyingMark": 714.98,
+      "lastNote": "Open 10/27 pre-RTH: QQQ 714.98 vs 716 close kill (not hit); mark 3.325 > 2.25. HOLD. Pre-RTH; option quotes Mon close. QQQ ~1 pt under 716 close kill."
     }
   ],
   "transactions": [
@@ -724,7 +730,7 @@
       "fill": 1.9,
       "debitCredit": -190,
       "dayPnL": 0,
-      "note": "Open fill — morning"
+      "note": "Open fill \u2014 morning"
     },
     {
       "id": "TXN-002",
@@ -736,7 +742,7 @@
       "fill": 0.75,
       "debitCredit": -75,
       "dayPnL": 0,
-      "note": "Open fill — afternoon"
+      "note": "Open fill \u2014 afternoon"
     },
     {
       "id": "TXN-003",
@@ -744,11 +750,11 @@
       "ticketId": "BOOK",
       "ts": "2026-09-23T16:38:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot — PAPER-001 @ 3.27, PAPER-002 @ 0.22",
+      "legs": "close snapshot \u2014 PAPER-001 @ 3.27, PAPER-002 @ 0.22",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": 84,
-      "note": "Wed close marks (Options Desk sync) — book Net ~+$84"
+      "note": "Wed close marks (Options Desk sync) \u2014 book Net ~+$84"
     },
     {
       "id": "TXN-004",
@@ -756,11 +762,11 @@
       "ticketId": "BOOK",
       "ts": "2026-09-24T12:33:00-04:00",
       "underlying": "BOOK",
-      "legs": "midday snapshot — PAPER-001 @ 3.57, PAPER-002 @ 0.60",
+      "legs": "midday snapshot \u2014 PAPER-001 @ 3.57, PAPER-002 @ 0.60",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": 152,
-      "note": "Thu midday marks (Options Desk sync) — book Net ~+$152"
+      "note": "Thu midday marks (Options Desk sync) \u2014 book Net ~+$152"
     },
     {
       "id": "TXN-005",
@@ -768,11 +774,11 @@
       "ticketId": "BOOK",
       "ts": "2026-09-25T12:37:00-04:00",
       "underlying": "BOOK",
-      "legs": "midday snapshot — PAPER-001 @ 3.37, PAPER-002 @ 0.24",
+      "legs": "midday snapshot \u2014 PAPER-001 @ 3.37, PAPER-002 @ 0.24",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": 96,
-      "note": "Fri midday marks (Options Desk sync) — book Net ~+$96"
+      "note": "Fri midday marks (Options Desk sync) \u2014 book Net ~+$96"
     },
     {
       "id": "TXN-006",
@@ -784,7 +790,7 @@
       "fill": 3.67,
       "debitCredit": 177,
       "dayPnL": 177,
-      "note": "Fri Sep 25 expiry settlement — realized +$177"
+      "note": "Fri Sep 25 expiry settlement \u2014 realized +$177"
     },
     {
       "id": "TXN-007",
@@ -796,7 +802,7 @@
       "fill": 0,
       "debitCredit": -75,
       "dayPnL": -75,
-      "note": "Fri Sep 25 expiry settlement — realized -$75"
+      "note": "Fri Sep 25 expiry settlement \u2014 realized -$75"
     },
     {
       "id": "TXN-008",
@@ -808,7 +814,7 @@
       "fill": 2.4,
       "debitCredit": -240,
       "dayPnL": 0,
-      "note": "Mon midday paper fill — Ready A after open deferred pre-RTH"
+      "note": "Mon midday paper fill \u2014 Ready A after open deferred pre-RTH"
     },
     {
       "id": "TXN-009",
@@ -816,11 +822,11 @@
       "ticketId": "BOOK",
       "ts": "2026-09-30T16:20:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot — PAPER-003 @ 1.85",
+      "legs": "close snapshot \u2014 PAPER-003 @ 1.85",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -55,
-      "note": "Wed close marks (Options Desk sync) — book Net −$55"
+      "note": "Wed close marks (Options Desk sync) \u2014 book Net \u2212$55"
     },
     {
       "id": "TXN-010",
@@ -828,11 +834,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-07T16:15:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot — PAPER-003 @ 1.75",
+      "legs": "close snapshot \u2014 PAPER-003 @ 1.75",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -65,
-      "note": "Wed close marks (Options Desk sync) — book Net −$65"
+      "note": "Wed close marks (Options Desk sync) \u2014 book Net \u2212$65"
     },
     {
       "id": "TXN-011",
@@ -840,11 +846,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-08T16:05:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot — PAPER-003 @ 1.43",
+      "legs": "close snapshot \u2014 PAPER-003 @ 1.43",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -97,
-      "note": "Thu close marks (Chief Orchestrator sync from Robinhood settles) — book Net −$97"
+      "note": "Thu close marks (Chief Orchestrator sync from Robinhood settles) \u2014 book Net \u2212$97"
     },
     {
       "id": "TXN-012",
@@ -852,11 +858,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-09T16:24:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot — PAPER-003 @ 1.85",
+      "legs": "close snapshot \u2014 PAPER-003 @ 1.85",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -55,
-      "note": "Fri close marks (Options Desk sync) — book Net −$55"
+      "note": "Fri close marks (Options Desk sync) \u2014 book Net \u2212$55"
     },
     {
       "id": "TXN-013",
@@ -868,7 +874,7 @@
       "fill": 1.51,
       "debitCredit": 151,
       "dayPnL": -89,
-      "note": "Mon Oct 12 close EXIT — realized -$89 (-37.1% on $240). Standing rule: MSTR closed 152.79 < ~155 before CPI Wed Oct 14. Book flat."
+      "note": "Mon Oct 12 close EXIT \u2014 realized -$89 (-37.1% on $240). Standing rule: MSTR closed 152.79 < ~155 before CPI Wed Oct 14. Book flat."
     },
     {
       "id": "TXN-014",
@@ -890,11 +896,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-14T16:14:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot — PAPER-004 @ 0.325 (credit)",
+      "legs": "close snapshot \u2014 PAPER-004 @ 0.325 (credit)",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": 3.5,
-      "note": "Wed close marks (Options Desk sync) — credit uP&L +$3.50; book Net +$3.50 (ROC 0.8%)"
+      "note": "Wed close marks (Options Desk sync) \u2014 credit uP&L +$3.50; book Net +$3.50 (ROC 0.8%)"
     },
     {
       "id": "TXN-016",
@@ -902,11 +908,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-15T12:36:00-04:00",
       "underlying": "BOOK",
-      "legs": "midday snapshot — PAPER-004 @ 0.47 (credit)",
+      "legs": "midday snapshot \u2014 PAPER-004 @ 0.47 (credit)",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -11,
-      "note": "Thu midday marks (Options Desk sync) — credit uP&L −$11; book Net −$11 (ROC −2.4%). MSTR bounce + IV; kills not hit; no QQQ A."
+      "note": "Thu midday marks (Options Desk sync) \u2014 credit uP&L \u2212$11; book Net \u2212$11 (ROC \u22122.4%). MSTR bounce + IV; kills not hit; no QQQ A."
     },
     {
       "id": "TXN-017",
@@ -914,11 +920,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-15T16:18:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot — PAPER-004 @ 0.51 (credit)",
+      "legs": "close snapshot \u2014 PAPER-004 @ 0.51 (credit)",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -15,
-      "note": "Thu close marks (Options Desk sync) — credit uP&L −$15; book Net −$15 (ROC −3.2%). dayPnL −$18.50 vs Wed settle."
+      "note": "Thu close marks (Options Desk sync) \u2014 credit uP&L \u2212$15; book Net \u2212$15 (ROC \u22123.2%). dayPnL \u2212$18.50 vs Wed settle."
     },
     {
       "id": "TXN-018",
@@ -926,11 +932,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-16T12:38:00-04:00",
       "underlying": "BOOK",
-      "legs": "midday snapshot — PAPER-004 @ 0.24 (credit)",
+      "legs": "midday snapshot \u2014 PAPER-004 @ 0.24 (credit)",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": 12,
-      "note": "Fri midday marks (Options Desk sync) — credit uP&L +$12; book Net +$12 (ROC 2.6%). MSTR −8.8% on MSCI non-operating-company index rules (list Nov 11, effective after Nov 30); BTC flat ~81.5k. Kills clear; TP 0.18 not hit; close by Wed Oct 21."
+      "note": "Fri midday marks (Options Desk sync) \u2014 credit uP&L +$12; book Net +$12 (ROC 2.6%). MSTR \u22128.8% on MSCI non-operating-company index rules (list Nov 11, effective after Nov 30); BTC flat ~81.5k. Kills clear; TP 0.18 not hit; close by Wed Oct 21."
     },
     {
       "id": "TXN-019",
@@ -938,11 +944,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-16T16:18:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot — PAPER-004 @ 0.225 (credit)",
+      "legs": "close snapshot \u2014 PAPER-004 @ 0.225 (credit)",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": 13.5,
-      "note": "Fri close marks (Options Desk sync) — credit uP&L +$13.50; book Net +$13.50 (ROC 2.9%). dayPnL +$28.50 vs Thu close 0.51. MSTR −9.6% on MSCI non-operating index overhang; kills clear; TP 0.18 not hit; close by Wed Oct 21."
+      "note": "Fri close marks (Options Desk sync) \u2014 credit uP&L +$13.50; book Net +$13.50 (ROC 2.9%). dayPnL +$28.50 vs Thu close 0.51. MSTR \u22129.6% on MSCI non-operating index overhang; kills clear; TP 0.18 not hit; close by Wed Oct 21."
     },
     {
       "id": "TXN-020",
@@ -950,11 +956,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-19T09:34:00-04:00",
       "underlying": "BOOK",
-      "legs": "open snapshot — PAPER-004 @ 0.10 (credit)",
+      "legs": "open snapshot \u2014 PAPER-004 @ 0.10 (credit)",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": 26,
-      "note": "Mon open marks (Options Desk sync) — credit uP&L +$26; book Net +$26 (ROC 5.6%). Mid 0.10 through TP 0.18 but natural buyback 0.46 — no paper fill; work ≤0.20 natural by Tue, hard close Wed Oct 21."
+      "note": "Mon open marks (Options Desk sync) \u2014 credit uP&L +$26; book Net +$26 (ROC 5.6%). Mid 0.10 through TP 0.18 but natural buyback 0.46 \u2014 no paper fill; work \u22640.20 natural by Tue, hard close Wed Oct 21."
     },
     {
       "id": "TXN-021",
@@ -962,11 +968,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-19T16:16:00-04:00",
       "underlying": "BOOK",
-      "legs": "close snapshot — PAPER-004 @ 0.17 (credit)",
+      "legs": "close snapshot \u2014 PAPER-004 @ 0.17 (credit)",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": 5.5,
-      "note": "Mon close marks (Options Desk sync) — PAPER-004 mid 0.17 (190C 0.915 / 195C 0.745), natural buyback 0.26; credit uP&L +$19; book Net +$19 (ROC 4.1%). Day +$5.50 vs Fri close 0.225. Mid through TP 0.18 but natural 0.26 > 0.20 work level — no paper fill; work ≤0.20 natural Tue, hard close Wed Oct 21. Kills clear (mark≥0.72 / close≥170 / Δ>0.30)."
+      "note": "Mon close marks (Options Desk sync) \u2014 PAPER-004 mid 0.17 (190C 0.915 / 195C 0.745), natural buyback 0.26; credit uP&L +$19; book Net +$19 (ROC 4.1%). Day +$5.50 vs Fri close 0.225. Mid through TP 0.18 but natural 0.26 > 0.20 work level \u2014 no paper fill; work \u22640.20 natural Tue, hard close Wed Oct 21. Kills clear (mark\u22650.72 / close\u2265170 / \u0394>0.30)."
     },
     {
       "id": "TXN-022",
@@ -988,11 +994,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-20T09:32:37-04:00",
       "underlying": "BOOK",
-      "legs": "open snapshot — PAPER-004 @ 0.155 (credit) / PAPER-005 @ 4.45",
+      "legs": "open snapshot \u2014 PAPER-004 @ 0.155 (credit) / PAPER-005 @ 4.45",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -7.5,
-      "note": "Tue open marks (Options Desk sync) — PAPER-004 credit uP&L +$20.50; new PAPER-005 QQQ 700/680 put debit @ 4.54, mark 4.45 (−$9). Book capital $918, Net +$11.50 (ROC 1.25%)."
+      "note": "Tue open marks (Options Desk sync) \u2014 PAPER-004 credit uP&L +$20.50; new PAPER-005 QQQ 700/680 put debit @ 4.54, mark 4.45 (\u2212$9). Book capital $918, Net +$11.50 (ROC 1.25%)."
     },
     {
       "id": "TXN-024",
@@ -1000,11 +1006,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-20T12:33:00-04:00",
       "underlying": "BOOK",
-      "legs": "midday snapshot — PAPER-004 @ 0.295 (credit) / PAPER-005 @ 3.965",
+      "legs": "midday snapshot \u2014 PAPER-004 @ 0.295 (credit) / PAPER-005 @ 3.965",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -62.5,
-      "note": "Tue midday marks (Options Desk sync) — PAPER-004 credit uP&L +$6.50 (natural buyback 0.38); PAPER-005 uP&L −$57.50 (natural 3.91). Book capital $918, Net −$51.00 (ROC -5.56%)."
+      "note": "Tue midday marks (Options Desk sync) \u2014 PAPER-004 credit uP&L +$6.50 (natural buyback 0.38); PAPER-005 uP&L \u2212$57.50 (natural 3.91). Book capital $918, Net \u2212$51.00 (ROC -5.56%)."
     },
     {
       "id": "TXN-025",
@@ -1012,12 +1018,12 @@
       "ticketId": "PAPER-004",
       "ts": "2026-10-21T09:32:00-04:00",
       "underlying": "MSTR",
-      "legs": "buy to close Nov20 190C / sell to close Nov20 195C credit vertical x1 EXIT @ 0.42 debit (natural; mid 0.31) — 190C 1.68 / 195C 1.26",
+      "legs": "buy to close Nov20 190C / sell to close Nov20 195C credit vertical x1 EXIT @ 0.42 debit (natural; mid 0.31) \u2014 190C 1.68 / 195C 1.26",
       "fill": 0.42,
       "debitCredit": -42,
       "side": "credit",
       "dayPnL": -6,
-      "note": "Wed Oct 21 open EXIT — Wed hard-close plan, default natural at open. Entry credit 0.36 → exit debit 0.42; realized −$6 (−1.3% on $464). MSTR 145.38."
+      "note": "Wed Oct 21 open EXIT \u2014 Wed hard-close plan, default natural at open. Entry credit 0.36 \u2192 exit debit 0.42; realized \u2212$6 (\u22121.3% on $464). MSTR 145.38."
     },
     {
       "id": "TXN-026",
@@ -1025,11 +1031,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-21T09:33:00-04:00",
       "underlying": "BOOK",
-      "legs": "open snapshot — PAPER-005 @ 3.775 (natural 3.69)",
+      "legs": "open snapshot \u2014 PAPER-005 @ 3.775 (natural 3.69)",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -42,
-      "note": "Wed open (Options Desk sync) — PAPER-004 CLOSED (realized −$6); PAPER-005 HOLD mark 3.775, uP&L −$76.50 (natural 3.69). Book capital $918 ($454 open + $464 closed today), realized −$6, unrealized −$76.50, Net −$82.50 (ROC −8.99%). 1 open position — book NOT flat. Day −$42 vs Tue close Net −$40.50."
+      "note": "Wed open (Options Desk sync) \u2014 PAPER-004 CLOSED (realized \u2212$6); PAPER-005 HOLD mark 3.775, uP&L \u2212$76.50 (natural 3.69). Book capital $918 ($454 open + $464 closed today), realized \u2212$6, unrealized \u2212$76.50, Net \u2212$82.50 (ROC \u22128.99%). 1 open position \u2014 book NOT flat. Day \u2212$42 vs Tue close Net \u2212$40.50."
     },
     {
       "id": "TXN-027",
@@ -1037,11 +1043,11 @@
       "ticketId": "BOOK",
       "ts": "2026-10-21T12:36:48-04:00",
       "underlying": "BOOK",
-      "legs": "midday snapshot — PAPER-005 @ 3.36 (natural 3.33)",
+      "legs": "midday snapshot \u2014 PAPER-005 @ 3.36 (natural 3.33)",
       "fill": null,
       "debitCredit": 0,
       "dayPnL": -83.5,
-      "note": "Wed midday marks (Options Desk sync) — PAPER-005 HOLD mark 3.36, uP&L −$118 (natural 3.33). Kill-watch: QQQ 725.29 intraday vs close-kill >=725. PAPER-004 EXIT unchanged (realized −$6). Book capital $918, open risk $454, Net −$124 (ROC −13.51%). Day −$83.50 vs Tue close Net −$40.50."
+      "note": "Wed midday marks (Options Desk sync) \u2014 PAPER-005 HOLD mark 3.36, uP&L \u2212$118 (natural 3.33). Kill-watch: QQQ 725.29 intraday vs close-kill >=725. PAPER-004 EXIT unchanged (realized \u2212$6). Book capital $918, open risk $454, Net \u2212$124 (ROC \u221213.51%). Day \u2212$83.50 vs Tue close Net \u2212$40.50."
     },
     {
       "id": "TXN-028",
@@ -1054,7 +1060,7 @@
       "debitCredit": 340,
       "side": "debit",
       "dayPnL": -114,
-      "note": "Wed Oct 21 close EXIT — kill hit: QQQ daily close 725.21 >= 725. Entry 4.54 → exit 3.40 natural; realized −$114 (−25.1% on $454). Book flat: realized today −$120 (PAPER-004 −$6 + PAPER-005 −$114), ROC −13.07% on $918. 0 open."
+      "note": "Wed Oct 21 close EXIT \u2014 kill hit: QQQ daily close 725.21 >= 725. Entry 4.54 \u2192 exit 3.40 natural; realized \u2212$114 (\u221225.1% on $454). Book flat: realized today \u2212$120 (PAPER-004 \u2212$6 + PAPER-005 \u2212$114), ROC \u221213.07% on $918. 0 open."
     },
     {
       "id": "TXN-029",
@@ -1068,7 +1074,7 @@
       "side": "debit",
       "maxLoss": 450,
       "dayPnL": 0,
-      "note": "Opened at Thu Oct 22 close. Bucket A, QQQ risk unit. Kill: QQQ close >=716 or mark <=2.25; TP mark >=9.00 or QQQ <=685; time stop Nov 13. Close mark 4.305 (natural 4.11), uP&L −$19.50."
+      "note": "Opened at Thu Oct 22 close. Bucket A, QQQ risk unit. Kill: QQQ close >=716 or mark <=2.25; TP mark >=9.00 or QQQ <=685; time stop Nov 13. Close mark 4.305 (natural 4.11), uP&L \u2212$19.50."
     }
   ],
   "marksHistory": [
@@ -1518,7 +1524,7 @@
           "195C": 2.615
         }
       },
-      "note": "Close mark; dayPnL −$18.50 vs Wed settle 0.325."
+      "note": "Close mark; dayPnL \u2212$18.50 vs Wed settle 0.325."
     },
     {
       "ts": "2026-10-16T12:38:00-04:00",
@@ -1538,7 +1544,7 @@
           "195C": 1.21
         }
       },
-      "note": "MSTR −8.8% on MSCI non-operating-company index rules (list Nov 11, effective after Nov 30); BTC flat ~81.5k. Kills clear; TP 0.18 not hit; close by Wed Oct 21."
+      "note": "MSTR \u22128.8% on MSCI non-operating-company index rules (list Nov 11, effective after Nov 30); BTC flat ~81.5k. Kills clear; TP 0.18 not hit; close by Wed Oct 21."
     },
     {
       "ts": "2026-10-16T16:18:00-04:00",
@@ -1563,7 +1569,7 @@
           "195C": 1.03
         }
       },
-      "note": "MSTR −9.6% on MSCI non-operating index overhang; kills clear; TP 0.18 not hit; close by Wed Oct 21."
+      "note": "MSTR \u22129.6% on MSCI non-operating index overhang; kills clear; TP 0.18 not hit; close by Wed Oct 21."
     },
     {
       "ts": "2026-10-19T09:34:00-04:00",
@@ -1588,7 +1594,7 @@
           "195C": 1.18
         }
       },
-      "note": "Mid 0.10 through TP 0.18 but natural buyback 0.46 — no paper fill; work ≤0.20 natural by Tue, hard close Wed Oct 21."
+      "note": "Mid 0.10 through TP 0.18 but natural buyback 0.46 \u2014 no paper fill; work \u22640.20 natural by Tue, hard close Wed Oct 21."
     },
     {
       "ts": "2026-10-19T10:44:11-04:00",
@@ -1646,7 +1652,7 @@
       },
       "bookMTM": 460.5,
       "bookNet": 11.5,
-      "note": "PAPER-004 +$20.50; PAPER-005 opened @ 4.54 (mark 4.45, −$9); capital $918; ROC 1.25%"
+      "note": "PAPER-004 +$20.50; PAPER-005 opened @ 4.54 (mark 4.45, \u2212$9); capital $918; ROC 1.25%"
     },
     {
       "ts": "2026-10-20T12:33:00-04:00",
@@ -1662,7 +1668,7 @@
       },
       "bookMTM": 426,
       "bookNet": -51,
-      "note": "PAPER-004 +$6.50; PAPER-005 −$57.50; capital $918; ROC -5.56%; naturals 0.38 / 3.91"
+      "note": "PAPER-004 +$6.50; PAPER-005 \u2212$57.50; capital $918; ROC -5.56%; naturals 0.38 / 3.91"
     },
     {
       "ts": "2026-10-21T09:33:00-04:00",
@@ -1679,7 +1685,7 @@
       "underlyings": {
         "MSTR": 145.38
       },
-      "note": "PAPER-004 EXIT @ 0.42 (−$6 realized); PAPER-005 −$76.50; capital $918; Net −$82.50; ROC −8.99%"
+      "note": "PAPER-004 EXIT @ 0.42 (\u2212$6 realized); PAPER-005 \u2212$76.50; capital $918; Net \u2212$82.50; ROC \u22128.99%"
     },
     {
       "ts": "2026-10-21T12:36:48-04:00",
@@ -1693,7 +1699,7 @@
       },
       "bookMTM": 336,
       "bookNet": -124,
-      "note": "PAPER-005 −$118; PAPER-004 realized −$6; capital $918; Net −$124; ROC −13.51%; Kill-watch: QQQ 725.29 intraday vs close-kill >=725"
+      "note": "PAPER-005 \u2212$118; PAPER-004 realized \u2212$6; capital $918; Net \u2212$124; ROC \u221213.51%; Kill-watch: QQQ 725.29 intraday vs close-kill >=725"
     },
     {
       "ts": "2026-10-21T16:14:00-04:00",
@@ -1709,7 +1715,7 @@
       "underlyings": {
         "QQQ": 725.21
       },
-      "note": "PAPER-005 EXIT @ 3.40 (−$114); PAPER-004 EXIT earlier (−$6); book flat; capital $918; Net −$120; ROC −13.07%"
+      "note": "PAPER-005 EXIT @ 3.40 (\u2212$114); PAPER-004 EXIT earlier (\u2212$6); book flat; capital $918; Net \u2212$120; ROC \u221213.07%"
     },
     {
       "ts": "2026-10-22T09:07:00-04:00",
@@ -1729,7 +1735,7 @@
         "SPY": 765.95,
         "BTC": 81606
       },
-      "note": "Open mark — book flat, no transactions; capital $918; Net −$120; ROC −13.07%"
+      "note": "Open mark \u2014 book flat, no transactions; capital $918; Net \u2212$120; ROC \u221213.07%"
     },
     {
       "ts": "2026-10-22T12:36:00-04:00",
@@ -1749,7 +1755,7 @@
         "SPY": 764.2,
         "BTC": 81400
       },
-      "note": "Midday mark — book flat, no transactions; capital $918; Net −$120; ROC −13.07%"
+      "note": "Midday mark \u2014 book flat, no transactions; capital $918; Net \u2212$120; ROC \u221213.07%"
     },
     {
       "ts": "2026-10-22T16:15:00-04:00",
@@ -1773,7 +1779,7 @@
         "SPY": 763.97,
         "BTC": 81274
       },
-      "note": "PAPER-006 OPEN @ 4.50, mark 4.305 (−$19.50); capital $1,368; open $450; Net −$139.50; ROC −10.20%; unused $1,410.50"
+      "note": "PAPER-006 OPEN @ 4.50, mark 4.305 (\u2212$19.50); capital $1,368; open $450; Net \u2212$139.50; ROC \u221210.20%; unused $1,410.50"
     },
     {
       "ts": "2026-10-23T09:09:00-04:00",
@@ -1797,7 +1803,7 @@
         "SPY": 760.61,
         "BTC": 81500
       },
-      "note": "PAPER-006 HOLD mark 4.305 (natural 4.11, −$19.50); capital $1,368; open $450; Net −$139.50; ROC −10.20%; unused $1,410.50"
+      "note": "PAPER-006 HOLD mark 4.305 (natural 4.11, \u2212$19.50); capital $1,368; open $450; Net \u2212$139.50; ROC \u221210.20%; unused $1,410.50"
     },
     {
       "ts": "2026-10-23T12:33:00-04:00",
@@ -1814,7 +1820,7 @@
       "underlyings": {
         "QQQ": 706.78
       },
-      "note": "PAPER-006 HOLD mark 4.01 (natural 3.96, −$49); capital $1,368; open $450; Net −$169; ROC −12.35%; unused $1,381"
+      "note": "PAPER-006 HOLD mark 4.01 (natural 3.96, \u2212$49); capital $1,368; open $450; Net \u2212$169; ROC \u221212.35%; unused $1,381"
     },
     {
       "ts": "2026-10-23T16:19:00-04:00",
@@ -1831,7 +1837,7 @@
       "underlyings": {
         "QQQ": 704.39
       },
-      "note": "PAPER-006 HOLD mark 4.13 (natural 4.03, −$37); capital $1,368; open $450; Net −$157; ROC −11.48%; unused $1,393"
+      "note": "PAPER-006 HOLD mark 4.13 (natural 4.03, \u2212$37); capital $1,368; open $450; Net \u2212$157; ROC \u221211.48%; unused $1,393"
     },
     {
       "ts": "2026-10-26T09:21:00-04:00",
@@ -1848,7 +1854,7 @@
       "underlyings": {
         "QQQ": 707.58
       },
-      "note": "PAPER-006 HOLD mark 4.13 (natural 4.03, −$37.000000000000014); capital $1,368; open $450; Net −$157; ROC -11.48%; unused $1,393. Option quotes stale from Fri close (pre-RTH); QQQ pre +0.45%; kills clear (close>=716 / mark<=2.25)"
+      "note": "PAPER-006 HOLD mark 4.13 (natural 4.03, \u2212$37.000000000000014); capital $1,368; open $450; Net \u2212$157; ROC -11.48%; unused $1,393. Option quotes stale from Fri close (pre-RTH); QQQ pre +0.45%; kills clear (close>=716 / mark<=2.25)"
     },
     {
       "ts": "2026-10-26T12:38:00-04:00",
@@ -1865,7 +1871,7 @@
       "underlyings": {
         "QQQ": 712.84
       },
-      "note": "PAPER-006 HOLD mark 3.22 (natural 3.18, −$128); capital $1,368; open $450; Net −$248; ROC -18.13%; unused $1,302. Kill-watch: QQQ 712.84 vs 716 close kill; mark>2.25"
+      "note": "PAPER-006 HOLD mark 3.22 (natural 3.18, \u2212$128); capital $1,368; open $450; Net \u2212$248; ROC -18.13%; unused $1,302. Kill-watch: QQQ 712.84 vs 716 close kill; mark>2.25"
     },
     {
       "ts": "2026-10-26T16:14:00-04:00",
@@ -1882,7 +1888,31 @@
       "underlyings": {
         "QQQ": 712.12
       },
-      "note": "PAPER-006 HOLD mark 3.31 (natural 3.25, −$119); capital $1,368; open $450; Net −$239; ROC -17.47%; unused $1,311. Kill-watch: QQQ 712.12 vs 716 close kill; mark>2.25"
+      "note": "PAPER-006 HOLD mark 3.31 (natural 3.25, \u2212$119); capital $1,368; open $450; Net \u2212$239; ROC -17.47%; unused $1,311. Kill-watch: QQQ 712.12 vs 716 close kill; mark>2.25"
+    },
+    {
+      "ts": "2026-10-27T09:15:00-04:00",
+      "session": "open",
+      "date": "2026-10-27",
+      "tickets": {
+        "PAPER-006": 3.325
+      },
+      "naturalMarks": {
+        "PAPER-006": 3.24
+      },
+      "bookMTM": 332.5,
+      "bookNet": -237.5,
+      "underlyings": {
+        "MSTR": 141.3,
+        "ASST": 26.49,
+        "STRC": 99.2,
+        "SATA": 98.63,
+        "QQQ": 714.98,
+        "SMH": 548.7,
+        "SPY": 767.43,
+        "BTC": 80135
+      },
+      "note": "PAPER-006 HOLD mark 3.325 (natural 3.24, \u2212$118); capital $450; open $450; Net \u2212$118; ROC -26.11%; unused $1,312. Kill-watch: QQQ 714.98 vs 716 close kill; mark>2.25. Pre-RTH; option quotes Mon close."
     }
   ]
 }
