@@ -1102,7 +1102,7 @@
       "fill": 2.43,
       "debitCredit": 243,
       "side": "debit",
-      "dayPnL": -82,
+      "dayPnL": -88,
       "note": "Tue Oct 27 close EXIT — kill hit: QQQ daily close 721.24 >= 716. Entry 4.50 -> exit 2.43 natural; realized −$207 (−46.0% on $450). Book flat, 0 open. Cumulative realized −$327 on $1,368 deployed (−23.9%)."
     }
   ],
