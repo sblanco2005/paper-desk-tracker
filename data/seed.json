@@ -5,8 +5,8 @@
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Wed Oct 28, 2026 midday — book flat, 0 open, no transactions. Cumulative realized −$327 on $1,368 deployed (−23.9%); unused $1,673.",
-    "revisedAt": "2026-10-28T12:38:00-04:00"
+    "seedNote": "Wed Oct 28, 2026 close — book flat, 0 open, no transactions. Cumulative realized −$327 on $1,368 deployed (−23.9%); unused $1,673.",
+    "revisedAt": "2026-10-28T16:20:00-04:00"
   },
   "buckets": {
     "A": {
@@ -2030,6 +2030,26 @@
         "BTC": 80409
       },
       "note": "Midday mark Wed Oct 28 (Fed 2pm pending): book flat, 0 open, no transactions. QQQ 722.09 (+0.1%), 6 pts above 716 re-entry line; SMH +1.3% — no bear trigger. BTC unit soft (MSTR −1.5%, ASST −1.0%) but no setup into Fed. Cumulative realized −$327 on $1,368; unused $1,673."
+    },
+    {
+      "ts": "2026-10-28T16:20:00-04:00",
+      "session": "close",
+      "date": "2026-10-28",
+      "tickets": {},
+      "naturalMarks": {},
+      "bookMTM": 0,
+      "bookNet": -327,
+      "underlyings": {
+        "MSTR": 145.22,
+        "ASST": 27.54,
+        "STRC": 99.93,
+        "SATA": 97.91,
+        "QQQ": 725.48,
+        "SMH": 568.11,
+        "SPY": 772.31,
+        "BTC": 81169
+      },
+      "note": "Close mark Wed Oct 28 (Fed day; MSFT/GOOGL AMC): book flat, 0 open, no transactions. QQQ closed 725.48 (+0.6%), 9.5 pts above 716 put re-entry line and under 735 bull confirm; AH ~722.9. SMH +1.8%. BTC unit bid (MSTR +2.7%, ASST +1.5%), BTC ~$81.2k flat. Cumulative realized -$327 on $1,368; unused $1,673."
     }
   ]
 }
