@@ -5,8 +5,8 @@
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Thu Oct 29, 2026 close — book flat, 0 open, no transactions. QQQ closed 715.28, under the 716 line: put re-entry armed for Fri RTH (QQQ Nov20 695/680 put debit, Cost <=$500). Cumulative realized −$327 on $1,368 (−23.9%); unused $1,673.",
-    "revisedAt": "2026-10-29T16:12:00-04:00"
+    "seedNote": "Fri Oct 30, 2026 open (pre-RTH) — book flat, 0 open, no transactions. QQQ gapping −2.6% to ~696.85 on AMZN/INTC (SMH −5.3%); BTC ~$77.2k after Binance hack, MSTR ~131 (−7.3%). The armed Nov20 695/680 put debit is now near-the-money and would exceed the $500 cap; desk stood aside pre-RTH (stale option quotes). RTH re-strike candidate: Nov20 680/665 put debit ×1, Cost ≤$500 at natural, only if QQQ fails to reclaim ~705. Cumulative realized −$327 on $1,368 (−23.9%); unused $1,673.",
+    "revisedAt": "2026-10-30T09:16:00-04:00"
   },
   "buckets": {
     "A": {
@@ -2110,6 +2110,14 @@
         "BTC": 80227
       },
       "note": "Close mark Thu Oct 29 (RH live): book flat, 0 open, no transactions. QQQ closed 715.28 (-1.4% vs 725.61), 0.72 under 716 -> put re-entry TRIGGER fired; SMH 561.78 (-1.0%) rolling over; AH QQQ ~706.1 / SMH ~548 (AMZN/INTC AMC). Not filled at close (options already pricing AH ~706). ARMED for Fri RTH: QQQ Nov20 695/680 put debit x1 bucket A, 4:11 PM mid 3.82 / natural 4.21 (Cost ~$382, max gain ~$1,118, BE ~691.18); fill only if QQQ <716, natural within 10% of mid, Cost <=$500. MSTR 141.56 (-2.5%), ASST 24.88 (-9.6%), BTC ~$80.2k (+0.6%). Cumulative realized -$327 on $1,368; unused $1,673."
+    },
+    {
+      "ts": "2026-10-30T09:16:00-04:00",
+      "session": "open",
+      "date": "2026-10-30",
+      "tickets": {},
+      "bookMTM": 0,
+      "bookNet": 0
     }
   ]
 }
