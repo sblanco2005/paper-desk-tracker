@@ -1037,8 +1037,8 @@ body {
     "mode": "paper",
     "riskCeiling": 2000,
     "seedDate": "2026-09-23",
-    "seedNote": "Fri Oct 30, 2026 midday \u2014 OPENED PAPER-007 QQQ Nov20 680/665 put debit x1 @ 3.95 natural (Cost $395). QQQ 692.09 (-3.3%), SMH 521.81 (-7.1%), failed to reclaim 705. Mark 3.82 natural, uP&L -$13. Capital $395, Net -$13, ROC -3.3%. Cumulative realized -$327 on $1,368.",
-    "revisedAt": "2026-10-30T12:35:00-04:00"
+    "seedNote": "Fri Oct 30, 2026 close - PAPER-007 QQQ Nov20 680/665 put debit x1 HOLD, mark 3.89 natural (mid 4.045), uP&L -$6. QQQ close 690.53 (-3.5%), SMH 522.83 (-6.9%). Capital $395, Net -$6, ROC -1.5%. Cumulative realized -$327 on $1,368.",
+    "revisedAt": "2026-10-30T16:15:00-04:00"
   },
   "buckets": {
     "A": {
@@ -1810,12 +1810,18 @@ body {
           "label": "midday",
           "mid": 3.885,
           "natural": 3.82
+        },
+        {
+          "ts": "2026-10-30T16:15:00-04:00",
+          "label": "close",
+          "mid": 4.045,
+          "natural": 3.89
         }
       ],
-      "mark": 3.82,
-      "naturalMark": 3.82,
-      "underlyingMark": 692.09,
-      "lastNote": "Opened midday 10/30 at natural 3.95 (buy 680P 12.44 ask / sell 665P 8.49 bid; mid 3.885). QQQ 692.09 (-3.3%), SMH 521.81 (-7.1%). Mark 3.82 natural, uP&L -$13."
+      "mark": 3.89,
+      "naturalMark": 3.89,
+      "underlyingMark": 690.53,
+      "lastNote": "Close 10/30: 680P 12.45/12.63 (mk 12.54), 665P 8.43/8.56 (mk 8.495); spread mid 4.045, natural 3.89. QQQ close 690.53 (-3.5%), SMH 522.83 (-6.9%). Mark 3.89 natural, uP&L -$6. HOLD; no kill (needs close >=705 or mark <=1.95)."
     }
   ],
   "transactions": [
@@ -3225,6 +3231,17 @@ body {
       },
       "bookMTM": 382,
       "bookNet": -13
+    },
+    {
+      "ts": "2026-10-30T16:15:00-04:00",
+      "session": "close",
+      "positions": [
+        {
+          "id": "PAPER-007",
+          "mark": 3.89,
+          "status": "HOLD"
+        }
+      ]
     }
   ]
 };</script>
